@@ -1,0 +1,99 @@
+{% extends 'base.html' %} {% block title %}
+<title>設定</title>
+{% endblock %} {% block body %}
+<header>
+  <div class="home-header">
+    <h1>ぐーたらちゃっと</h1>
+    <div class="header-nav-box">
+      <!-- <div class="header-nav-icons">
+        <span class="material-symbols-outlined"> looks_two </span>
+        <a href="">りくえすと</a> -->
+      <!-- </div> -->
+      <div class="header-nav-icons">
+        <span class="material-symbols-outlined"> cottage</span>
+        <a href="/home">ほーむ</a>
+      </div>
+      <!-- <div class="header-nav-icons">
+        <span class="material-symbols-outlined"> settings</span>
+        <a href="/setting">せってぃんぐ</a>
+      </div> -->
+      <div class="header-nav-icons">
+        <span class="material-symbols-outlined"> logout</span>
+        <a href="/login">さいんあうと</a>
+      </div>
+      <!-- <ul>
+        <li class="header-nav-icon"><span class="material-symbols-outlined">looks_one</span><a href="">りくえすと</a></li>
+        <li class="header-nav-icon"><a href="">ほーむ</a></li>
+        <li class="header-nav-icon"><a href="">せってい</a></li>
+      </ul> -->
+    </div>
+  </div>
+</header>
+<main class="setting_main">
+  <div class="setting_main_leftside">
+    <div class="setting_main_leftside_name">
+      <span class="setting_main_leftside_name_myphoto"></span>
+      <span class="setting_main_leftside_name_myname">名前</span>
+      <span class="material-symbols-outlined">border_color</span>
+    </div>
+    <div class="setting_main_leftside_profile">
+      <div class="setting_main_leftside_profile_onephrase">
+        <span>ひとこと</span>
+        <span>ひとことですよ</span>
+      </div>
+      <div class="setting_main_leftside_profile_mailaddress">
+        <span>めーるあどれす</span>
+        <span>.......@gmail.com</span>
+      </div>
+      <div class="setting_main_leftside_profile_password">
+        <span>ぱすわーど</span>
+        <span>ぱすわーどですよ</span>
+      </div>
+    </div>
+    <a class="setting_main_leftside_change" href="">へんこう</a>
+    <a class="setting_main_leftside_accountdelete" href="">あかうんと削除</a>
+  </div>
+  <div class="setting_main_rightside">
+    <div class="setting_main_rightside_header">
+      <h2>ていけいぶん</h2>
+      <span class="material-symbols-outlined"> description </span>
+    </div>
+    <div class="setting_main_rightside_fixedphrases">
+      <div class="setting_main_rightside_fixedphrases_phrase">
+        <span>おはよう</span>
+        <a href="" class="material-symbols-outlined">border_color</a>
+        <a href="" class="material-symbols-outlined">delete</a>
+      </div>
+      <div class="setting_main_rightside_fixedphrases_phrase">
+        <span>こんにちは</span>
+        <a href="" class="material-symbols-outlined">border_color</a>
+        <a href="" class="material-symbols-outlined">delete</a>
+      </div>
+      <div class="setting_main_rightside_fixedphrases_phrase">
+        <span>今日どこ行く？</span>
+        <a href="" class="material-symbols-outlined">border_color</a>
+        <a href="" class="material-symbols-outlined">delete</a>
+      </div>
+      <div class="setting_main_rightside_fixedphrases_phrase">
+        <span>明日は雨降るから傘必要だよ</span>
+        <a href="" class="material-symbols-outlined">border_color</a>
+        <a href="" class="material-symbols-outlined">delete</a>
+      </div>
+      <div class="setting_main_rightside_fixedphrases_phrase">
+        <span>今日のご飯は、なんでしょうか？</span>
+        <a href="" class="material-symbols-outlined">border_color</a>
+        <a href="" class="material-symbols-outlined">delete</a>
+      </div>
+      <div class="setting_main_rightside_fixedphrases_phrase">
+        <span>今日疲れすぎて外食したい気分</span>
+        <a href="" class="material-symbols-outlined">border_color</a>
+        <a href="" class="material-symbols-outlined">delete</a>
+      </div>
+    </div>
+    <div class="setting_main_rightside_addphrase">
+      <input type="text" placeholder="ついかしたいていけいぶんを入力してね">
+      <a href="">ついか</a>
+    </div>
+  </div>
+</main>
+{% endblock %}

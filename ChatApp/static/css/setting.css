@@ -1,0 +1,199 @@
+.setting_main {
+  width: 100%;
+  height: 85vh;
+  display: flex;
+  flex-direction: row;
+}
+.setting_main > * {
+  font-family: kiwi maru;
+}
+.setting_main_leftside {
+  width: 50%;
+  height: 100%;
+  background-color: rgba(128, 128, 128, 0.21);
+  border: 1px solid black;
+}
+.setting_main_leftside > * {
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
+.setting_main_leftside_name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: auto;
+  height: 80px;
+  margin-top: 40px;
+}
+.setting_main_leftside_name_myphoto {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: lightgray;
+  margin-left: 100px;
+  margin-right: 50px;
+}
+.setting_main_leftside_name_myname {
+  font-size: 40px;
+  align-self: flex-end;
+}
+.setting_main_leftside_name .material-symbols-outlined {
+  align-self: flex-end;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+.setting_main_leftside_profile {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 70px 0 70px;
+}
+.setting_main_leftside_profile > * {
+  margin-bottom: 30px;
+}
+.setting_main_leftside_profile_onephrase > * {
+  display: block;
+}
+.setting_main_leftside_profile_onephrase span:nth-child(1) {
+  font-size: 25px;
+}
+.setting_main_leftside_profile_onephrase span:nth-child(2) {
+  text-align: center;
+  font-size: 20px;
+  height: 60px;
+  line-height: 60px;
+  padding-left: 10px;
+  background-color: lightgray;
+}
+.setting_main_leftside_profile_mailaddress > * {
+  display: block;
+}
+.setting_main_leftside_profile_mailaddress span:nth-child(1) {
+  font-size: 25px;
+}
+.setting_main_leftside_profile_mailaddress span:nth-child(2) {
+  text-align: center;
+  font-size: 20px;
+  background-color: lightgray;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 10px;
+}
+.setting_main_leftside_profile_password > * {
+  display: block;
+}
+.setting_main_leftside_profile_password span:nth-child(1) {
+  font-size: 25px;
+}
+.setting_main_leftside_profile_password span:nth-child(2) {
+  text-align: center;
+  font-size: 20px;
+  background-color: lightgray;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 10px;
+}
+.setting_main_leftside_change {
+  display: block;
+  margin-left: 38%;
+  font-size: 25px;
+  width: 150px;
+  height: 50px;
+  text-decoration: none;
+  background-color: gray;
+  border-radius: 20px;
+  text-align: center;
+  line-height: 50px;
+}
+.setting_main_leftside_accountdelete {
+  display: block;
+  text-align: right;
+  margin-top: 30px;
+  margin-right: 20px;
+  text-decoration: none;
+}
+.setting_main_rightside {
+  width: 50%;
+  height: 100%;
+  background-color: rgba(128, 128, 128, 0.21);
+  border: 1px solid black;
+  border-left: none;
+}
+.setting_main_rightside_header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  margin-top: 25px;
+}
+.setting_main_rightside_header > * {
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
+.setting_main_rightside_header h2 {
+  font-size: 30px;
+  margin-top: 15px;
+  margin-right: 10px;
+}
+.setting_main_rightside_header .material-symbols-outlined {
+  font-size: 2rem;
+  margin-top: 20px;
+}
+.setting_main_rightside_fixedphrases {
+  margin-top: 40px;
+  margin-left: 15%;
+  height: 350px;
+  width: 500px;
+  border: 1px solid black;
+  overflow-y: scroll;
+  background-color: lightgray;
+}
+.setting_main_rightside_fixedphrases > * {
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
+.setting_main_rightside_fixedphrases_phrase {
+  margin: 20px;
+  font-size: 25px;
+}
+.setting_main_rightside_fixedphrases_phrase .material-symbols-outlined {
+  font-size: 1rem;
+  text-decoration: none;
+}
+.setting_main_rightside_addphrase {
+  width: 500px;
+  height: 110px;
+  border: 1px solid black;
+  background-color: lightgray;
+  border-top: none;
+  margin-left: 15%;
+  display: flex;
+  flex-direction: column;
+  font-size: 25px;
+}
+.setting_main_rightside_addphrase > * {
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
+.setting_main_rightside_addphrase input {
+  flex: none;
+  width: auto;
+  height: 50px;
+  margin: 10px 10px 5px 10px;
+  text-align: center;
+}
+.setting_main_rightside_addphrase a {
+  flex: none;
+  text-align: center;
+  width: 100px;
+  align-self: center;
+  margin-right: 10px;
+  background-color: rgb(250, 203, 73);
+  border-radius: 10px;
+  text-decoration: none;
+  margin-bottom: 20px;
+}/*# sourceMappingURL=setting.css.map */

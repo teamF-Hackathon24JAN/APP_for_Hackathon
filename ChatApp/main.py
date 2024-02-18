@@ -33,6 +33,20 @@ def password():
     else:
         return render_template('registration/passwordlost.html')
     
+@app.route('/chatpage', methods=['GET','POST'])
+def chatpage():
+    if request.method == 'POST':
+        return redirect('/chatpage')
+    else:
+        return render_template('chatpage.html')
+    
+@app.route('/setting', methods=['GET','POST'])
+def setting():
+    if request.method == 'POST':
+        return redirect('/setting')
+    else:
+        return render_template('setting.html')
+    
 @app.route('/home')
 def home():
     return render_template('home.html')

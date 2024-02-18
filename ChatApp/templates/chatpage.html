@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block title %}
-<title>ホーム画面</title>
+<title>チャット画面</title>
 {% endblock %} {% block body %}
 <header>
   <div class="home-header">
@@ -64,66 +64,45 @@
       </div>
     </div>
   </div>
-  <div class="_rightside">
-    <div class="_proile">
-      <span class="material-symbols-outlined">circle</span>
-      <h2>名前</h2>
-      <span class="onephrase">ひとこと・・・・・・・・・・・・・・</span>
+  <div class="chat_rightside">
+    <div class="chat_name">
+      <span>ゆうと</span>
     </div>
-    <div class="_channels">
-      <h2>ちゃんねる</h2>
-      <div id="channel-box">
-        <div class="_channels-var">
-          <span class="channel-name">1.......</span>
-          <span>めんばー</span>
-          <div class="channel-member">
-            <span>aaaa</span>
-            <span>gggg</span>
-            <span>cccc</span>
-          </div>
+    <div class="chat_container">
+      <!-- <div class="chat_container_friends_username">
+        <span>ゆうと</span>
+      </div> -->
+      <div class="chat_container_scroll">
+        <div class="chat_container_friends_text">
+          <span>明日は、とても忙しいから覚悟しておいてね！</span>
         </div>
-        <div class="_channels-var">
-          <span class="channel-name">2.......</span>
-          <span>めんばー</span>
-          <div class="channel-member">
-            <span>aaaa</span>
-            <span>gggg</span>
-            <span>cccc</span>
-          </div>
+        <div class="chat_container_my_text">
+          <span>そんなばかな</span>
         </div>
-        <div class="_channels-var">
-          <span class="channel-name">3.......</span>
-          <span>めんばー</span>
-          <div class="channel-member">
-            <span>aaaa</span>
-            <span>gggg</span>
-            <span>cccc</span>
-          </div>
+        <div class="chat_container_friends_text">
+          <span>そんなことがあり得るんですよ</span>
         </div>
-        <div class="_channels-var">
-          <span class="channel-name">4.......</span>
-          <span>めんばー</span>
-          <div class="channel-member">
-            <span>aaaa</span>
-            <span>gggg</span>
-            <span>cccc</span>
-          </div>
+        <div class="chat_container_my_text">
+          <span>仕方ないな</span>
         </div>
-        <div class="_channels-var">
-          <span class="channel-name">5.......</span>
-          <span>めんばー</span>
-          <div class="channel-member">
-            <span>aaaa</span>
-            <span>gggg</span>
-            <span>cccc</span>
-          </div>
+        <div class="chat_container_friends_text">
+          <span>明日は、とても忙しいから覚悟しておいてね！</span>
+        </div>
+        <div class="chat_container_my_text">
+          <span>そんなばかな</span>
+        </div>
+        <div class="chat_container_friends_text">
+          <span>そんなことがあり得るんですよ</span>
+        </div>
+        <div class="chat_container_my_text">
+          <span>仕方ないな</span>
         </div>
       </div>
-      <div class="channels-scrollicon">
-        <span id="lefticon">←</span>
-        <span id="righticon">→</span>
-      </div>
-      <span class="material-symbols-outlined"> edit_square </span>
+      
+      <div class="chat_container_textform">
+        <input type=" text" >
+        <button class="material-symbols-outlined">send</button>
+       </div>
     </div>
   </div>
 </main>

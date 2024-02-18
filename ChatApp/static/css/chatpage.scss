@@ -1,0 +1,114 @@
+.chat {
+
+  &_rightside{
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    font-family: kiwi maru;
+  }
+
+  &_name {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    border-bottom: 1px solid black;
+    background-color:  rgba(128, 128, 128, 0.21);
+    font-size: 30px;
+  
+  }
+
+  &_container {
+    height: calc(100% - 50px);
+    background-color: rgba(128, 128, 128, 0.21);
+    display: flex;
+    flex-direction: column;
+
+    &_scroll {
+      display: flex;
+      flex-direction: column;
+      height: 450px;
+      overflow-y: scroll;
+      // border: 1px solid black;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+
+
+
+
+    &_friends_text{
+      // position: absolute;
+      flex: none;
+      align-self: flex-start;
+      width: auto;
+      height: auto;
+      background-color: #f0f0f0;
+      border: 1px solid black;
+      border-radius: 10px;
+      box-shadow: 0.5px 0.5px 2px black;
+      margin-left: 50px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      
+
+      & span {
+
+        padding:0 20px;
+      }
+
+    }
+
+    &_my_text{
+      flex:none;
+      align-self: flex-end;
+      width: auto;
+      // height: 100px;
+      background-color: lightgray;
+      border: 1px solid black;
+      border-radius: 10px;
+      box-shadow: 0.5px 0.5px 2px black;
+      margin-right: 50px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      & span {
+        padding: 0 20px;
+      }
+
+    }
+
+    &_textform{
+      margin:5px 30px;
+      // border: 1px solid black;
+      height: calc(100% - 450px);
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+      & input {
+        flex: none;
+        height:100%;
+        width: 1000px;
+        background-color: lightgray;
+        border: 0.5px solid gray;
+        border-radius: 10px;
+
+      }
+
+      & button {
+        font-size: 50px;
+        border: none;
+        background-color: transparent;
+        align-self:flex-end;
+        height: 40px;
+        width: 40px;
+        margin-bottom: 5px;
+      }
+
+    }
+  }
+}
+
+
