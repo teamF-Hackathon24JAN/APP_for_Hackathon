@@ -1,0 +1,92 @@
+
+  .header {
+    width: auto;
+    height: 80px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+  .header h1 {
+    font-size: 50px;
+    margin-top: 25px;
+    margin-left: 70px;
+    font-family: hachi maru pop;
+    text-shadow: 0 4px 4px rgb(0,0,0,25%);
+  }
+
+  .login {
+    position: fixed;
+    top:170px;
+    left:310px;
+    border: 1px solid black;
+    width: 663px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .login h2 {
+    margin-top: 20px;
+  }
+
+  .mailaddres-Box{
+    margin-top: 17px;
+  }
+
+
+
+
+
+
+  .password-Box{
+    margin-top: 38px;
+  }
+
+
+
+
+
+
+
+
+
+
+  
+  /* .login-container {
+    height: 620px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-box {
+    border: 1px solid black;
+    height: 400px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(84, 88, 73, 0.209);
+  }
+  .login-box h2 {
+    margin-top: 5px;
+  }
+  .login-box .login-form {
+    margin: 30px;
+  }
+  .login-box .mailaddres {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+  }
+  .login-box .mailaddres input {
+    width: 300px;
+  }
+  .login-box .password {
+    display: flex;
+    flex-direction: column;
+  }
+  .login-box .password input {
+    width: 300px; */
+  /* }# sourceMappingURL=login.css.map */

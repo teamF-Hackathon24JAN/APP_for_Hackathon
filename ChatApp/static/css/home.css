@@ -1,0 +1,230 @@
+.home-header {
+  width: 1440;
+  height: 15vh;
+  display: flex;
+  align-items: center;
+}
+.home-header h1 {
+  font-size: 50px;
+  margin-left: 70px;
+  font-family: hachi maru pop;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  animation-name: apploaded;
+  animation-duration: 2s;
+  animation-timing-function: cubic-bezier(1, 1.67, 0.58, 1);
+}
+.home-header .header-nav-box {
+  display: flex;
+  font-size: 25px;
+}
+.home-header .header-nav-box .header-nav-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  margin-right: 90px;
+  animation-name: downicon;
+  animation-duration: 1.2s;
+  transform: translateY(-150px);
+  animation-fill-mode: forwards;
+  font-size: 25px;
+}
+@keyframes downicon {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.home-header .header-nav-box .header-nav-icons:nth-child(1) {
+  animation-delay: 0s;
+  margin-left: 300px;
+}
+.home-header .header-nav-box .header-nav-icons:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.home-header .header-nav-box .header-nav-icons:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.home-header .header-nav-box .header-nav-icons span {
+  font-size: 2.5rem;
+}
+.home-header .header-nav-box .header-nav-icons a {
+  text-decoration: none;
+  color: black;
+}
+
+.main {
+  width: 100%;
+  height: 85vh;
+  display: flex;
+}
+.main ._leftside {
+  height: 100%;
+  width: 230px !important;
+  border: 1px solid black;
+  border-right: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  background-color: rgba(128, 128, 128, 0.21);
+}
+.main ._leftside h2 {
+  margin: 10px 0 5px 0;
+}
+.main ._leftside .material-symbols-outlined {
+  font-size: 1rem;
+  margin-left: 100px;
+}
+.main ._leftside .friends-container {
+  display: flex;
+  flex-direction: row;
+  height: 80%;
+}
+.main ._leftside .friends-container #friends-scrollcontainer {
+  margin-top: 25px;
+  overflow-y: scroll;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+}
+.main ._leftside .friends-container #friends-scrollcontainer .list {
+  margin-right: 5px;
+  list-style: none;
+  font-size: 20px;
+  font-style: normal;
+  transition: background-size 0.6s, transform 0.6s, font-weight 2s;
+  margin-bottom: 15px;
+  transform: translateX(-20px);
+  cursor: pointer;
+}
+.main ._leftside .friends-container #friends-scrollcontainer .list:hover {
+  transform: scale(1.1);
+}
+.main ._leftside .friends-container .scroll-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 50px;
+  transform: translateX(10px);
+}
+.main ._leftside .friends-container .scroll-icon #upicon {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: grey;
+  transition: all 0.4s;
+}
+.main ._leftside .friends-container .scroll-icon #upicon:hover {
+  color: black;
+}
+.main ._leftside .friends-container .scroll-icon #downicon {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: grey;
+  transition: all 0.4s;
+}
+.main ._leftside .friends-container .scroll-icon #downicon:hover {
+  color: black;
+}
+.main ._rightside {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+.main ._rightside ._proile {
+  background-color: rgba(128, 128, 128, 0.21);
+  border: 1px solid black;
+  border-bottom: none;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.8s;
+}
+.main ._rightside ._proile .material-symbols-outlined {
+  font-size: 3.5rem;
+  margin-left: 150px;
+  margin-right: 150px;
+}
+.main ._rightside ._proile h2 {
+  font-size: 40px;
+  padding-top: 5px;
+}
+.main ._rightside ._proile .onephrase {
+  margin-left: 300px;
+  padding-top: 10px;
+  font-size: 25px;
+}
+.main ._rightside ._channels {
+  background-color: rgba(128, 128, 128, 0.21);
+  border: 1px solid black;
+  height: 80%;
+  overflow: hidden;
+}
+.main ._rightside ._channels h2 {
+  margin: 10px 0 0 30px;
+  font-size: 30px;
+}
+.main ._rightside ._channels #channel-box {
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+  margin-left: 40px;
+  height: 300px;
+  font-size: 20px;
+  width: 1200px;
+  border: 1px solid black;
+  padding: 20px;
+  overflow-x: scroll;
+}
+.main ._rightside ._channels #channel-box ._channels-var {
+  display: flex;
+  flex-direction: column;
+  width: 300px !important;
+  background-color: grey;
+  border: 1px solid black;
+}
+.main ._rightside ._channels #channel-box ._channels-var .channel-name {
+  font-size: 30px;
+  margin-bottom: 30px;
+  width: 300px;
+  margin-left: 20px;
+}
+.main ._rightside ._channels #channel-box ._channels-var .channel-member {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.main ._rightside ._channels .channels-scrollicon {
+  margin: 20px 20px 0 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.main ._rightside ._channels .channels-scrollicon #lefticon {
+  color: grey;
+  font-size: 1.5rem;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.main ._rightside ._channels .channels-scrollicon #lefticon:hover {
+  color: black;
+}
+.main ._rightside ._channels .channels-scrollicon #righticon {
+  color: grey;
+  font-size: 1.5rem;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.main ._rightside ._channels .channels-scrollicon #righticon:hover {
+  color: black;
+}
+.main ._rightside ._channels .material-symbols-outlined {
+  display: block;
+}/*# sourceMappingURL=home.css.map */

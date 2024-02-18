@@ -1,0 +1,160 @@
+.login-header {
+  width: auto;
+  height: 15vh;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.login-header h1 {
+  font-size: 50px;
+  margin-left: 70px;
+  font-family: hachi maru pop;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  animation-name: apploaded;
+  animation-duration: 2s;
+  animation-timing-function: cubic-bezier(1, 1.67, 0.58, 1);
+}
+
+.login-container {
+  height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login {
+  border: 1px solid black;
+  width: 663px;
+  height: 550px;
+  font-family: kiwi maru;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: rgb(255, 212, 98);
+  box-shadow: 0 4px 7px gray;
+  animation-name: loginboxanime;
+  animation-duration: 2s;
+}
+@keyframes loginboxanime {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.login h2 {
+  margin-top: 20px;
+  margin-left: 250px;
+  margin-bottom: 30px;
+  -webkit-text-stroke: 1px black;
+  font-size: 40px;
+}
+.login .login-mailaddres-Box {
+  margin-top: 17px;
+}
+.login .login-mailaddres-Box h3 {
+  margin-left: 85px;
+  font-size: 30px;
+}
+.login .login-mailaddres-Box div {
+  margin-left: 25px;
+  display: flex;
+  align-items: center;
+}
+.login .login-mailaddres-Box div .material-symbols-outlined {
+  font-weight: light;
+  font-size: 50px;
+  margin-right: 12px;
+}
+.login .login-mailaddres-Box div input {
+  font-size: 30px;
+  width: 100%;
+  margin-right: 25px;
+}
+.login .login-mailaddres-Box div input::-moz-placeholder {
+  font-size: 20px;
+}
+.login .login-mailaddres-Box div input::placeholder {
+  font-size: 20px;
+}
+.login .login-password-Box {
+  margin-top: 38px;
+}
+.login .login-password-Box h3 {
+  margin-left: 85px;
+  font-size: 30px;
+}
+.login .login-password-Box div {
+  margin-left: 25px;
+  display: flex;
+  align-items: center;
+}
+.login .login-password-Box div .material-symbols-outlined {
+  font-size: 50px;
+  margin-right: 12px;
+}
+.login .login-password-Box div input {
+  font-size: 30px;
+  width: 100%;
+  margin-right: 25px;
+}
+.login .login-password-Box div input::-moz-placeholder {
+  font-size: 20px;
+}
+.login .login-password-Box div input::placeholder {
+  font-size: 20px;
+}
+.login .login-button-etc {
+  margin: 30px 40px 30px 40px;
+  display: flex;
+  align-items: center;
+}
+.login .login-button-etc a {
+  color: rgb(255, 212, 98);
+  font-size: 25px;
+  margin-right: 70px;
+  transition: all 0.2s;
+}
+.login .login-button-etc a:hover {
+  transform: translateY(1.5px);
+}
+.login .login-button-etc a:active {
+  transform: translateY(3px);
+}
+.login .login-button-etc button {
+  background-color: transparent;
+  color: rgb(255, 212, 98);
+  font-size: 4.8rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+.login .login-button-etc button:hover {
+  transform: translateY(1.5px);
+}
+.login .login-button-etc button:active {
+  transform: translateY(3px);
+}
+.login .login-button-etc .applelogin-etc {
+  display: inline-block;
+  border: 1px solid grey;
+  background-color: grey;
+  border-radius: 30px;
+  padding: 10px 10px;
+  margin: 0 25px 0 100px;
+}
+.login .password-lost {
+  margin-left: 150px;
+  font-size: 25px;
+  cursor: pointer;
+  color: rgb(255, 212, 98);
+  display: block;
+  transition: all 0.2s;
+}
+.login .password-lost:hover {
+  transform: translateY(1.5px);
+}
+.login .password-lost:active {
+  transform: translateY(3px);
+}/*# sourceMappingURL=login2.css.map */

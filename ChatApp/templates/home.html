@@ -1,0 +1,130 @@
+{% extends 'base.html' %} {% block title %}
+<title>ホーム画面</title>
+{% endblock %} {% block body %}
+<header>
+  <div class="home-header">
+    <h1>ぐーたらちゃっと</h1>
+    <div class="header-nav-box">
+      <!-- <div class="header-nav-icons">
+        <span class="material-symbols-outlined"> looks_two </span>
+        <a href="">りくえすと</a> -->
+      <!-- </div> -->
+      <div class="header-nav-icons">
+        <span class="material-symbols-outlined"> cottage</span>
+        <a href="">ほーむ</a>
+      </div>
+      <div class="header-nav-icons">
+        <span class="material-symbols-outlined"> settings</span>
+        <a href="">せってぃんぐ</a>
+      </div>
+      <div class="header-nav-icons">
+        <span class="material-symbols-outlined"> logout</span>
+        <a href="">さいんあうと</a>
+      </div>
+      <!-- <ul>
+        <li class="header-nav-icon"><span class="material-symbols-outlined">looks_one</span><a href="">りくえすと</a></li>
+        <li class="header-nav-icon"><a href="">ほーむ</a></li>
+        <li class="header-nav-icon"><a href="">せってい</a></li>
+      </ul> -->
+    </div>
+  </div>
+</header>
+<main class="main">
+  <div class="_leftside">
+    <h2>ともだち</h2>
+    <span id="scrollbutton" class="material-symbols-outlined">
+      add_circle
+    </span>
+    <div class="friends-container">
+      <div id="friends-scrollcontainer">
+        <ul>
+          <li class="list">aaaa</li>
+          <li class="list">rrrr</li>
+          <li class="list">dddd</li>
+          <li class="list">wwww</li>
+          <li class="list">aaaa</li>
+          <li class="list">rrrr</li>
+          <li class="list">dddd</li>
+          <li class="list">wwww</li>
+          <li class="list">aaaa</li>
+          <li class="list">rrrr</li>
+          <li class="list">dddd</li>
+          <li class="list">wwww</li>
+          <li class="list">aaaa</li>
+          <li class="list">rrrr</li>
+          <li class="list">dddd</li>
+          <li class="list">wwww</li>
+          <li class="list">aaaa</li>
+          <li class="list">rrrr</li>
+        </ul>
+      </div>
+      <div class="scroll-icon">
+        <span id="upicon">↑</span>
+        <span id="downicon">↓</span>
+      </div>
+    </div>
+  </div>
+  <div class="_rightside">
+    <div class="_proile">
+      <span class="material-symbols-outlined">circle</span>
+      <h2>名前</h2>
+      <span class="onephrase">ひとこと・・・・・・・・・・・・・・</span>
+    </div>
+    <div class="_channels">
+      <h2>ちゃんねる</h2>
+      <div id="channel-box">
+        <div class="_channels-var">
+          <span class="channel-name">1.......</span>
+          <span>めんばー</span>
+          <div class="channel-member">
+            <span>aaaa</span>
+            <span>gggg</span>
+            <span>cccc</span>
+          </div>
+        </div>
+        <div class="_channels-var">
+          <span class="channel-name">2.......</span>
+          <span>めんばー</span>
+          <div class="channel-member">
+            <span>aaaa</span>
+            <span>gggg</span>
+            <span>cccc</span>
+          </div>
+        </div>
+        <div class="_channels-var">
+          <span class="channel-name">3.......</span>
+          <span>めんばー</span>
+          <div class="channel-member">
+            <span>aaaa</span>
+            <span>gggg</span>
+            <span>cccc</span>
+          </div>
+        </div>
+        <div class="_channels-var">
+          <span class="channel-name">4.......</span>
+          <span>めんばー</span>
+          <div class="channel-member">
+            <span>aaaa</span>
+            <span>gggg</span>
+            <span>cccc</span>
+          </div>
+        </div>
+        <div class="_channels-var">
+          <span class="channel-name">5.......</span>
+          <span>めんばー</span>
+          <div class="channel-member">
+            <span>aaaa</span>
+            <span>gggg</span>
+            <span>cccc</span>
+          </div>
+        </div>
+      </div>
+      <div class="channels-scrollicon">
+        <span id="lefticon">←</span>
+        <span id="righticon">→</span>
+      </div>
+      <span class="material-symbols-outlined"> edit_square </span>
+    </div>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'registration/base.html' %} {% block title %}
+<title>ログイン</title>
+{% endblock %} {% block body %}
+<main>
+  <div class="login-header">
+    <h1>ぐーたらちゃっと</h1>
+  </div>
+  <div class="login-container">
+    <div class="login">
+      <h2>ログイン</h2>
+      <form action="" method="POST">
+        <div class="login-mailaddres-Box">
+          <h3>めーるあどれす</h3>
+          <div>
+            <span class="material-symbols-outlined"> mail </span>
+            <input type="mail" placeholder="めーるあどれすを入力してね"  required/>
+          </div>
+        </div>
+        <div class="login-password-Box">
+          <h3>ぱすわーど</h3>
+          <div>
+            <span class="material-symbols-outlined"> key </span>
+            <input type="password" placeholder="ぱすわーどを入力してね" required />
+          </div>
+        </div>
+        <div class="login-button-etc">
+          <a href="/signup">しんきとうろく</a>
+          <button type="submit" class="material-symbols-outlined">lock</button>
+          <!-- <span class="material-symbols-outlined"> lock </span> -->
+          <div class="applelogin-etc">
+            外部ログイン
+          </div>
+        </div>
+        <a href="/passwordlost" class="password-lost">ぱすわーどをわすれてしまった</a>
+      </form>
+    </div>
+  </div> 
+</main>
+
+{% endblock %}
