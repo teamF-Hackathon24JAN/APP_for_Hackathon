@@ -22,6 +22,9 @@
   <body>
    {% block body %}
    {% endblock %}
-   <script src="/static/js/main.js"></script>
+   <script src="{{ url_for('static', filename='/js/scrollmessage.js') }}"></script>
+   
+   <!-- <script src="/static/js/scrollmessage.js"></script>
+   <script src="/static/js/home.js"></script> -->
   </body>
 </html>

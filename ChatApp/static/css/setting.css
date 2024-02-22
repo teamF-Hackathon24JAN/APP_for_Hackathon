@@ -3,9 +3,11 @@
   height: 85vh;
   display: flex;
   flex-direction: row;
+  color: black;
 }
 .setting_main > * {
   font-family: kiwi maru;
+  color: black;
 }
 .setting_main_leftside {
   width: 50%;

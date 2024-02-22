@@ -1,10 +1,11 @@
 .chat {
-
-  &_rightside{
+  &_rightside {
     width: 100%;
     height: 100%;
     border: 1px solid black;
     font-family: kiwi maru;
+    overflow: hidden;
+    color: black;
   }
 
   &_name {
@@ -14,13 +15,18 @@
     align-items: center;
     height: 50px;
     border-bottom: 1px solid black;
-    background-color:  rgba(128, 128, 128, 0.21);
+    background-color: rgba(128, 128, 128, 0.21);
     font-size: 30px;
-  
+
+    & span {
+      animation-name: fuwatto;
+      animation-duration: 1.2s;
+      animation-fill-mode: forwards;
+    }
   }
 
   &_container {
-    height: calc(100% - 50px);
+    height: 640px;
     background-color: rgba(128, 128, 128, 0.21);
     display: flex;
     flex-direction: column;
@@ -28,17 +34,21 @@
     &_scroll {
       display: flex;
       flex-direction: column;
-      height: 450px;
+      height: 480px;
       overflow-y: scroll;
       // border: 1px solid black;
       padding-bottom: 10px;
       font-size: 20px;
+      margin-bottom: 20px;
+
+      & > * {
+        animation-name: fuwatto;
+        animation-duration: 1.2s;
+        animation-fill-mode: forwards;
+      }
     }
 
-
-
-
-    &_friends_text{
+    &_friends_text {
       // position: absolute;
       flex: none;
       align-self: flex-start;
@@ -51,17 +61,14 @@
       margin-left: 50px;
       margin-top: 20px;
       margin-bottom: 20px;
-      
 
       & span {
-
-        padding:0 20px;
+        padding: 0 20px;
       }
-
     }
 
-    &_my_text{
-      flex:none;
+    &_my_text {
+      flex: none;
       align-self: flex-end;
       width: auto;
       // height: 100px;
@@ -76,39 +83,42 @@
       & span {
         padding: 0 20px;
       }
-
     }
 
-    &_textform{
-      margin:5px 30px;
+    &_textform {
+      margin-top: 30px;
+      margin: 0 30px;
       // border: 1px solid black;
-      height: calc(100% - 450px);
+      height: 120px;
       display: flex;
       flex-direction: row;
       justify-content: center;
 
+      & > * {
+        animation-name: fuwatto;
+        animation-duration: 1.2s;
+        animation-fill-mode: forwards;
+      }
+
       & input {
         flex: none;
-        height:100%;
+        height: 100px;
         width: 1000px;
         background-color: lightgray;
         border: 0.5px solid gray;
         border-radius: 10px;
-
+        margin-top: 15px;
       }
 
       & button {
         font-size: 50px;
         border: none;
         background-color: transparent;
-        align-self:flex-end;
+        align-self: flex-end;
         height: 40px;
         width: 40px;
         margin-bottom: 5px;
       }
-
     }
   }
 }
-
-
