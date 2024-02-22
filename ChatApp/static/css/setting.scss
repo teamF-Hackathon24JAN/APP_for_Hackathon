@@ -1,13 +1,16 @@
+
 .setting_main {
   width: 100%;
   height: 85vh;
 //   background-color: lightcoral;
   display: flex;
   flex-direction: row;
+  color: black;
 
   & > * {
     // color:black;
     font-family: kiwi maru;
+    color: black;
 }
 
   &_leftside {

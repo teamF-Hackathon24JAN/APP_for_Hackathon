@@ -1,4 +1,4 @@
-.home-header {
+.home_header {
   width: 1440;
   height: 15vh;
   display: flex;
@@ -16,13 +16,13 @@
     animation-timing-function: cubic-bezier(1, 1.67, 0.58, 1);
   }
 
-  & .header-nav-box {
+  &_nav-box {
     display: flex;
     font-size: 25px;
     margin-right: 90px;
     font-family: kiwi maru;
 
-    .header-nav-icons {
+    &_icons {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -35,6 +35,7 @@
       transform: translateY(-150px);
       animation-fill-mode: forwards;
       font-size: 25px;
+      cursor: pointer;
       // text-shadow: 0 1.5px 2px rgb(0, 0, 0, 25%);
 
       @keyframes downicon {
@@ -79,6 +80,7 @@
   width: 100%;
   height: 85vh;
   display: flex;
+  color: black;
   // margin-top: 1px;
 
   ._leftside {
@@ -101,6 +103,13 @@
     & .material-symbols-outlined {
       font-size: 1rem;
       margin-left: 100px;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover,
+      &:active {
+        transform: scale(1.6);
+      }
     }
 
     .friends-container {
@@ -216,6 +225,7 @@
       height: 20%;
       display: flex;
       align-items: center;
+      justify-content: space-around;
       transition: background-color 0.8s;
 
       & > * {
@@ -224,10 +234,13 @@
         animation-fill-mode: forwards;
       }
 
-      .material-symbols-outlined {
-        font-size: 3.5rem;
-        margin-left: 150px;
-        margin-right: 150px;
+      .profile_photo {
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        background-color: lightgray;
+        // margin-left: 40px;
+        // margin-right: 40px;
       }
 
       & h2 {
@@ -260,47 +273,71 @@
         font-size: 30px;
       }
 
-      & #channel-box {
+      & #channel-boxes {
         display: flex;
         flex-direction: row;
         margin-top: 50px;
         margin-left: 40px;
         // margin-right: 30px;
-        height: 300px;
+        height: 350px;
         font-size: 20px;
         width: 1200px;
-        border: 1px solid black;
+        // border: 1px solid black;
         padding: 20px;
         overflow-x: scroll;
 
         & ._channels-var {
+          flex: none;
           display: flex;
           flex-direction: column;
+          align-items: center;
           width: 300px !important;
-          background-color: grey;
+          background-color: lightgray;
           border: 1px solid black;
+          cursor: pointer;
+          transition: all 0.2s;
+          box-shadow: 0 1px 5px black;
 
-          & .channel-name {
-            font-size: 30px;
-            margin-bottom: 30px;
-            width: 300px;
-            margin-left: 20px;
-            // margin-right: auto;
+
+          &:hover,
+          &:active {
+            transform: scaleY(1.05);
           }
 
-          & .channel-member {
+          & .channel-name {
+            font-size: 40px;
+            margin-bottom: 30px;
+          }
+
+          & .channel-member-title {
+            align-self: flex-start;
+            margin-left: 20px;
+            font-size: 25px;
+          }
+
+          & .channel-members {
             margin-top: 20px;
+            margin-bottom: 10px;
             // margin-left: auto;
             // margin-right: auto;
             display: flex;
             flex-direction: column;
+            align-items: center;
             width: 100%;
+            overflow-y: scroll;
+
+            & span {
+              font-size: 20px;
+              flex: none;
+              margin-top: 15px;
+            }
+
           }
         }
       }
 
       .channels-scrollicon {
-        margin: 20px 20px 0 20px;
+        margin: 10px 20px 0 20px;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
@@ -333,4 +370,82 @@
       }
     }
   }
+}
+
+.modal {
+  display: none; /* 最初は非表示 */
+  position: fixed; /* 画面に固定 */
+  z-index: 1; /* 内容より前面に */
+  left: 0;
+  top: 0;
+  width: 100%; /* 全幅 */
+  height: 100%; /* 全高 */
+  overflow: auto; /* スクロール可能 */
+  background-color: rgba(0, 0, 0, 0.4); /* 背景の暗転 */
+
+  &_content {
+    background-color: rgba(0, 0, 0, 0.7);
+    margin: 5% auto;
+    padding: 10px;
+    // border: 1px solid #888;
+    border-radius: 20px;
+    width: 80%;
+    animation-name: fuwatto;
+    animation-duration: 1.2s;
+    animation-fill-mode: forwards;
+
+    &_header {
+      // background-color: #fefefe;
+      margin: 5px auto;
+      padding: 5px;
+      // border: 1px solid #888;
+      // width: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: auto;
+
+      &_title {
+        color: rgb(255, 212, 98);
+        justify-self: flex-start;
+        font-size: 40px;
+      }
+
+      &_close {
+        align-self: flex-end;
+        font-size: 25px;
+        margin-right: 10px;
+        font-weight: bold;
+        color: rgb(255, 212, 98);
+
+        &:hover,
+        &:focus {
+          color: black;
+          text-decoration: none;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &_body {
+      height: 300px;
+      width: 400px;
+      background-color: yellow;
+    }
+  }
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }

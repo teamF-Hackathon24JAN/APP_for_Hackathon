@@ -2,22 +2,22 @@
 <title>チャット画面</title>
 {% endblock %} {% block body %}
 <header>
-  <div class="home-header">
+  <div class="home_header">
     <h1>ぐーたらちゃっと</h1>
-    <div class="header-nav-box">
+    <div class="home_header_nav-box">
       <!-- <div class="header-nav-icons">
         <span class="material-symbols-outlined"> looks_two </span>
         <a href="">りくえすと</a> -->
       <!-- </div> -->
-      <div class="header-nav-icons">
+      <div id="header_home" class="home_header_nav-box_icons">
         <span class="material-symbols-outlined"> cottage</span>
         <a href="/home">ほーむ</a>
       </div>
-      <div class="header-nav-icons">
+      <div id="header_setting" class="home_header_nav-box_icons">
         <span class="material-symbols-outlined"> settings</span>
         <a href="/setting">せってぃんぐ</a>
       </div>
-      <div class="header-nav-icons">
+      <div id="header_signout" class="home_header_nav-box_icons">
         <span class="material-symbols-outlined"> logout</span>
         <a href="/login">さいんあうと</a>
       </div>
@@ -72,7 +72,7 @@
       <!-- <div class="chat_container_friends_username">
         <span>ゆうと</span>
       </div> -->
-      <div class="chat_container_scroll">
+      <div id="messagearea" class="chat_container_scroll">
         <div class="chat_container_friends_text">
           <span>明日は、とても忙しいから覚悟しておいてね！</span>
         </div>
@@ -86,24 +86,43 @@
           <span>仕方ないな</span>
         </div>
         <div class="chat_container_friends_text">
-          <span>明日は、とても忙しいから覚悟しておいてね！</span>
+          <span>お前明日までっていただろ</span>
         </div>
         <div class="chat_container_my_text">
-          <span>そんなばかな</span>
+          <span>そんなの聞いてないですよ</span>
         </div>
         <div class="chat_container_friends_text">
-          <span>そんなことがあり得るんですよ</span>
+          <span>聞いてないとは言わせないぞ！</span>
         </div>
         <div class="chat_container_my_text">
-          <span>仕方ないな</span>
+          <span>お前がやれや！！！！！ </span>
         </div>
       </div>
-      
+
       <div class="chat_container_textform">
-        <input type=" text" >
+        <input type="text" />
         <button class="material-symbols-outlined">send</button>
-       </div>
+      </div>
     </div>
   </div>
 </main>
+
+<div id="modal_friend" class="modal" style="display: none">
+  <div class="modal_content">
+    <div class="modal_content_header">
+      <span class="modal_content_header_close" data-modal="modal_friend"
+        >&times;</span
+      >
+      <span class="modal_content_header_title">ともだちだよ</span>
+    </div>
+    <div class="modal_content_body">
+      <p>フレンド表示</p>
+      <div></div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='/js/setting.js') }}"></script>
+<script src="{{ url_for('static', filename='/js/home.js') }}"></script>
+
 {% endblock %}

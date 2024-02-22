@@ -1,11 +1,12 @@
-.home-header {
+@charset "UTF-8";
+.home_header {
   width: 1440;
   height: 15vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.home-header h1 {
+.home_header h1 {
   font-size: 50px;
   margin-left: 70px;
   font-family: hachi maru pop;
@@ -14,13 +15,13 @@
   animation-duration: 2s;
   animation-timing-function: cubic-bezier(1, 1.67, 0.58, 1);
 }
-.home-header .header-nav-box {
+.home_header_nav-box {
   display: flex;
   font-size: 25px;
   margin-right: 90px;
   font-family: kiwi maru;
 }
-.home-header .header-nav-box .header-nav-icons {
+.home_header_nav-box_icons {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,6 +31,7 @@
   transform: translateY(-150px);
   animation-fill-mode: forwards;
   font-size: 25px;
+  cursor: pointer;
 }
 @keyframes downicon {
   0% {
@@ -40,21 +42,21 @@
     opacity: 1;
   }
 }
-.home-header .header-nav-box .header-nav-icons:nth-child(1) {
+.home_header_nav-box_icons:nth-child(1) {
   animation-delay: 0s;
   margin-right: 90px;
 }
-.home-header .header-nav-box .header-nav-icons:nth-child(2) {
+.home_header_nav-box_icons:nth-child(2) {
   animation-delay: 0.1s;
   margin-right: 90px;
 }
-.home-header .header-nav-box .header-nav-icons:nth-child(3) {
+.home_header_nav-box_icons:nth-child(3) {
   animation-delay: 0.2s;
 }
-.home-header .header-nav-box .header-nav-icons span {
+.home_header_nav-box_icons span {
   font-size: 2.5rem;
 }
-.home-header .header-nav-box .header-nav-icons a {
+.home_header_nav-box_icons a {
   text-decoration: none;
   color: black;
 }
@@ -63,6 +65,7 @@
   width: 100%;
   height: 85vh;
   display: flex;
+  color: black;
 }
 .main ._leftside {
   height: 100%;
@@ -82,6 +85,11 @@
 .main ._leftside .material-symbols-outlined {
   font-size: 1rem;
   margin-left: 100px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.main ._leftside .material-symbols-outlined:hover, .main ._leftside .material-symbols-outlined:active {
+  transform: scale(1.6);
 }
 .main ._leftside .friends-container {
   display: flex;
@@ -156,6 +164,7 @@
   height: 20%;
   display: flex;
   align-items: center;
+  justify-content: space-around;
   transition: background-color 0.8s;
 }
 .main ._rightside ._proile > * {
@@ -163,10 +172,11 @@
   animation-duration: 1.2s;
   animation-fill-mode: forwards;
 }
-.main ._rightside ._proile .material-symbols-outlined {
-  font-size: 3.5rem;
-  margin-left: 150px;
-  margin-right: 150px;
+.main ._rightside ._proile .profile_photo {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  background-color: lightgray;
 }
 .main ._rightside ._proile h2 {
   font-size: 40px;
@@ -192,39 +202,57 @@
   margin: 10px 0 0 30px;
   font-size: 30px;
 }
-.main ._rightside ._channels #channel-box {
+.main ._rightside ._channels #channel-boxes {
   display: flex;
   flex-direction: row;
   margin-top: 50px;
   margin-left: 40px;
-  height: 300px;
+  height: 350px;
   font-size: 20px;
   width: 1200px;
-  border: 1px solid black;
   padding: 20px;
   overflow-x: scroll;
 }
-.main ._rightside ._channels #channel-box ._channels-var {
+.main ._rightside ._channels #channel-boxes ._channels-var {
+  flex: none;
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 300px !important;
-  background-color: grey;
+  background-color: lightgray;
   border: 1px solid black;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 1px 5px black;
 }
-.main ._rightside ._channels #channel-box ._channels-var .channel-name {
-  font-size: 30px;
+.main ._rightside ._channels #channel-boxes ._channels-var:hover, .main ._rightside ._channels #channel-boxes ._channels-var:active {
+  transform: scaleY(1.05);
+}
+.main ._rightside ._channels #channel-boxes ._channels-var .channel-name {
+  font-size: 40px;
   margin-bottom: 30px;
-  width: 300px;
-  margin-left: 20px;
 }
-.main ._rightside ._channels #channel-box ._channels-var .channel-member {
+.main ._rightside ._channels #channel-boxes ._channels-var .channel-member-title {
+  align-self: flex-start;
+  margin-left: 20px;
+  font-size: 25px;
+}
+.main ._rightside ._channels #channel-boxes ._channels-var .channel-members {
   margin-top: 20px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
+  overflow-y: scroll;
+}
+.main ._rightside ._channels #channel-boxes ._channels-var .channel-members span {
+  font-size: 20px;
+  flex: none;
+  margin-top: 15px;
 }
 .main ._rightside ._channels .channels-scrollicon {
-  margin: 20px 20px 0 20px;
+  margin: 10px 20px 0 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -249,4 +277,71 @@
 }
 .main ._rightside ._channels .material-symbols-outlined {
   display: block;
+}
+
+.modal {
+  display: none; /* 最初は非表示 */
+  position: fixed; /* 画面に固定 */
+  z-index: 1; /* 内容より前面に */
+  left: 0;
+  top: 0;
+  width: 100%; /* 全幅 */
+  height: 100%; /* 全高 */
+  overflow: auto; /* スクロール可能 */
+  background-color: rgba(0, 0, 0, 0.4); /* 背景の暗転 */
+}
+.modal_content {
+  background-color: rgba(0, 0, 0, 0.7);
+  margin: 5% auto;
+  padding: 10px;
+  border-radius: 20px;
+  width: 80%;
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
+.modal_content_header {
+  margin: 5px auto;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+}
+.modal_content_header_title {
+  color: rgb(255, 212, 98);
+  justify-self: flex-start;
+  font-size: 40px;
+}
+.modal_content_header_close {
+  align-self: flex-end;
+  font-size: 25px;
+  margin-right: 10px;
+  font-weight: bold;
+  color: rgb(255, 212, 98);
+}
+.modal_content_header_close:hover, .modal_content_header_close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal_content_body {
+  height: 300px;
+  width: 400px;
+  background-color: yellow;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }/*# sourceMappingURL=home.css.map */

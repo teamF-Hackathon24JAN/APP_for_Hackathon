@@ -3,6 +3,8 @@
   height: 100%;
   border: 1px solid black;
   font-family: kiwi maru;
+  overflow: hidden;
+  color: black;
 }
 .chat_name {
   display: flex;
@@ -14,8 +16,13 @@
   background-color: rgba(128, 128, 128, 0.21);
   font-size: 30px;
 }
+.chat_name span {
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
 .chat_container {
-  height: calc(100% - 50px);
+  height: 640px;
   background-color: rgba(128, 128, 128, 0.21);
   display: flex;
   flex-direction: column;
@@ -23,10 +30,16 @@
 .chat_container_scroll {
   display: flex;
   flex-direction: column;
-  height: 450px;
+  height: 480px;
   overflow-y: scroll;
   padding-bottom: 10px;
   font-size: 20px;
+  margin-bottom: 20px;
+}
+.chat_container_scroll > * {
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
 }
 .chat_container_friends_text {
   flex: none;
@@ -60,19 +73,26 @@
   padding: 0 20px;
 }
 .chat_container_textform {
-  margin: 5px 30px;
-  height: calc(100% - 450px);
+  margin-top: 30px;
+  margin: 0 30px;
+  height: 120px;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
+.chat_container_textform > * {
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
 .chat_container_textform input {
   flex: none;
-  height: 100%;
+  height: 100px;
   width: 1000px;
   background-color: lightgray;
   border: 0.5px solid gray;
   border-radius: 10px;
+  margin-top: 15px;
 }
 .chat_container_textform button {
   font-size: 50px;
