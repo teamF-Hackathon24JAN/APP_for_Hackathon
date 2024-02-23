@@ -1,5 +1,7 @@
 import pymysql
-from util.DB import DB #util/DB.pyからインポート　def getConnection()
+
+#util/DB.pyからインポート　def getConnection()
+from util.DB import DB
 
 # データベースに接続し、ユーザーを新規登録する
 class dbConnect:

@@ -11,7 +11,8 @@ import hashlib #外部に漏れてほしくないデータを固定の長さの�
 import uuid #universal unique identifer 一意な識別子を生成する
 import re #正規表現モジュール　文字列内で文字の組み合わせを照合するために用いるパターンを扱う
 
-from models import dbConnect #models.pyで定義したクラスdbConnectを呼び出す
+#models.pyで定義したクラスdbConnectを呼び出す
+from models import dbConnect
 
 
 app = Flask(__name__) #Flaskクラスのインスタンスを作る
@@ -38,16 +39,16 @@ def userSignup():
     elif re.match(pattern, email) is None: #文字列の先頭が一致しているかどうか、先頭にマッチする文字列がない場合はNoneを返す
         flash('正しいめーるあどれすの形式ではありません')
     else:
-        uid = uuid.uuid4() #乱数によりOSを利用して一意なidを設定
+        #uid = uuid.uuid4() #乱数によりOSを利用して一意なidを設定
         password = hashlib.sha256(password.encode('utf-8')).hexdigest() #passwordをハッシュ化
         DBuser = dbConnect.getUser(email) #フォームに入力したアドレスが登録されている行をデータベースから呼び出す。無ければNoneが返る
 
         if DBuser != None: #登録されているメーアドレスが一意であるかの確認
             flash('このめーるあどれすはすでに登録されているようです')
         else:
-            dbConnect.createUser(uid, name, email, password)
-            UserId = str(uid) #uidを文字列に変換
-            session['uid'] = UserId #セッションにユーザーIDを保存、保持したい情報を辞書データとして登録
+            dbConnect.createUser(id, name, email, password)
+            #UserId = str(id) #uidを文字列に変換
+            session['id'] = UserId #セッションにユーザーIDを保存、保持したい情報を辞書データとして登録
             return redirect('/') #新規登録完了後、セッションを保持した状態で'/'へ遷移
     return redirect('/signup') #/signupにリダイレクト
 
