@@ -38,18 +38,50 @@ def userSignup():
     elif re.match(pattern, email) is None: #文字列の先頭が一致しているかどうか、先頭にマッチする文字列がない場合はNoneを返す
         flash('正しいめーるあどれすの形式ではありません')
     else:
-        uid = uuid.uuid4() #乱数によりOSを利用して一意なidを設定
+        id = uuid.uuid4() #乱数によりOSを利用して一意なidを設定
         password = hashlib.sha256(password.encode('utf-8')).hexdigest() #passwordをハッシュ化
         DBuser = dbConnect.getUser(email) #フォームに入力したアドレスが登録されている行をデータベースから呼び出す。無ければNoneが返る
 
         if DBuser != None: #登録されているメーアドレスが一意であるかの確認
             flash('このめーるあどれすはすでに登録されているようです')
         else:
-            dbConnect.createUser(uid, name, email, password)
-            UserId = str(uid) #uidを文字列に変換
-            session['uid'] = UserId #セッションにユーザーIDを保存、保持したい情報を辞書データとして登録
+            dbConnect.createUser(id, name, email, password)
+            UserId = str(id) #uidを文字列に変換
+            session['id'] = UserId #セッションにユーザーIDを保存、保持したい情報を辞書データとして登録
             return redirect('/') #新規登録完了後、セッションを保持した状態で'/'へ遷移
     return redirect('/signup') #/signupにリダイレクト
+
+##ログインページの表示
+@app.route('/login')
+def login():
+    return render_template('registration/login.html')
+
+
+##ログイン処理
+@app.route('/login', methods=['POST'])
+def userLogin():
+    email = request.form.get('email')#フォームから送信されたパスワードを変数emailに格納
+    password = request.form.get('password')#フォームから送信されたパスワードを変数passwordに格納
+
+    if email =='' or password == '':
+        flash('からのふぉーむがあるようです')
+    else:
+        user = dbConnect.getUser(email)#userテーブルから変数emailがある行を取り出す
+        if user is None:
+            flash('このゆーざーはそんざいしません')
+        else:
+            hashPassword = hashlib.sha256(password.encode('etf-8')).hexdigest()#passwordをハッシュ化
+            if hashPassword != user["password"]:#取り出した行のpasswordと一致するか
+                flash('ぱすわーどがまちがっています')
+            else:
+                session['id'] = user["id"]#セッションにユーザーIDを保存、保持したい情報を辞書データとして登録
+                return redirect('/')
+
+## ログアウト
+@app.route('/logout')
+def logout():
+    session.clear()#セッション情報を削除
+    return redirect('/login')#ログイン画面へ遷移する
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=False)

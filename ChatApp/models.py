@@ -13,16 +13,18 @@ class dbConnect:
         except Exception as e:
             print(e + 'が発生しています')
             abort(500)
-
+        finally:
+            cur.close()
 
 # データベースに接続し、フォームに入力されたメールアドレスが登録されているuserテーブルの行を取り出す
     def getUser(email):
         try:
-            conn = DB.getConnectinon()
+            conn = DB.getConnection()
             cur = conn.cursor()
             sql = "SELECT * FROM user WHERE email=%s;" #usersのテーブルからemailの行を取り出す
             cur.execute(sql, (email))
             user = cur.fetchone()
+            return user
         except Exception as e:
             print(e + "が発生しています")
             abort(500)
