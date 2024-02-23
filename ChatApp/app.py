@@ -54,3 +54,80 @@ def userSignup():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=False)
+
+
+from flask import Flask, request, session, redirect, render_template
+
+app = Flask(__name__)
+
+# # メッセージ作成機能
+@app.route('/message', methods=['POST'])
+def add_message():
+    uid = session.get("uid")
+    # ユーザーがログインしていない場合は、ログインページにリダイレクトする
+    if not uid:
+        return redirect('/login')
+
+    message = request.form.get('message')
+    channel_id = request.form.get('channel_id')
+    
+    # メッセージが存在する場合のみ、データベースにメッセージを追加
+    if message:
+        dbConnect.createMessage(uid, channel_id, message)
+    else:
+        # メッセージが空の場合は、エラーメッセージと共に元のページに戻る
+        return redirect('/error_page') 
+
+    # チャンネル情報とそのチャンネルのメッセージを取得してテンプレートに渡す
+    channel = dbConnect.getChannelById(channel_id)
+    messages = dbConnect.getMessageAll(channel_id)
+    
+    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
+
+# # メッセージ一覧機能
+@app.route('/detail/<cid>')
+def detail(cid):
+    # 現在のセッションからユーザーID ('uid') を取得
+    uid = session.get("uid")
+    
+    # もしユーザーIDが存在しない場合、ユーザーがログインしていない場合は、ログインページにリダイレクト
+    if uid is None:
+        return redirect('/login')
+    
+    # パスパラメーターから取得したチャンネルIDを使用し、チャンネルの情報をデータベースから取得
+    channel = dbConnect.getChannelById(cid)
+    
+    # 指定されたチャンネルIDに関連する全てのメッセージを取得
+    messages = dbConnect.getMessageAll(cid)
+
+    # 取得したチャンネル情報とメッセージ、ユーザーIDをdetail.htmlテンプレートに渡し、そのテンプレートを使用してレンダリングしたページを返す
+    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
+
+
+# # チャンネル作成機能
+@app.route('/', methods=['post'])
+def add_channel():
+    # セッションからuidを取得
+    uid = session.get('uid')
+    print(uid)
+    # uidがNoneだった場合ログインページにリダイレクト
+    if uid is None:
+        return redirect('/login')
+    # フォームからチャンネル名を取得
+    channel_name = request.form.get('channel-title')
+    # データベースからチャンネル名で検索
+    channel = dbConnect.getChannelByName(channel_name)
+
+    # もしチャンネルが存在しない場合
+    if channel == None:
+        # フォームからチャンネルの説明を取得
+        channel_description = request.form.get('channel-description')
+        # 新しいチャンネルをデータベースに追加
+        dbChannel.addChannel(uid, channel_name, channel_description)
+        # ホームページにリダイレクト
+        return redirect('/')
+    else:
+        # もしチャンネルがすでに存在する場合エラーメッセージを表示
+        error = 'すでに同じチャンネルが存在しています'
+        return render_template('error/error.html', error_message=error)
+    
