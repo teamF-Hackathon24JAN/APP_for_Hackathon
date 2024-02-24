@@ -21,9 +21,9 @@ services:
     # コンテナ内の環境変数を設定
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=chatapp
-      - MYSQL_USER=testuser
-      - MYSQL_PASSWORD=testuser
+      - MYSQL_DATABASE=gutara_chat
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=fteam
     # DBのコンテナのヘルスチェックを行う
     # mysqladmin(MySQLサーバーの管理を行うクライアントを使ってDBコンテナ自身(127.0.0.1)にpingを送ってヘルスチェックを行う
     healthcheck:
