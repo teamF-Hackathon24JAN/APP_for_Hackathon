@@ -60,6 +60,12 @@ services:
         # dbのヘルスチェックが終わってからappを起動させる
         condition: service_healthy
 
+
+    #コンテナ内でboto3 （AWS CLI)を使うためのアクセスキーを記したファイル
+
+    env_file:
+      - .env
+
 volumes:
   mysql_data:
   
