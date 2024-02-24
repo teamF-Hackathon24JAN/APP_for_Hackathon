@@ -3,11 +3,9 @@
   height: 85vh;
   display: flex;
   flex-direction: row;
-  color: black;
 }
 .setting_main > * {
   font-family: kiwi maru;
-  color: black;
 }
 .setting_main_leftside {
   width: 50%;
@@ -44,6 +42,12 @@
   align-self: flex-end;
   margin-bottom: 10px;
   margin-left: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: black;
+}
+.setting_main_leftside_name .material-symbols-outlined:hover {
+  transform: scale(1.2);
 }
 .setting_main_leftside_profile {
   display: flex;
@@ -106,13 +110,26 @@
   border-radius: 20px;
   text-align: center;
   line-height: 50px;
+  color: black;
+  box-shadow: 0.3px 1px 3px gray;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.setting_main_leftside_change:hover, .setting_main_leftside_change:active {
+  transform: translateY(2px);
 }
 .setting_main_leftside_accountdelete {
   display: block;
   text-align: right;
   margin-top: 30px;
   margin-right: 20px;
-  text-decoration: none;
+  text-decoration: underline;
+  color: black;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.setting_main_leftside_accountdelete:hover, .setting_main_leftside_accountdelete:active {
+  transform: translateY(2px);
 }
 .setting_main_rightside {
   width: 50%;
@@ -164,6 +181,13 @@
 .setting_main_rightside_fixedphrases_phrase .material-symbols-outlined {
   font-size: 1rem;
   text-decoration: none;
+  color: black;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.setting_main_rightside_fixedphrases_phrase .material-symbols-outlined:hover {
+  transform: scale(1.2);
+  color: rgb(255, 212, 98);
 }
 .setting_main_rightside_addphrase {
   width: 500px;
@@ -198,4 +222,332 @@
   border-radius: 10px;
   text-decoration: none;
   margin-bottom: 20px;
+}
+
+#modal_setting_name .modal_content {
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: 10% auto;
+  border-radius: 20px;
+  width: 60%;
+  height: auto;
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
+#modal_setting_name .modal_content_header {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  height: auto;
+}
+#modal_setting_name .modal_content_header_title {
+  margin-left: 30%;
+  color: rgb(255, 212, 98);
+  font-size: 35px;
+}
+#modal_setting_name .modal_content_header_close {
+  font-size: 25px;
+  margin-right: 10px;
+  font-weight: bold;
+  color: rgb(255, 212, 98);
+  align-self: flex-start;
+}
+#modal_setting_name .modal_content_header_close:hover, #modal_setting_name .modal_content_header_close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+#modal_setting_name .modal_content_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30px;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+#modal_setting_name .modal_content_body_name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+#modal_setting_name .modal_content_body_name span {
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+#modal_setting_name .modal_content_body_name form input {
+  margin-bottom: 30px;
+}
+#modal_setting_name .modal_content_body_name form input::-moz-placeholder {
+  margin-left: auto;
+  margin-right: auto;
+}
+#modal_setting_name .modal_content_body_name form input::placeholder {
+  margin-left: auto;
+  margin-right: auto;
+}
+#modal_setting_name .modal_content_body_name form button {
+  height: auto;
+  width: auto;
+  padding: 10px 30px;
+}
+
+#modal_setting_profile .modal_content {
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: 8% auto 5% auto;
+  border-radius: 20px;
+  width: 60%;
+  height: auto;
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
+#modal_setting_profile .modal_content_header {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  height: auto;
+}
+#modal_setting_profile .modal_content_header_title {
+  margin-left: 30%;
+  color: rgb(255, 212, 98);
+  font-size: 35px;
+}
+#modal_setting_profile .modal_content_header_close {
+  font-size: 25px;
+  margin-right: 10px;
+  font-weight: bold;
+  color: rgb(255, 212, 98);
+  align-self: flex-start;
+  transition: all 0.2s;
+}
+#modal_setting_profile .modal_content_header_close:hover, #modal_setting_profile .modal_content_header_close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+#modal_setting_profile .modal_content_body {
+  margin-top: 0;
+}
+#modal_setting_profile .modal_content_body span {
+  display: block;
+}
+#modal_setting_profile .modal_content_body_onephrase {
+  margin-bottom: 40px;
+}
+#modal_setting_profile .modal_content_body_onephrase span {
+  margin-bottom: 10px;
+}
+#modal_setting_profile .modal_content_body_onephrase input {
+  margin-bottom: 20px;
+}
+#modal_setting_profile .modal_content_body_mailaddress {
+  margin-bottom: 40px;
+}
+#modal_setting_profile .modal_content_body_mailaddress span {
+  margin-bottom: 10px;
+}
+#modal_setting_profile .modal_content_body_mailaddress input {
+  margin-bottom: 20px;
+}
+#modal_setting_profile .modal_content_body_password {
+  margin-bottom: 40px;
+}
+#modal_setting_profile .modal_content_body_password span {
+  margin-bottom: 10px;
+}
+#modal_setting_profile .modal_content_body_password input {
+  margin-bottom: 20px;
+}
+#modal_setting_profile .modal_content_body button {
+  width: auto;
+  height: auto;
+  padding: 20px 30px;
+  font-size: 30px;
+}
+
+#modal_setting_delete .modal_content {
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: 20% auto 5% auto;
+  border-radius: 20px;
+  width: 60%;
+  height: auto;
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
+#modal_setting_delete .modal_content_header {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  height: auto;
+}
+#modal_setting_delete .modal_content_header_title {
+  margin-left: 25%;
+  color: rgb(255, 212, 98);
+  font-size: 35px;
+}
+#modal_setting_delete .modal_content_header_close {
+  font-size: 25px;
+  margin-right: 10px;
+  font-weight: bold;
+  color: rgb(255, 212, 98);
+  align-self: flex-start;
+  transition: all 0.2s;
+}
+#modal_setting_delete .modal_content_header_close:hover, #modal_setting_delete .modal_content_header_close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+#modal_setting_delete .modal_content_body {
+  margin: 30px auto;
+}
+#modal_setting_delete .modal_content_body_deleteButton {
+  width: auto;
+  height: auto;
+  padding: 20px 30px;
+  font-size: 30px;
+  border-radius: 20px;
+  border: 1px solid black;
+  color: black;
+  box-shadow: none;
+  background-color: rgb(255, 212, 98);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+#modal_setting_delete .modal_content_body_deleteButton:hover {
+  transform: translateY(2px);
+}
+
+#modal_setting_onephrase_edit .modal_content {
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: 15% auto 5% auto;
+  border-radius: 20px;
+  width: 60%;
+  height: auto;
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
+#modal_setting_onephrase_edit .modal_content_header {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  height: auto;
+}
+#modal_setting_onephrase_edit .modal_content_header_title {
+  margin-left: 25%;
+  color: rgb(255, 212, 98);
+  font-size: 35px;
+}
+#modal_setting_onephrase_edit .modal_content_header_close {
+  font-size: 25px;
+  margin-right: 10px;
+  font-weight: bold;
+  color: rgb(255, 212, 98);
+  align-self: flex-start;
+  transition: all 0.2s;
+}
+#modal_setting_onephrase_edit .modal_content_header_close:hover, #modal_setting_onephrase_edit .modal_content_header_close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+#modal_setting_onephrase_edit .modal_content_body {
+  margin: 30px auto 10px auto;
+}
+#modal_setting_onephrase_edit .modal_content_body_editInput {
+  font-size: 30px;
+  margin-top: 30px;
+}
+#modal_setting_onephrase_edit .modal_content_body_editInput::-moz-placeholder {
+  font-family: kiwi maru;
+}
+#modal_setting_onephrase_edit .modal_content_body_editInput::placeholder {
+  font-family: kiwi maru;
+}
+#modal_setting_onephrase_edit .modal_content_body_editButton {
+  margin-top: 60px;
+  width: auto;
+  height: auto;
+  padding: 20px 30px;
+  font-size: 30px;
+  border-radius: 20px;
+  border: 1px solid black;
+  color: black;
+  box-shadow: none;
+  background-color: rgb(255, 212, 98);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: kiwi maru;
+}
+#modal_setting_onephrase_edit .modal_content_body_editButton:hover {
+  transform: translateY(2px);
+}
+
+#modal_setting_onephrase_delete .modal_content {
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: 20% auto 5% auto;
+  border-radius: 20px;
+  width: 60%;
+  height: auto;
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
+#modal_setting_onephrase_delete .modal_content_header {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  height: auto;
+}
+#modal_setting_onephrase_delete .modal_content_header_title {
+  margin-left: 25%;
+  color: rgb(255, 212, 98);
+  font-size: 35px;
+}
+#modal_setting_onephrase_delete .modal_content_header_close {
+  font-size: 25px;
+  margin-right: 10px;
+  font-weight: bold;
+  color: rgb(255, 212, 98);
+  align-self: flex-start;
+  transition: all 0.2s;
+}
+#modal_setting_onephrase_delete .modal_content_header_close:hover, #modal_setting_onephrase_delete .modal_content_header_close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+#modal_setting_onephrase_delete .modal_content_body {
+  margin: 30px auto;
+}
+#modal_setting_onephrase_delete .modal_content_body_deleteButton {
+  width: auto;
+  height: auto;
+  padding: 20px 30px;
+  font-size: 30px;
+  border-radius: 20px;
+  border: 1px solid black;
+  color: black;
+  box-shadow: none;
+  background-color: rgb(255, 212, 98);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+#modal_setting_onephrase_delete .modal_content_body_deleteButton:hover {
+  transform: translateY(2px);
 }/*# sourceMappingURL=setting.css.map */

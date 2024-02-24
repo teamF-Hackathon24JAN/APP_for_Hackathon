@@ -1,0 +1,159 @@
+<!-- ホームのモーダル -->
+<div id="modal_friendAdd" class="modal" style="display: none">
+  <div class="modal_content">
+    <div class="modal_content_header">
+      <span class="modal_content_header_title">ともだちついか</span>
+      <span class="modal_content_header_close" data-modal="modal_friendAdd"
+        >&times;</span
+      >
+    </div>
+    <div class="modal_content_body">
+      <span>ともだちのID</span>
+      <form action="" method="POST">
+        <input type="text" placeholder="IDを入力してね" />
+        <button type="submit">けんさく</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="modal_friend" class="modal" style="display: none">
+  <div class="modal_content friend">
+    <div class="modal_content_header">
+      <span class="modal_content_header_title"></span>
+      <span class="modal_content_header_close" data-modal="modal_friend"
+        >&times;</span
+      >
+    </div>
+    <div class="modal_content_body">
+      <div class="modal_content_body_photo"></div>
+      <div class="modal_content_body_name">
+        <span>なまえ</span>
+      </div>
+      <div class="modal_content_body_onephrase">
+        <span>明日もたくさん働こう！！！</span>
+      </div>
+      <button class="modal_content_body_chatpage">
+        <a href="">ダイレクトメッセージへ</a>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- チャットページのモーダル -->
+
+<!-- 設定画面のモーダル -->
+<div id="modal_setting_name" class="modal" style="display: none">
+  <div class="modal_content">
+    <div class="modal_content_header">
+      <span class="modal_content_header_title">なまえをへんこうする</span>
+      <span class="modal_content_header_close" data-modal="modal_setting_name"
+        >&times;</span
+      >
+    </div>
+    <div class="modal_content_body">
+      <div class="modal_content_body_name">
+        <span>あたらしいなまえ</span>
+        <form action="" method="POST">
+          <input
+            type="text"
+            placeholder="あたらしいなまえを入力してね"
+            required
+          />
+          <button type="submit">へんこうする</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modal_setting_profile" class="modal" style="display: none">
+  <div class="modal_content">
+    <div class="modal_content_header">
+      <span class="modal_content_header_title"></span>
+      <span
+        class="modal_content_header_close"
+        data-modal="modal_setting_profile"
+        >&times;</span
+      >
+    </div>
+    <div class="modal_content_body">
+      <form action="" method="POST">
+        <div class="modal_content_body_onephrase">
+          <span>ひとこと</span>
+          <input type="text" placeholder="既に登録しているひとことを表示？" />
+        </div>
+        <div class="modal_content_body_mailaddress">
+          <span>めーるあどれす</span>
+          <input
+            type="email"
+            placeholder="既に登録しているメールアドレスを表示？"
+          />
+        </div>
+        <div class="modal_content_body_password">
+          <span>ぱすわーど</span>
+          <input
+            type="password"
+            placeholder="既に登録しているパスワードを表示？"
+          />
+        </div>
+        <button type="submit">へんこうする</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div id="modal_setting_delete" class="modal" style="display: none">
+  <div class="modal_content">
+    <div class="modal_content_header">
+      <span class="modal_content_header_title">ほんとうにさくじょしますか</span>
+      <span
+        class="modal_content_header_close"
+        data-modal="modal_setting_delete"
+        >&times;</span
+      >
+    </div>
+    <div class="modal_content_body">
+        <button class="modal_content_body_deleteButton" type="submit">さくじょする</button>
+    </div>
+  </div>
+</div>
+
+
+<div id="modal_setting_onephrase_edit" class="modal" style="display: none">
+  <div class="modal_content">
+    <div class="modal_content_header">
+      <span class="modal_content_header_title">ていけいぶんのへんしゅう</span>
+      <span
+        class="modal_content_header_close"
+        data-modal="modal_setting_onephrase_edit"
+        >&times;</span
+      >
+    </div>
+    <div class="modal_content_body">
+      <form action="" method="POST">
+        <input class="modal_content_body_editInput" type="text" placeholder="既に登録されている定型文を表示？">
+        <button class="modal_content_body_editButton" type="submit">へんこうする</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="modal_setting_onephrase_delete" class="modal" style="display: none">
+  <div class="modal_content">
+    <div class="modal_content_header">
+      <span class="modal_content_header_title">ほんとうにさくじょしますか</span>
+      <span
+        class="modal_content_header_close"
+        data-modal="modal_setting_onephrase_delete"
+        >&times;</span
+      >
+    </div>
+    <div class="modal_content_body">
+        <button class="modal_content_body_deleteButton" type="submit">さくじょする</button>
+    </div>
+  </div>
+</div>
