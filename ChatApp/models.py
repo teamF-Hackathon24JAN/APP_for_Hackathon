@@ -9,7 +9,7 @@ class dbConnect:
         try:
             conn = DB.getConnection()
             cur = conn.cursor()
-            sql = "INSERT INTO users (id, name, email password) VALUES (%s, $s, %s, %s);"
+            sql = "INSERT INTO users (id, name, email, password) VALUES (%s, $s, %s, %s);"
             cur.execute(sql, (id, name, email, password))
             conn.commit()
         except Exception as e:
