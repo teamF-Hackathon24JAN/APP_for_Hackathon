@@ -52,19 +52,31 @@ services:
     # ローカルの5000番ポートとコンテナの5000番ポートをつなぐ
     ports:
       - "5000:5000"
-    # コマンドを実行
-    command:  bash -c "python app.py"
+    # uwsgiを実行
+    command: uwsgi --ini /code/app.ini 
+        
     # 先にdbを起動してからappを起動する
     depends_on:
       db:
         # dbのヘルスチェックが終わってからappを起動させる
         condition: service_healthy
 
-
     #コンテナ内でboto3 （AWS CLI)を使うためのアクセスキーを記したファイル
 
     env_file:
       - .env
+
+  nginx:
+    #Dockerfileは作らず、直接イメージ作成
+    image: nginx:latest
+    container_name: NginX
+    ports:
+      - "80:80"
+    volumes:
+      - ./Docker/NginX/nginx.conf:/etc/nginx/conf.d/default.conf
+
+    depends_on:
+      - app 
 
 volumes:
   mysql_data:

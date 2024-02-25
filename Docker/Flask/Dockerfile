@@ -8,17 +8,22 @@ ENV PYTHONUNBUFFERED=1
 RUN mkdir /code
 # コンテナのワークディレクトリを/codeに指定
 WORKDIR /code
+#uWSGIの依存関係問題解決のため
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    python3-dev \
+    build-essential \
+    libpcre3 \
+    libpcre3-dev
+
 # ローカルのrequirements.txtをコンテナの/codeフォルダ直下に置く
 COPY ./requirements.txt /code/
 # コンテナ内でpip install -r requirements.txtを実行
 RUN pip install -U pip && \
     pip install -r requirements.txt
-# ソースコードをコンテナにコピー
-COPY . /code/
 
-
-#BOT3をコンテナ内で使うために
-# 前提パッケージのインストール
+#BOT3をコンテナ内で使うために前提パッケージのインストール
 RUN apt-get update && apt-get install -y less vim curl unzip sudo
 
 # aws cli v2 のインストール
@@ -28,3 +33,7 @@ RUN unzip awscliv2.zip
 RUN sudo ./aws/install
 
 RUN pip install boto3
+# ソースコードをコンテナにコピー
+COPY . /code/
+
+CMD ["uwsgi", "app.ini"]
