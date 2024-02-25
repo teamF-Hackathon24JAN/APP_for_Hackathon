@@ -13,7 +13,7 @@ class dbConnect:
             cur.execute(sql, (id, name, email, password))
             conn.commit()
         except Exception as e:
-            print(e + 'が発生しています')
+            print(e + "Sが発生しています")
         finally:
             cur.close()
 
@@ -22,7 +22,7 @@ class dbConnect:
         try:
             conn = DB.getConnection()
             cur = conn.cursor()
-            sql = "SELECT * FROM user WHERE email=%s;" #usersのテーブルからemailの行を取り出す
+            sql = "SELECT * FROM users WHERE email=%s;" #usersのテーブルからemailの行を取り出す
             cur.execute(sql, (email))
             user = cur.fetchone()
             return user

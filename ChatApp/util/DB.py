@@ -4,12 +4,12 @@ class DB:
     def getConnection():
         try:
             connection = pymysql.connect(
-                host="localhost",
+                host="db",
                 db="gutara_chat",
                 user="admin",
                 password="fteam",
                 charset="utf8",
-                cursorclass=pymysql.cursors.Dictcursor
+                cursorclass=pymysql.cursors.DictCursor
             )
 
         except Exception as e:
