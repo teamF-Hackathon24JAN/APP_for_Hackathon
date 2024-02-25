@@ -1,22 +1,31 @@
+// IDがheader_nameの要素を取得
 const header_home = document.getElementById('header_home');
 
+// IDがheader_homeの要素をクリックしたとき
 header_home.addEventListener('click',() => {
+  // /homeに遷移する
   window.location.href = '/home'
 })
 
+// IDがheader_settingの要素を取得
 const header_setting = document.getElementById('header_setting');
 
+// IDがheader_settingの要素をクリックしたとき
 header_setting.addEventListener('click',( ) => {
+  // /settingに遷移する
   window.location.href = '/setting'
 })
 
+// IDがheader_signoutの要素を取得
 const header_signout = document.getElementById('header_signout');
 
+// IDがheader_signoutの要素をクリックしたとき
 header_signout.addEventListener('click',() => {
+  // サインアウトし、/loginに遷移する
   window.location.href = '/login'
 })
 
-
+// classに.listとついている要素を複数取得
 const friendlists = document.querySelectorAll('.list');
 
 friendlists.forEach((friendlist,i) =>{
@@ -68,6 +77,14 @@ friendAddmodal.addEventListener('click',() => {
     const modalfriadd = document.getElementById('modal_friendAdd');
     modalfriadd.style.display = "block";
 })
+
+
+const chatpage_fixedphrases = document.getElementById('chatpage_fixedphrases');
+
+chatpage_fixedphrases.addEventListener('click', () => {
+  const modal_chatpage_fixedphrases = document.getElementById('modal_chatpage_fixedphrases');
+  modal_chatpage_fixedphrases.style.display = 'block';
+});
   
   // モーダルを閉じる（クローズボタン）イベントリスナーの追加
   document.querySelectorAll(".modal_content_header_close").forEach(function(element) {
@@ -75,7 +92,7 @@ friendAddmodal.addEventListener('click',() => {
       let modalId = this.getAttribute("data-modal");
       document.getElementById(modalId).style.display = "none";
     });
-  })
+  });
   
   // モーダルの外側をクリックした時に閉じるイベントリスナーの追加
   window.addEventListener('click', function(event) {

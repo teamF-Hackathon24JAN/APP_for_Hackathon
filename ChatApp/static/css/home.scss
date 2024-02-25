@@ -85,7 +85,7 @@
 
   ._leftside {
     height: 100%;
-    width: 230px;
+    width: 16%;
     border: 1px solid black;
     border-right: none;
     display: flex;
@@ -268,15 +268,35 @@
         animation-fill-mode: forwards;
       }
 
-      & h2 {
-        margin: 10px 0 0 30px;
-        font-size: 30px;
+      & .channel_header {
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        height: auto;
+        margin-bottom: 0;
+
+        & h2 {
+          margin: 10px 0 0 30px;
+          font-size: 30px;
+        }
+
+        & .material-symbols-outlined {
+          align-self: flex-end;
+          margin-right: 20px;
+          font-size: 2rem;
+          cursor: pointer;
+          transition: all 0.2s;
+
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
       }
 
       & #channel-boxes {
         display: flex;
         flex-direction: row;
-        margin-top: 50px;
+        margin-top: 10px;
         margin-left: 40px;
         // margin-right: 30px;
         height: 350px;
@@ -291,13 +311,12 @@
           display: flex;
           flex-direction: column;
           align-items: center;
-          width: 300px !important;
+          width: 300px;
           background-color: lightgray;
           border: 1px solid black;
           cursor: pointer;
           transition: all 0.2s;
           box-shadow: 0 1px 5px black;
-
 
           &:hover,
           &:active {
@@ -331,13 +350,12 @@
               flex: none;
               margin-top: 15px;
             }
-
           }
         }
       }
 
       .channels-scrollicon {
-        margin: 10px 20px 0 20px;
+        margin: 0 20px;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
@@ -364,10 +382,6 @@
           }
         }
       }
-
-      .material-symbols-outlined {
-        display: block;
-      }
     }
   }
 }
@@ -382,7 +396,7 @@
   height: 100%; /* 全高 */
   overflow: hidden; /* スクロール可能 */
   background-color: rgba(0, 0, 0, 0.4); /* 背景の暗転 */
-  color:  rgb(255, 212, 98);
+  color: rgb(255, 212, 98);
   font-family: kiwi maru;
 
   &_content {
@@ -421,6 +435,7 @@
         margin-right: 10px;
         font-weight: bold;
         color: rgb(255, 212, 98);
+        transition: all 0.2s;
 
         &:hover,
         &:focus {
@@ -444,18 +459,18 @@
         font-size: 30px;
         margin-bottom: 10px;
         // align-self: flex-start;
-
       }
 
       & form {
         margin-bottom: 30px;
-        & input , & button {
+        & input,
+        & button {
           display: block;
         }
 
         & input {
           font-size: 30px;
-          border: 1px solid  rgb(255, 212, 98);
+          border: 1px solid rgb(255, 212, 98);
           width: 600px;
         }
 
@@ -467,18 +482,15 @@
           height: 60px;
           font-size: 25px;
           border-radius: 20px;
-          color:  black;
+          color: black;
           cursor: pointer;
-          background-color:  rgb(255, 212, 98);
+          background-color: rgb(255, 212, 98);
           font-family: kiwi maru;
-
         }
-      
       }
     }
   }
 }
-
 
 #modal_friend {
   & .modal {
@@ -492,32 +504,33 @@
       animation-name: fuwatto;
       animation-duration: 1.2s;
       animation-fill-mode: forwards;
-  
+
       &_header {
         // background-color: #fefefe;
         margin: 0 auto;
         // border: 1px solid #888;
         // width: auto;
         display: flex;
-        justify-content:space-between;
+        justify-content: space-between;
         flex-direction: row;
         align-items: center;
         height: auto;
         // display: inline-block;
-  
+
         &_title {
           margin-left: 44%;
           color: rgb(255, 212, 98);
           font-size: 35px;
         }
-  
+
         &_close {
           font-size: 25px;
           margin-right: 10px;
           font-weight: bold;
           color: rgb(255, 212, 98);
           align-self: flex-start;
-  
+          transition: all 0.2s;
+
           &:hover,
           &:focus {
             color: black;
@@ -526,7 +539,7 @@
           }
         }
       }
-  
+
       &_body {
         // height: 300px;
         // width: 400px;
@@ -548,17 +561,14 @@
         &_name {
           margin-top: 20px;
           margin-bottom: 20px;
-
-
         }
 
         &_onephrase {
           margin-bottom: 15px;
-
         }
 
         &_chatpage {
-          border:1px solid black;
+          border: 1px solid black;
           // width: 120px;
           // height: 60px;
           font-size: 30px;
@@ -566,7 +576,198 @@
           border-radius: 20px;
           margin-top: 30px;
           font-family: kiwi maru;
+
+          & a {
+            color: black;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+#modal_home_channels_edit {
+  & .modal {
+    &_content {
+      background-color: rgba(0, 0, 0, 0.8);
+      margin: 8% auto;
+      // border: 1px solid #888;
+      border-radius: 20px;
+      width: 80%;
+      height: auto;
+      animation-name: fuwatto;
+      animation-duration: 1.2s;
+      animation-fill-mode: forwards;
+
+      &_header {
+        // background-color: #fefefe;
+        margin: 0 auto;
+        // border: 1px solid #888;
+        // width: auto;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+        height: auto;
+        // display: inline-block;
+
+        &_title {
+          margin-left: 34%;
+          color: rgb(255, 212, 98);
+          font-size: 35px;
+        }
+
+        &_close {
+          font-size: 25px;
+          margin-right: 10px;
+          font-weight: bold;
+          color: rgb(255, 212, 98);
+          align-self: flex-start;
+          transition: all 0.2s;
+
+          &:hover,
+          &:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+          }
+        }
+      }
+
+      &_body {
+        height: 400px;
+        // width: 400px;
+        // background-color: yellow;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-size: 30px;
+        margin-bottom: 20px;
+        margin-top: 0;
+        // height: 60%;
+
+        &_tabs {
+          width: 200px;
+          height: 300px;
+          margin-left: 40px;
+          overflow-y: scroll;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          // border: 1px solid yellow;
+
+          & .tab {
+            // background-color: yellow;
+            height: auto;
+            font-size: 40px;
+            margin-top: 30px;
+            // width: 200px;
+            padding: 0;
+            margin-left: auto;
+            margin-right: auto;
+            background-image: linear-gradient(90deg, #ffd000, #ffd000);
+            background-repeat: no-repeat;
+            background-position: left bottom;
+            background-size: 0 1px;
+            transition: background-size 0.6s;
+            cursor: pointer;
+
+            &.active {
+              background-color: rgb(255, 212, 98);
+              color: black;
+            }
+
+
+             &:hover {
+              background-size: 100% 1px;
+            }
+          }
+        }
+
+
+        &_tab-content {
+          width: 80%;
+          height: 80%;
+          // border: 1px solid #ffd000;
+          margin-right: 40px;
+
+          & .content{
+
+            &:active{
+              display: block;
+            }
+
+
+            & .channel-Name {
+              display: block;
+              margin: 10px auto;
+              width: 60%;
+              height: 50px;
+              font-size: 30px;
+            }
+
+            & .tab_channels_friendselect {
+              display: flex;
+              display: row;
+
+              & .Addedfriend{
+                display: flex;
+                flex-direction: column;
+                width:300px;
+                height: 200px;
+                margin: 20px 20px 20px 100px;
+                border: 1px solid #ffd000;
+                overflow-y: scroll;
+
+                & span {
+                  font-size: 25px;
+                  margin-top: 10px;
+                  margin-bottom: 5px;
+                  margin-left: 5px;
+                }
+              }
+
+              & .Addfriend {
+                display: flex;
+                flex-direction: column;
+                width:300px;
+                height: 200px;
+                margin: 20px 20px 20px 40px;
+                border: 1px solid #ffd000;
+                overflow-y: scroll;
+
+                & span {
+                  font-size: 25px;
+                  margin-top: 10px;
+                  margin-bottom: 5px;
+                  margin-left: 5px;
+                }
+
+
+              }
+            }
+
+          }
+
           
+          & .channel_changeButton{
+            height: auto;
+            width: auto;
+            margin: 5px auto;
+            display: block;
+            font-size: 25px;
+            font-family: kiwi maru;
+            padding: 10px 20px;
+            border-radius: 10px;
+            
+            
+            & a {
+              text-decoration: none;
+              color: black;
+            }
+
+          }
         }
       }
     }

@@ -69,7 +69,7 @@
 }
 .main ._leftside {
   height: 100%;
-  width: 230px;
+  width: 16%;
   border: 1px solid black;
   border-right: none;
   display: flex;
@@ -198,14 +198,31 @@
   animation-duration: 1.2s;
   animation-fill-mode: forwards;
 }
-.main ._rightside ._channels h2 {
+.main ._rightside ._channels .channel_header {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  margin-bottom: 0;
+}
+.main ._rightside ._channels .channel_header h2 {
   margin: 10px 0 0 30px;
   font-size: 30px;
+}
+.main ._rightside ._channels .channel_header .material-symbols-outlined {
+  align-self: flex-end;
+  margin-right: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.main ._rightside ._channels .channel_header .material-symbols-outlined:hover {
+  transform: scale(1.2);
 }
 .main ._rightside ._channels #channel-boxes {
   display: flex;
   flex-direction: row;
-  margin-top: 50px;
+  margin-top: 10px;
   margin-left: 40px;
   height: 350px;
   font-size: 20px;
@@ -218,7 +235,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 300px !important;
+  width: 300px;
   background-color: lightgray;
   border: 1px solid black;
   cursor: pointer;
@@ -252,7 +269,7 @@
   margin-top: 15px;
 }
 .main ._rightside ._channels .channels-scrollicon {
-  margin: 10px 20px 0 20px;
+  margin: 0 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -274,9 +291,6 @@
 }
 .main ._rightside ._channels .channels-scrollicon #righticon:hover {
   color: black;
-}
-.main ._rightside ._channels .material-symbols-outlined {
-  display: block;
 }
 
 .modal {
@@ -323,6 +337,7 @@
   margin-right: 10px;
   font-weight: bold;
   color: rgb(255, 212, 98);
+  transition: all 0.2s;
 }
 .modal_content_header_close:hover, .modal_content_header_close:focus {
   color: black;
@@ -395,6 +410,7 @@
   font-weight: bold;
   color: rgb(255, 212, 98);
   align-self: flex-start;
+  transition: all 0.2s;
 }
 #modal_friend .modal_content_header_close:hover, #modal_friend .modal_content_header_close:focus {
   color: black;
@@ -429,4 +445,147 @@
   border-radius: 20px;
   margin-top: 30px;
   font-family: kiwi maru;
+}
+#modal_friend .modal_content_body_chatpage a {
+  color: black;
+  text-decoration: none;
+}
+
+#modal_home_channels_edit .modal_content {
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: 8% auto;
+  border-radius: 20px;
+  width: 80%;
+  height: auto;
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
+#modal_home_channels_edit .modal_content_header {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  height: auto;
+}
+#modal_home_channels_edit .modal_content_header_title {
+  margin-left: 34%;
+  color: rgb(255, 212, 98);
+  font-size: 35px;
+}
+#modal_home_channels_edit .modal_content_header_close {
+  font-size: 25px;
+  margin-right: 10px;
+  font-weight: bold;
+  color: rgb(255, 212, 98);
+  align-self: flex-start;
+  transition: all 0.2s;
+}
+#modal_home_channels_edit .modal_content_header_close:hover, #modal_home_channels_edit .modal_content_header_close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+#modal_home_channels_edit .modal_content_body {
+  height: 400px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 30px;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+#modal_home_channels_edit .modal_content_body_tabs {
+  width: 200px;
+  height: 300px;
+  margin-left: 40px;
+  overflow-y: scroll;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+#modal_home_channels_edit .modal_content_body_tabs .tab {
+  height: auto;
+  font-size: 40px;
+  margin-top: 30px;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(90deg, #ffd000, #ffd000);
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 0 1px;
+  transition: background-size 0.6s;
+  cursor: pointer;
+}
+#modal_home_channels_edit .modal_content_body_tabs .tab.active {
+  background-color: rgb(255, 212, 98);
+  color: black;
+}
+#modal_home_channels_edit .modal_content_body_tabs .tab:hover {
+  background-size: 100% 1px;
+}
+#modal_home_channels_edit .modal_content_body_tab-content {
+  width: 80%;
+  height: 80%;
+  margin-right: 40px;
+}
+#modal_home_channels_edit .modal_content_body_tab-content .content:active {
+  display: block;
+}
+#modal_home_channels_edit .modal_content_body_tab-content .content .channel-Name {
+  display: block;
+  margin: 10px auto;
+  width: 60%;
+  height: 50px;
+  font-size: 30px;
+}
+#modal_home_channels_edit .modal_content_body_tab-content .content .tab_channels_friendselect {
+  display: flex;
+  display: row;
+}
+#modal_home_channels_edit .modal_content_body_tab-content .content .tab_channels_friendselect .Addedfriend {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 200px;
+  margin: 20px 20px 20px 100px;
+  border: 1px solid #ffd000;
+  overflow-y: scroll;
+}
+#modal_home_channels_edit .modal_content_body_tab-content .content .tab_channels_friendselect .Addedfriend span {
+  font-size: 25px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+#modal_home_channels_edit .modal_content_body_tab-content .content .tab_channels_friendselect .Addfriend {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 200px;
+  margin: 20px 20px 20px 40px;
+  border: 1px solid #ffd000;
+  overflow-y: scroll;
+}
+#modal_home_channels_edit .modal_content_body_tab-content .content .tab_channels_friendselect .Addfriend span {
+  font-size: 25px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+#modal_home_channels_edit .modal_content_body_tab-content .channel_changeButton {
+  height: auto;
+  width: auto;
+  margin: 5px auto;
+  display: block;
+  font-size: 25px;
+  font-family: kiwi maru;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+#modal_home_channels_edit .modal_content_body_tab-content .channel_changeButton a {
+  text-decoration: none;
+  color: black;
 }/*# sourceMappingURL=home.css.map */
