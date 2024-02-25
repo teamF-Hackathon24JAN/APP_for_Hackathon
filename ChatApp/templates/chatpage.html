@@ -5,10 +5,6 @@
   <div class="home_header">
     <h1>ぐーたらちゃっと</h1>
     <div class="home_header_nav-box">
-      <!-- <div class="header-nav-icons">
-        <span class="material-symbols-outlined"> looks_two </span>
-        <a href="">りくえすと</a> -->
-      <!-- </div> -->
       <div id="header_home" class="home_header_nav-box_icons">
         <span class="material-symbols-outlined"> cottage</span>
         <a href="/home">ほーむ</a>
@@ -21,20 +17,13 @@
         <span class="material-symbols-outlined"> logout</span>
         <a href="/login">さいんあうと</a>
       </div>
-      <!-- <ul>
-        <li class="header-nav-icon"><span class="material-symbols-outlined">looks_one</span><a href="">りくえすと</a></li>
-        <li class="header-nav-icon"><a href="">ほーむ</a></li>
-        <li class="header-nav-icon"><a href="">せってい</a></li>
-      </ul> -->
     </div>
   </div>
 </header>
 <main class="main">
   <div class="_leftside">
     <h2>ともだち</h2>
-    <span id="scrollbutton" class="material-symbols-outlined">
-      add_circle
-    </span>
+    <span id="friendAdd" class="material-symbols-outlined"> add_circle </span>
     <div class="friends-container">
       <div id="friends-scrollcontainer">
         <ul>
@@ -69,9 +58,6 @@
       <span>ゆうと</span>
     </div>
     <div class="chat_container">
-      <!-- <div class="chat_container_friends_username">
-        <span>ゆうと</span>
-      </div> -->
       <div id="messagearea" class="chat_container_scroll">
         <div class="chat_container_friends_text">
           <span>明日は、とても忙しいから覚悟しておいてね！</span>
@@ -98,31 +84,21 @@
           <span>お前がやれや！！！！！ </span>
         </div>
       </div>
-
       <div class="chat_container_textform">
-        <input type="text" />
-        <button class="material-symbols-outlined">send</button>
+        <form action="" method="POST">
+          <div>
+            <input type="text" />
+            <span id="chatpage_fixedphrases" class="material-symbols-outlined">description</span>
+          </div>
+          <button class="material-symbols-outlined">send</button>
+        </form>
       </div>
     </div>
   </div>
 </main>
 
-<div id="modal_friend" class="modal" style="display: none">
-  <div class="modal_content">
-    <div class="modal_content_header">
-      <span class="modal_content_header_close" data-modal="modal_friend"
-        >&times;</span
-      >
-      <span class="modal_content_header_title">ともだちだよ</span>
-    </div>
-    <div class="modal_content_body">
-      <p>フレンド表示</p>
-      <div></div>
-    </div>
-  </div>
-</div>
-
-<script src="{{ url_for('static', filename='/js/setting.js') }}"></script>
-<script src="{{ url_for('static', filename='/js/home.js') }}"></script>
+<!-- modal.htmlの読み込み -->
+{% include 'modal.html' %}
+<script src="{{ url_for('static', filename='/js/chatpage.js') }}"></script>
 
 {% endblock %}

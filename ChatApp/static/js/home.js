@@ -13,6 +13,7 @@ friendlists.forEach((friendlist,i) =>{
         fill:'forwards'
     };
     friendlist.animate(keyframes,options);
+
     friendlist.addEventListener('click', () => {
       document.getElementById('modal_friend').style.display = 'block';
     });
@@ -68,20 +69,21 @@ rightbutton.addEventListener('click', () => {
 
 
 
-const friendaddmodal = document.getElementById('friendadd-modal');
+const friendaddmodal = document.getElementById('friendAdd');
 
 friendaddmodal.addEventListener('click',() => {
-    const modalfriadd = document.getElementById('modal_friadd');
+    const modalfriadd = document.getElementById('modal_friendAdd');
     modalfriadd.style.display = "block";
 })
 
-// const friendlists = document.querySelectorAll('.list');
 
-// friendlists.forEach(friendlist => {
-//     friendlist.addEventListener('click', () => {
-//       document.getElementById('modal_friend').style.display = 'block';
-//     });
-//   });
+
+const home_channels_edit = document.getElementById('home_channels_edit');
+
+home_channels_edit.addEventListener('click', () => {
+  const modal_home_channels_edit = document.getElementById('modal_home_channels_edit');
+  modal_home_channels_edit.style.display = 'block'
+}) 
   
   // モーダルを閉じる（クローズボタン）イベントリスナーの追加
   document.querySelectorAll(".modal_content_header_close").forEach(function(element) {
@@ -106,4 +108,27 @@ channel_vars.forEach(channel => {
     channel.addEventListener('click',( ) => {
         window.location.href = '/chatpage'
     });
+});
+
+
+document.querySelectorAll('.tab').forEach((tab) => {
+  tab.addEventListener('click', function() {
+    const target = this.getAttribute('data-tab');
+    
+    // 以前のアクティブなタブの内容を非表示にする
+    document.querySelectorAll('.content').forEach((content) => {
+      content.style.display = 'none';
+    });
+
+    // クリックされたタブに関連するコンテンツを表示
+    document.getElementById(target).style.display = 'block';
+
+    // 以前のアクティブなタブのスタイルをリセット
+    document.querySelectorAll('.tab').forEach((tab) => {
+      tab.classList.remove('active');
+    });
+
+    // クリックされたタブのスタイルをアクティブに
+    this.classList.add('active');
+  });
 });

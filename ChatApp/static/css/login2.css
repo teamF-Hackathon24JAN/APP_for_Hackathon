@@ -1,11 +1,11 @@
-.login-header {
+.login_header {
   width: auto;
   height: 15vh;
   display: flex;
   justify-content: start;
   align-items: center;
 }
-.login-header h1 {
+.login_header h1 {
   font-size: 50px;
   margin-left: 70px;
   font-family: hachi maru pop;
@@ -15,14 +15,13 @@
   animation-timing-function: cubic-bezier(1, 1.67, 0.58, 1);
 }
 
-.login-container {
+.login_container {
   height: 85vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-.login {
+.login_container_loginBox {
   border: 1px solid black;
   width: 663px;
   height: 550px;
@@ -43,86 +42,86 @@
     opacity: 1;
   }
 }
-.login h2 {
+.login_container_loginBox h2 {
   margin-top: 20px;
   margin-left: 250px;
   margin-bottom: 30px;
   -webkit-text-stroke: 1px black;
   font-size: 40px;
 }
-.login .login-mailaddres-Box {
+.login_container_loginBox_mailaddressBox {
   margin-top: 17px;
 }
-.login .login-mailaddres-Box h3 {
+.login_container_loginBox_mailaddressBox h3 {
   margin-left: 85px;
   font-size: 30px;
 }
-.login .login-mailaddres-Box div {
+.login_container_loginBox_mailaddressBox div {
   margin-left: 25px;
   display: flex;
   align-items: center;
 }
-.login .login-mailaddres-Box div .material-symbols-outlined {
+.login_container_loginBox_mailaddressBox div .material-symbols-outlined {
   font-weight: light;
   font-size: 50px;
   margin-right: 12px;
 }
-.login .login-mailaddres-Box div input {
+.login_container_loginBox_mailaddressBox div input {
   font-size: 30px;
   width: 100%;
   margin-right: 25px;
 }
-.login .login-mailaddres-Box div input::-moz-placeholder {
+.login_container_loginBox_mailaddressBox div input::-moz-placeholder {
   font-size: 20px;
 }
-.login .login-mailaddres-Box div input::placeholder {
+.login_container_loginBox_mailaddressBox div input::placeholder {
   font-size: 20px;
 }
-.login .login-password-Box {
+.login_container_loginBox_passwordBox {
   margin-top: 38px;
 }
-.login .login-password-Box h3 {
+.login_container_loginBox_passwordBox h3 {
   margin-left: 85px;
   font-size: 30px;
 }
-.login .login-password-Box div {
+.login_container_loginBox_passwordBox div {
   margin-left: 25px;
   display: flex;
   align-items: center;
 }
-.login .login-password-Box div .material-symbols-outlined {
+.login_container_loginBox_passwordBox div .material-symbols-outlined {
   font-size: 50px;
   margin-right: 12px;
 }
-.login .login-password-Box div input {
+.login_container_loginBox_passwordBox div input {
   font-size: 30px;
   width: 100%;
   margin-right: 25px;
 }
-.login .login-password-Box div input::-moz-placeholder {
+.login_container_loginBox_passwordBox div input::-moz-placeholder {
   font-size: 20px;
 }
-.login .login-password-Box div input::placeholder {
+.login_container_loginBox_passwordBox div input::placeholder {
   font-size: 20px;
 }
-.login .login-button-etc {
+.login_container_loginBox_button-etc {
   margin: 30px 40px 30px 40px;
   display: flex;
   align-items: center;
 }
-.login .login-button-etc a {
+.login_container_loginBox_button-etc a {
   color: rgb(255, 212, 98);
   font-size: 25px;
   margin-right: 70px;
   transition: all 0.2s;
 }
-.login .login-button-etc a:hover {
+.login_container_loginBox_button-etc a:hover {
   transform: translateY(1.5px);
 }
-.login .login-button-etc a:active {
+.login_container_loginBox_button-etc a:active {
   transform: translateY(3px);
 }
-.login .login-button-etc button {
+.login_container_loginBox_button-etc button {
   background-color: transparent;
   color: rgb(255, 212, 98);
   font-size: 4.8rem;
@@ -130,13 +129,13 @@
   border: none;
   transition: all 0.2s;
 }
-.login .login-button-etc button:hover {
+.login_container_loginBox_button-etc button:hover {
   transform: translateY(1.5px);
 }
-.login .login-button-etc button:active {
+.login_container_loginBox_button-etc button:active {
   transform: translateY(3px);
 }
-.login .login-button-etc .applelogin-etc {
+.login_container_loginBox_button-etc .applelogin-etc {
   display: inline-block;
   border: 1px solid grey;
   background-color: grey;
@@ -144,7 +143,7 @@
   padding: 10px 10px;
   margin: 0 25px 0 100px;
 }
-.login .password-lost {
+.login_container_loginBox_password-lost {
   margin-left: 150px;
   font-size: 25px;
   cursor: pointer;
@@ -152,9 +151,9 @@
   display: block;
   transition: all 0.2s;
 }
-.login .password-lost:hover {
+.login_container_loginBox_password-lost:hover {
   transform: translateY(1.5px);
 }
-.login .password-lost:active {
+.login_container_loginBox_password-lost:active {
   transform: translateY(3px);
 }/*# sourceMappingURL=login2.css.map */
