@@ -39,7 +39,7 @@ def userSignup():
     elif re.match(pattern, email) is None: #文字列の先頭が一致しているかどうか、先頭にマッチする文字列がない場合はNoneを返す
         flash('正しいめーるあどれすの形式ではありません')
     else:
-        #uid = uuid.uuid4() #乱数によりOSを利用して一意なidを設定
+        id = uuid.uuid4() #乱数によりOSを利用して一意なidを設定
         password = hashlib.sha256(password.encode('utf-8')).hexdigest() #passwordをハッシュ化
         DBuser = dbConnect.getUser(email) #フォームに入力したアドレスが登録されている行をデータベースから呼び出す。無ければNoneが返る
 
@@ -47,18 +47,55 @@ def userSignup():
             flash('このめーるあどれすはすでに登録されているようです')
         else:
             dbConnect.createUser(id, name, email, password)
-            #UserId = str(id) #uidを文字列に変換
+            UserId = str(id) #uidを文字列に変換
             session['id'] = UserId #セッションにユーザーIDを保存、保持したい情報を辞書データとして登録
             return redirect('/') #新規登録完了後、セッションを保持した状態で'/'へ遷移
     return redirect('/signup') #/signupにリダイレクト
 
+##ログインページの表示
+@app.route('/login')
+def login():
+    return render_template('registration/login.html')
+
+##ログイン処理
+@app.route('/login', methods=['POST'])
+def userLogin():
+    email = request.form.get('email')#フォームから送信されたパスワードを変数emailに格納
+    password = request.form.get('password')#フォームから送信されたパスワードを変数passwordに格納
+
+    if email =='' or password == '':
+        flash('からのふぉーむがあるようです')
+    else:
+        user = dbConnect.getUser(email)#userテーブルから変数emailがある行を取り出す
+        if user is None:
+            flash('このゆーざーは存在しません')
+        else:
+            hashPassword = hashlib.sha256(password.encode('utf-8')).hexdigest()#passwordをハッシュ化
+            if hashPassword != user["password"]:#取り出した行のpasswordと一致するか
+                flash('ぱすわーどが間違っています')
+            else:
+                session['id'] = user["id"]#セッションにユーザーIDを保存、保持したい情報を辞書データとして登録
+                return redirect('/')
+
+#（仮あとで削除）ログイン前、ログイン後のホーム表示
+@app.route('/')
+def home():
+    id = session.get("id")
+    if id is None:
+        return redirect('/login')
+    else:
+        return render_template('home.html')
+
+
+## ログアウト
+@app.route('/logout')
+def logout():
+    session.clear()#セッション情報を削除
+    return redirect('/login')#ログイン画面へ遷移する
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=False)
-
-
-from flask import Flask, request, session, redirect, render_template
-
-app = Flask(__name__)
 
 # # メッセージ作成機能
 @app.route('/message', methods=['POST'])
@@ -130,4 +167,3 @@ def add_channel():
         # もしチャンネルがすでに存在する場合エラーメッセージを表示
         error = 'すでに同じチャンネルが存在しています'
         return render_template('error/error.html', error_message=error)
-    
