@@ -70,12 +70,21 @@ def userLogin():
         if user is None:
             flash('このゆーざーは存在しません')
         else:
-            hashPassword = hashlib.sha256(password.encode('etf-8')).hexdigest()#passwordをハッシュ化
+            hashPassword = hashlib.sha256(password.encode('utf-8')).hexdigest()#passwordをハッシュ化
             if hashPassword != user["password"]:#取り出した行のpasswordと一致するか
                 flash('ぱすわーどが間違っています')
             else:
                 session['id'] = user["id"]#セッションにユーザーIDを保存、保持したい情報を辞書データとして登録
                 return redirect('/')
+
+#（仮あとで削除）ログイン前、ログイン後のホーム表示
+@app.route('/')
+def home():
+    id = session.get("id")
+    if id is None:
+        return redirect('/login')
+    else:
+        return render_template('home.html')
 
 
 ## ログアウト
