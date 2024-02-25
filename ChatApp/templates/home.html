@@ -5,10 +5,6 @@
   <div class="home_header">
     <h1>ぐーたらちゃっと</h1>
     <div class="home_header_nav-box">
-      <!-- <div class="header-nav-icons">
-        <span class="material-symbols-outlined"> looks_two </span>
-        <a href="">りくえすと</a> -->
-      <!-- </div> -->
       <div id="header_home" class="home_header_nav-box_icons">
         <span class="material-symbols-outlined"> cottage</span>
         <a href="">ほーむ</a>
@@ -27,7 +23,7 @@
 <main class="main">
   <div class="_leftside">
     <h2>ともだち</h2>
-    <span id="friendadd-modal" class="material-symbols-outlined">
+    <span id="friendAdd" class="material-symbols-outlined">
       add_circle
     </span>
     <div class="friends-container">
@@ -66,12 +62,18 @@
       <span class="onephrase">ひとこと・・・・・・・・・・・・・・</span>
     </div>
     <div class="_channels">
-      <h2>ちゃんねる</h2>
+      <div class="channel_header">
+        <h2>ちゃんねる</h2>
+        <span id="home_channels_edit" class="material-symbols-outlined"> edit_square </span>
+      </div>
       <div id="channel-boxes">
         <div class="_channels-var">
           <span class="channel-name">1.......</span>
           <span class="channel-member-title">めんばー</span>
           <div class="channel-members">
+            <span>aaaa</span>
+            <span>gggg</span>
+            <span>cccc</span>
             <span>aaaa</span>
             <span>gggg</span>
             <span>cccc</span>
@@ -118,41 +120,12 @@
         <span id="lefticon">←</span>
         <span id="righticon">→</span>
       </div>
-      <span class="material-symbols-outlined"> edit_square </span>
     </div>
   </div>
 </main>
 
-<!-- モーダル↓ -->
-<div id="modal_friadd" class="modal" style="display: none">
-  <div class="modal_content">
-    <div class="modal_content_header">
-      <span class="modal_content_header_close" data-modal="modal_friadd"
-        >&times;</span
-      >
-      <span class="modal_content_header_title">ともだちついか</span>
-    </div>
-    <div class="modal_content_body">
-      <p>フレンド追加モーダル</p>
-      <div></div>
-    </div>
-  </div>
-</div>
-
-<div id="modal_friend" class="modal" style="display: none">
-  <div class="modal_content">
-    <div class="modal_content_header">
-      <span class="modal_content_header_close" data-modal="modal_friend"
-        >&times;</span>
-      <span class="modal_content_header_title">ともだちだよ</span>
-    </div>
-    <div class="modal_content_body">
-      <p>フレンド表示</p>
-      <div></div>
-    </div>
-  </div>
-</div>
-
+<!-- modal.htmlの読み込み -->
+{% include 'modal.html' %}
 
 <script src="{{ url_for('static', filename='/js/home.js') }}"></script>
 

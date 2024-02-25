@@ -1,16 +1,13 @@
-
 .setting_main {
   width: 100%;
   height: 85vh;
 //   background-color: lightcoral;
   display: flex;
   flex-direction: row;
-  color: black;
 
   & > * {
     // color:black;
     font-family: kiwi maru;
-    color: black;
 }
 
   &_leftside {
@@ -54,6 +51,13 @@
         align-self: flex-end;
         margin-bottom: 10px;
         margin-left: 10px;
+        cursor: pointer;
+        transition: all 0.2s;
+        color: black;
+
+        &:hover{
+            transform: scale(1.2);
+        }
       }
     }
 
@@ -147,6 +151,14 @@
         border-radius: 20px;
         text-align: center;
         line-height: 50px;
+        color: black;
+        box-shadow: 0.3px 1px 3px gray;
+        transition: all 0.2s;
+        cursor: pointer;
+
+        &:hover, &:active {
+            transform: translateY(2px)
+        }
 
         
     }
@@ -157,7 +169,14 @@
         text-align: right;
         margin-top: 30px;
         margin-right: 20px;
-        text-decoration: none;
+        text-decoration: underline;
+        color: black;
+        transition: all 0.2s;
+        cursor: pointer;
+
+        &:hover, &:active {
+            transform: translateY(2px)
+        }
     }
   }
 
@@ -191,6 +210,7 @@
         & .material-symbols-outlined {
             font-size: 2rem;
             margin-top: 20px;
+
         }
     }
 
@@ -214,12 +234,20 @@
 
         &_phrase {
             margin: 20px;
-            // background-color: red;
             font-size: 25px;
 
             & .material-symbols-outlined {
                 font-size: 1rem;
                 text-decoration: none;
+                color: black;
+                transition: all 0.2s;
+                cursor: pointer;
+
+
+                &:hover{
+                    transform: scale(1.2);
+                    color:  rgb(255, 212, 98);
+                }
             }
         }
     }
@@ -268,4 +296,459 @@
   }
 }
 
+
+
+#modal_setting_name {
+    & .modal {
+      &_content {
+        background-color: rgba(0, 0, 0, 0.8);
+        margin: 10% auto;
+        // border: 1px solid #888;
+        border-radius: 20px;
+        width: 60%;
+        height: auto;
+        animation-name: fuwatto;
+        animation-duration: 1.2s;
+        animation-fill-mode: forwards;
+    
+        &_header {
+          // background-color: #fefefe;
+          margin: 0 auto;
+          // border: 1px solid #888;
+          // width: auto;
+          display: flex;
+          justify-content:space-between;
+          flex-direction: row;
+          align-items: center;
+          height: auto;
+          // display: inline-block;
+    
+          &_title {
+            margin-left: 30%;
+            color: rgb(255, 212, 98);
+            font-size: 35px;
+          }
+    
+          &_close {
+            font-size: 25px;
+            margin-right: 10px;
+            font-weight: bold;
+            color: rgb(255, 212, 98);
+            align-self: flex-start;
+    
+            &:hover,
+            &:focus {
+              color: black;
+              text-decoration: none;
+              cursor: pointer;
+            }
+          }
+        }
+    
+        &_body {
+          // height: 300px;
+          // width: 400px;
+          // background-color: yellow;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          font-size: 30px;
+          margin-bottom: 20px;
+          margin-top: 0;
+  
+          &_name {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+            margin-bottom: 20px;
+
+            
+            & span {
+                font-size: 30px;
+                margin-top: 20px;
+                margin-bottom: 30px;
+                
+            }
+
+            & form {
+
+                & input {
+                    margin-bottom: 30px;
+
+
+                    &::placeholder{
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+
+                }
+
+                & button {
+                    height: auto;
+                    width: auto;
+                    padding: 10px 30px;
+                }
+            }
+  
+          }
+
+        }
+      }
+    }
+  }
+
+
+
+  #modal_setting_profile {
+    & .modal {
+      &_content {
+        background-color: rgba(0, 0, 0, 0.8);
+        margin: 8% auto 5% auto;
+        // border: 1px solid #888;
+        border-radius: 20px;
+        width: 60%;
+        height: auto;
+        animation-name: fuwatto;
+        animation-duration: 1.2s;
+        animation-fill-mode: forwards;
+    
+        &_header {
+          // background-color: #fefefe;
+          margin: 0 auto;
+          // border: 1px solid #888;
+          // width: auto;
+          display: flex;
+          justify-content:space-between;
+          flex-direction: row;
+          align-items: center;
+          height: auto;
+          // display: inline-block;
+    
+          &_title {
+            margin-left: 30%;
+            color: rgb(255, 212, 98);
+            font-size: 35px;
+          }
+    
+          &_close {
+            font-size: 25px;
+            margin-right: 10px;
+            font-weight: bold;
+            color: rgb(255, 212, 98);
+            align-self: flex-start;
+            transition: all 0.2s;
+    
+            &:hover,
+            &:focus {
+              color: black;
+              text-decoration: none;
+              cursor: pointer;
+            }
+          }
+        }
+    
+        &_body {
+            margin-top: 0;
+
+            & span {
+                display: block;
+            }
+
+
+            &_onephrase {
+                margin-bottom: 40px;
+
+                & span {
+                    margin-bottom: 10px;
+                }
+
+                & input {
+                    // border: 1px solid rgb(255, 212, 98);
+                    margin-bottom: 20px;
+                }
+            }
+
+            &_mailaddress {
+                margin-bottom: 40px;
+
+                & span {
+                    margin-bottom: 10px;
+                }
+
+                & input {
+                    margin-bottom: 20px;
+                }
+            }
+
+            &_password {
+                margin-bottom: 40px;
+
+                & span {
+                    margin-bottom: 10px;
+                }
+
+                & input {
+                    margin-bottom: 20px;
+                }
+            }
+          
+
+            & button {
+                width: auto;
+                height: auto;
+                padding: 20px 30px;
+                font-size: 30px;
+            }
+      }
+    }
+  }
+}
+
+
+
+
+#modal_setting_delete {
+    & .modal {
+      &_content {
+        background-color: rgba(0, 0, 0, 0.8);
+        margin: 20% auto 5% auto;
+        // border: 1px solid #888;
+        border-radius: 20px;
+        width: 60%;
+        height: auto;
+        animation-name: fuwatto;
+        animation-duration: 1.2s;
+        animation-fill-mode: forwards;
+    
+        &_header {
+          // background-color: #fefefe;
+          margin: 0 auto;
+          // border: 1px solid #888;
+          // width: auto;
+          display: flex;
+          justify-content:space-between;
+          flex-direction: row;
+          align-items: center;
+          height: auto;
+          // display: inline-block;
+    
+          &_title {
+            margin-left: 25%;
+            color: rgb(255, 212, 98);
+            font-size: 35px;
+          }
+    
+          &_close {
+            font-size: 25px;
+            margin-right: 10px;
+            font-weight: bold;
+            color: rgb(255, 212, 98);
+            align-self: flex-start;
+            transition: all 0.2s;
+    
+            &:hover,
+            &:focus {
+              color: black;
+              text-decoration: none;
+              cursor: pointer;
+            }
+          }
+        }
+    
+        &_body {
+
+            margin:30px auto;
+
+
+            &_deleteButton {
+                width: auto;
+                height: auto;
+                padding: 20px 30px;
+                font-size: 30px;
+                border-radius: 20px;
+                border: 1px solid black;
+                color:black;
+                box-shadow: none;
+                background-color: rgb(255, 212, 98);
+                cursor: pointer;
+                transition: all 0.2s;
+
+                &:hover {
+                    transform: translateY(2px);
+                }
+                
+            }
+      }
+    }
+  }
+}
+
+
+#modal_setting_onephrase_edit {
+    & .modal {
+      &_content {
+        background-color: rgba(0, 0, 0, 0.8);
+        margin: 15% auto 5% auto;
+        // border: 1px solid #888;
+        border-radius: 20px;
+        width: 60%;
+        height: auto;
+        animation-name: fuwatto;
+        animation-duration: 1.2s;
+        animation-fill-mode: forwards;
+    
+        &_header {
+          // background-color: #fefefe;
+          margin: 0 auto;
+          // border: 1px solid #888;
+          // width: auto;
+          display: flex;
+          justify-content:space-between;
+          flex-direction: row;
+          align-items: center;
+          height: auto;
+          // display: inline-block;
+    
+          &_title {
+            margin-left: 25%;
+            color: rgb(255, 212, 98);
+            font-size: 35px;
+          }
+    
+          &_close {
+            font-size: 25px;
+            margin-right: 10px;
+            font-weight: bold;
+            color: rgb(255, 212, 98);
+            align-self: flex-start;
+            transition: all 0.2s;
+    
+            &:hover,
+            &:focus {
+              color: black;
+              text-decoration: none;
+              cursor: pointer;
+            }
+          }
+        }
+    
+        &_body {
+
+            margin:30px auto 10px auto;
+
+
+            &_editInput {
+                font-size: 30px;
+                margin-top: 30px;
+
+                &::placeholder{
+                    font-family: kiwi maru;
+                }
+            }
+
+
+            &_editButton {
+                margin-top: 60px;
+                width: auto;
+                height: auto;
+                padding: 20px 30px;
+                font-size: 30px;
+                border-radius: 20px;
+                border: 1px solid black;
+                color:black;
+                box-shadow: none;
+                background-color: rgb(255, 212, 98);
+                cursor: pointer;
+                transition: all 0.2s;
+                font-family: kiwi maru;
+
+                &:hover {
+                    transform: translateY(2px);
+                }
+                
+            }
+      }
+    }
+  }
+}
+
+
+
+
+#modal_setting_onephrase_delete {
+    & .modal {
+      &_content {
+        background-color: rgba(0, 0, 0, 0.8);
+        margin: 20% auto 5% auto;
+        // border: 1px solid #888;
+        border-radius: 20px;
+        width: 60%;
+        height: auto;
+        animation-name: fuwatto;
+        animation-duration: 1.2s;
+        animation-fill-mode: forwards;
+    
+        &_header {
+          // background-color: #fefefe;
+          margin: 0 auto;
+          // border: 1px solid #888;
+          // width: auto;
+          display: flex;
+          justify-content:space-between;
+          flex-direction: row;
+          align-items: center;
+          height: auto;
+          // display: inline-block;
+    
+          &_title {
+            margin-left: 25%;
+            color: rgb(255, 212, 98);
+            font-size: 35px;
+          }
+    
+          &_close {
+            font-size: 25px;
+            margin-right: 10px;
+            font-weight: bold;
+            color: rgb(255, 212, 98);
+            align-self: flex-start;
+            transition: all 0.2s;
+    
+            &:hover,
+            &:focus {
+              color: black;
+              text-decoration: none;
+              cursor: pointer;
+            }
+          }
+        }
+    
+        &_body {
+
+            margin:30px auto;
+
+
+            &_deleteButton {
+                width: auto;
+                height: auto;
+                padding: 20px 30px;
+                font-size: 30px;
+                border-radius: 20px;
+                border: 1px solid black;
+                color:black;
+                box-shadow: none;
+                background-color: rgb(255, 212, 98);
+                cursor: pointer;
+                transition: all 0.2s;
+
+                &:hover {
+                    transform: translateY(2px);
+                }
+                
+            }
+      }
+    }
+  }
+}
 

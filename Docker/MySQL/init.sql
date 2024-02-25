@@ -31,8 +31,8 @@ CREATE TABLE channels_users (
 
 CREATE TABLE fixed_phrases (
     id serial PRIMARY KEY,
-    user_id varchar(255) REFERENCES users(id),
-    phrase varchar(255) NOT NULL,
+    user_id integer REFERENCES users(id),
+    phrase varchar(255) NOT NULL
 );
 
 CREATE TABLE messages (
