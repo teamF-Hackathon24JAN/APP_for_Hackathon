@@ -24,6 +24,7 @@ services:
       - MYSQL_DATABASE=gutara_chat
       - MYSQL_USER=admin
       - MYSQL_PASSWORD=fteam
+      - TZ=Asia/Tokyo
     # DBのコンテナのヘルスチェックを行う
     # mysqladmin(MySQLサーバーの管理を行うクライアントを使ってDBコンテナ自身(127.0.0.1)にpingを送ってヘルスチェックを行う
     healthcheck:
@@ -54,6 +55,9 @@ services:
       - "5000:5000"
     # uwsgiを実行
     command: uwsgi --ini /code/app.ini 
+    #コンテナ内でboto3 （AWS CLI)を使うためのアクセスキーを記したファイル
+    env_file:
+      - .env
         
     # 先にdbを起動してからappを起動する
     depends_on:
@@ -61,10 +65,8 @@ services:
         # dbのヘルスチェックが終わってからappを起動させる
         condition: service_healthy
 
-    #コンテナ内でboto3 （AWS CLI)を使うためのアクセスキーを記したファイル
-
-    env_file:
-      - .env
+    environment:
+      - TZ=Asia/Tokyo
 
   web:
     #Dockerfileは作らず、直接イメージ作成
@@ -77,6 +79,9 @@ services:
 
     depends_on:
       - app 
+
+    environment:
+      - TZ=Asia/Tokyo
 
 volumes:
   mysql_data:
