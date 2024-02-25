@@ -86,6 +86,17 @@ def home():
     else:
         return render_template('home.html')
 
+# 設定ページの表示
+@app.route('/setting')
+def index():
+    user_id = session.get("uid")
+    if uid is None:
+        return redirect('/login')
+    else:
+        channels = dbConnect.getChannelAll()
+        channels.reverse()
+    return render_template('index.html', channels=channels, uid=uid)
+
 
 ## ログアウト
 @app.route('/logout')
@@ -100,9 +111,9 @@ if __name__ == "__main__":
 # # メッセージ作成機能
 @app.route('/message', methods=['POST'])
 def add_message():
-    uid = session.get("uid")
+    user_id = session.get("user_id")
     # ユーザーがログインしていない場合は、ログインページにリダイレクトする
-    if not uid:
+    if not user_idid:
         return redirect('/login')
 
     message = request.form.get('message')
@@ -110,43 +121,43 @@ def add_message():
     
     # メッセージが存在する場合のみ、データベースにメッセージを追加
     if message:
-        dbConnect.createMessage(uid, channel_id, message)
+        dbConnect.createMessage(user_id, channel_id, message)
     else:
         # メッセージが空の場合は、エラーメッセージと共に元のページに戻る
         return redirect('/error_page') 
 
     # チャンネル情報とそのチャンネルのメッセージを取得してテンプレートに渡す
     channel = dbConnect.getChannelById(channel_id)
-    messages = dbConnect.getMessageAll(channel_id)
+    message = dbConnect.getMessageAll(channel_id)
     
-    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
+    return render_template('detail.html', message=message, channel=channel, user_id=user_id)
 
 # # メッセージ一覧機能
-@app.route('/detail/<cid>')
-def detail(cid):
+@app.route('/detail/<channel_id>')
+def detail(channel_id):
     # 現在のセッションからユーザーID ('uid') を取得
-    uid = session.get("uid")
+    user_id = session.get("user_id")
     
     # もしユーザーIDが存在しない場合、ユーザーがログインしていない場合は、ログインページにリダイレクト
-    if uid is None:
+    if user_id is None:
         return redirect('/login')
     
     # パスパラメーターから取得したチャンネルIDを使用し、チャンネルの情報をデータベースから取得
-    channel = dbConnect.getChannelById(cid)
+    channel = dbConnect.getChannelById(channel_id)
     
     # 指定されたチャンネルIDに関連する全てのメッセージを取得
-    messages = dbConnect.getMessageAll(cid)
+    messages = dbConnect.getMessageAll(channel_id)
 
     # 取得したチャンネル情報とメッセージ、ユーザーIDをdetail.htmlテンプレートに渡し、そのテンプレートを使用してレンダリングしたページを返す
-    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
+    return render_template('detail.html', message=message, channel=channel, user_id=user_id)
 
 
 # # チャンネル作成機能
 @app.route('/', methods=['post'])
 def add_channel():
     # セッションからuidを取得
-    uid = session.get('uid')
-    print(uid)
+    user_id = session.get('user_id')
+    print(user_id)
     # uidがNoneだった場合ログインページにリダイレクト
     if uid is None:
         return redirect('/login')
