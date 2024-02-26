@@ -131,3 +131,121 @@ def add_channel():
         error = 'すでに同じチャンネルが存在しています'
         return render_template('error/error.html', error_message=error)
     
+
+from flask import Flask, request, jsonify
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///yourdatabase.db'
+db = SQLAlchemy(app)
+
+class Phrase(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.String(255), nullable=False)
+
+@app.route('/phrases', methods=['GET'])
+def get_phrases():
+    phrases = Phrase.query.all()
+    return jsonify([phrase.text for phrase in phrases])
+
+@app.route('/phrases', methods=['POST'])
+def add_phrase():
+    data = request.get_json()
+    new_phrase = Phrase(text=data['text'])
+    db.session.add(new_phrase)
+    db.session.commit()
+    return jsonify({'message': 'Phrase added'}), 201
+
+@app.route('/phrases/<int:id>', methods=['DELETE'])
+def delete_phrase(id):
+    phrase = Phrase.query.get(id)
+    if not phrase:
+        return jsonify({'message': 'Phrase not found'}), 404
+    db.session.delete(phrase)
+    db.session.commit()
+    return jsonify({'message': 'Phrase deleted'}), 200
+
+
+
+
+from flask import Flask, request, jsonify
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__)
+# データベース設定（例: SQLite）
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///yourdatabase.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+class FixedPhrase(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    phrase = db.Column(db.String(255), nullable=False)
+
+# データベース初期化用ルート（本番環境では削除またはコメントアウト）
+@app.route('/initdb')
+def initdb():
+    db.create_all()
+    return "データベースが初期化されました。"
+
+
+
+
+
+
+# # 定型文の追加、編集、削除
+
+from flask import Flask, request, jsonify
+from flask_sqlalchemy import SQLAlchemy
+
+# Flaskアプリケーションのインスタンスを作成
+app = Flask(__name__)
+# データベース設定をアプリケーションに設定
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///yourdatabase.db'
+# SQLAlchemyオブジェクトを初期化
+db = SQLAlchemy(app)
+
+# 定型文を保持するデータモデル
+class Phrase(db.Model):
+    id = db.Column(db.Integer, primary_key=True)  # 主キーとしてのID
+    text = db.Column(db.String(255), nullable=False)  # 定型文のテキスト
+
+# 定型文の一覧を取得するエンドポイント
+@app.route('/phrases', methods=['GET'])
+def get_phrases():
+    phrases = Phrase.query.all()  # データベースからすべての定型文を取得
+    return jsonify([phrase.text for phrase in phrases])  # 定型文のリストをJSON形式で返す
+
+# 新しい定型文を追加するエンドポイント
+@app.route('/phrases', methods=['POST'])
+def add_phrase():
+    data = request.get_json()  # リクエストボディからJSONデータを取得
+    new_phrase = Phrase(text=data['text'])  # 新しいPhraseオブジェクトを作成
+    db.session.add(new_phrase)  # データベースセッションに追加
+    db.session.commit()  # 変更をデータベースにコミット
+    return jsonify({'message': '定型文が追加されました。'}), 201  # 成功メッセージを返す
+
+# 特定の定型文を更新するエンドポイント
+@app.route('/phrases/<int:id>', methods=['PUT'])
+def update_phrase(id):
+    data = request.get_json()  # リクエストボディからJSONデータを取得
+    phrase = Phrase.query.get(id)  # IDに基づいて定型文を取得
+    if not phrase:
+        return jsonify({'message': '定型文が見つかりません。'}), 404  # 定型文が見つからない場合はエラーを返す
+    phrase.text = data['text']  # 定型文のテキストを更新
+    db.session.commit()  # 変更をデータベースにコミット
+    return jsonify({'message': 'Phrase updated'}), 200  # 成功メッセージを返す
+
+# 特定の定型文を削除するエンドポイント
+@app.route('/phrases/<int:id>', methods=['DELETE'])
+def delete_phrase(id):
+    phrase = Phrase.query.get(id)  # IDに基づいて定型文を取得
+    if not phrase:
+        return jsonify({'message': '定型文が見つかりません。'}), 404  # 定型文が見つからない場合はエラーを返す
+    db.session.delete(phrase)  # 定型文をデータベースから削除
+    db.session.commit()  # 変更をデータベースにコミット
+    return jsonify({'message': '定型文が削除されました。'}), 200  # 成功メッセージを返す
+
+# アプリケーションを実行
+if __name__ == '__main__':
+    app.run(debug=True)
