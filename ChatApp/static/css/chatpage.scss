@@ -54,16 +54,26 @@
       align-self: flex-start;
       width: auto;
       height: auto;
-      background-color: #f0f0f0;
-      border: 1px solid black;
-      border-radius: 10px;
-      box-shadow: 0.5px 0.5px 2px black;
-      margin-left: 50px;
+      margin-left: 30px;
       margin-top: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
 
       & span {
-        padding: 0 20px;
+
+        &:nth-child(1){
+          display: block;
+          margin-bottom: 5px;
+        }
+
+        &:nth-child(2){
+          margin-left: 30px;
+          padding: 0 20px;
+          border: 1px solid black;
+          background-color: #f0f0f0;
+          border-radius: 10px;
+          box-shadow: 0.5px 0.5px 2px black;
+        }
+        
       }
     }
 
