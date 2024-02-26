@@ -31,7 +31,7 @@ CREATE TABLE channels_users (
 );
 
 CREATE TABLE friends(
-    id serial PRIMARY KEY
+    id serial PRIMARY KEY,
     user_id integer REFERENCES users(id),
     friend_id integer REFERENCES users(id)
 )
