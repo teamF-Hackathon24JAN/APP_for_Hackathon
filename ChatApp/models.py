@@ -5,12 +5,12 @@ from util.DB import DB
 
 # データベースに接続し、ユーザーを新規登録する
 class dbConnect:
-    def createUser(id, name, email, password):
+    def createUser(session_id, name, email, password, picture):
         try:
             conn = DB.getConnection()
             cur = conn.cursor()
-            sql = "INSERT INTO users (id, name, email, password) VALUES (%s, %s, %s, %s);"
-            cur.execute(sql, (id, name, email, password))
+            sql = "INSERT INTO users (session_id, name, email, password, picture) VALUES (%s, %s, %s, %s, %s);"
+            cur.execute(sql, (session_id, name, email, password, picture))
             conn.commit()
         except Exception as e:
             print(e + "Sが発生しています")
@@ -81,16 +81,16 @@ def getMessageAll(cid):
 
 
 
-def getChannelById(uid):
+def getChannelById(user_id):
     try:
         # データベースへの接続を確立
-        conn = DB.getChnnection()
+        conn = DB.getConnection()
         # カーソルを作成
         cur = conn.cursor()
         # 実行するSQL文を定義。ここでは指定されたidを持つチャンネルを検索
         sql = "SELECT * FROM channels WHERE id=%s;"
         # SQL文を実行。パラメータとしてuidを渡す
-        cur.execute(sql, (uid,))
+        cur.execute(sql, (user_id,))
         # 結果を取得
         channel = cur.fetchone()
         # 取得したチャンネル情報を返す
