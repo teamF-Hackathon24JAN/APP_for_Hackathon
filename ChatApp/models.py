@@ -5,15 +5,15 @@ from util.DB import DB
 
 # データベースに接続し、ユーザーを新規登録する
 class dbConnect:
-    def createUser(session_id, name, email, password, picture):
+    def createUser(session_id, name, email, password):
         try:
             conn = DB.getConnection()
             cur = conn.cursor()
-            sql = "INSERT INTO users (session_id, name, email, password, picture) VALUES (%s, %s, %s, %s, %s);"
-            cur.execute(sql, (session_id, name, email, password, picture))
+            sql = "INSERT INTO users (session_id, name, email, password) VALUES (%s, %s, %s, %s);"
+            cur.execute(sql, (session_id, name, email, password))
             conn.commit()
         except Exception as e:
-            print(e + "Sが発生しています")
+            print(e + "が発生しています")
         finally:
             cur.close()
 
@@ -31,7 +31,7 @@ class dbConnect:
         finally:
             cur.close()
 
-def createMessage(uid, cid, message):
+def createMessage(user_id, cid, message):
     # tryブロックを使用して、データベースへの接続と操作を試みる
     try:
         # データベース接続を取得
@@ -39,9 +39,9 @@ def createMessage(uid, cid, message):
         # カーソルオブジェクトを作成。これを使用してSQLクエリを実行
         cur = conn.cursor()
         # SQL文を定義
-        sql = "INSERT INTO messages(uid, cid, message) VALUES(%s, %s, %s)"
+        sql = "INSERT INTO messages(user_id, channel_id, message) VALUES(%s, %s, %s)"
         # executeメソッドを使用してSQL文を実行。プレースホルダーにはuid, cid, messageの値を渡す
-        cur.execute(sql, (uid, cid, message))
+        cur.execute(sql, (user_id, cid, message))
     except Exception as e:
         # エラーが発生した場合、エラーメッセージを出力
         print(str(e) + 'が発生しています')
@@ -78,8 +78,20 @@ def getMessageAll(cid):
         # カーソルオブジェクトを閉じる
         cur.close()
 
-
-
+#session_IDからuser_id(usersテーブルのid)を取得する
+def getUserID(session_id):
+    try:
+        conn = DB.getConnection()
+        cur = conn.cursor()
+        sql = "SELECT * FROM users WHERE session_id%s;"
+        cur.execute(sql, (session_id,))
+        user_id = cur.fetchone()
+        return user_id["id"]
+    except Exception as e:
+        print(str(e) + 'が発生しています')
+        return None
+    finally:
+        cur.close()
 
 def getChannelById(user_id):
     try:
