@@ -112,11 +112,22 @@
   font-style: normal;
   transition: background-size 0.6s, transform 0.6s, font-weight 2s;
   margin-bottom: 15px;
-  transform: translateX(-20px);
+  transform: translateX(-10px);
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 .main ._leftside .friends-container #friends-scrollcontainer .list:hover {
   transform: scale(1.1);
+}
+.main ._leftside .friends-container #friends-scrollcontainer .list span {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  background-color: lightgray;
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-top: 5px;
 }
 .main ._leftside .friends-container .scroll-icon {
   display: flex;
@@ -177,6 +188,7 @@
   width: 80px;
   border-radius: 50%;
   background-color: lightgray;
+  margin-left: 80px;
 }
 .main ._rightside ._proile h2 {
   font-size: 40px;
@@ -257,16 +269,26 @@
 .main ._rightside ._channels #channel-boxes ._channels-var .channel-members {
   margin-top: 20px;
   margin-bottom: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 100%;
   overflow-y: scroll;
 }
-.main ._rightside ._channels #channel-boxes ._channels-var .channel-members span {
+.main ._rightside ._channels #channel-boxes ._channels-var .channel-members li {
+  margin-left: 15%;
+  list-style: none;
   font-size: 20px;
-  flex: none;
-  margin-top: 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.main ._rightside ._channels #channel-boxes ._channels-var .channel-members li span {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: black;
+  margin-right: 10px;
+  transform: translateY(1px);
 }
 .main ._rightside ._channels .channels-scrollicon {
   margin: 0 20px;

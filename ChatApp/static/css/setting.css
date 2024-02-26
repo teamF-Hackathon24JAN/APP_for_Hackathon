@@ -70,6 +70,16 @@
   line-height: 60px;
   padding-left: 10px;
   background-color: lightgray;
+  transition: 0.6s;
+  cursor: pointer;
+}
+.setting_main_leftside_profile_onephrase span:nth-child(2):hover {
+  background-color: rgba(0, 0, 0, 0.713);
+  color: rgb(255, 212, 98);
+}
+.setting_main_leftside_profile_onephrase span:nth-child(2):active {
+  background-color: rgba(0, 0, 0, 0.848);
+  color: rgb(255, 212, 98);
 }
 .setting_main_leftside_profile_mailaddress > * {
   display: block;
@@ -84,6 +94,15 @@
   height: 40px;
   line-height: 40px;
   padding-left: 10px;
+  cursor: pointer;
+}
+.setting_main_leftside_profile_mailaddress span:nth-child(2):hover {
+  background-color: rgba(0, 0, 0, 0.713);
+  color: rgb(255, 212, 98);
+}
+.setting_main_leftside_profile_mailaddress span:nth-child(2):active {
+  background-color: rgba(0, 0, 0, 0.848);
+  color: rgb(255, 212, 98);
 }
 .setting_main_leftside_profile_password > * {
   display: block;
@@ -98,6 +117,15 @@
   height: 40px;
   line-height: 40px;
   padding-left: 10px;
+  cursor: pointer;
+}
+.setting_main_leftside_profile_password span:nth-child(2):hover {
+  background-color: rgba(0, 0, 0, 0.713);
+  color: rgb(255, 212, 98);
+}
+.setting_main_leftside_profile_password span:nth-child(2):active {
+  background-color: rgba(0, 0, 0, 0.848);
+  color: rgb(255, 212, 98);
 }
 .setting_main_leftside_change {
   display: block;
@@ -291,6 +319,222 @@
   margin-right: auto;
 }
 #modal_setting_name .modal_content_body_name form button {
+  height: auto;
+  width: auto;
+  padding: 10px 30px;
+}
+
+#modal_setting_onephrase .modal_content {
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: 10% auto;
+  border-radius: 20px;
+  width: 60%;
+  height: auto;
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
+#modal_setting_onephrase .modal_content_header {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  height: auto;
+}
+#modal_setting_onephrase .modal_content_header_title {
+  margin-left: 25%;
+  color: rgb(255, 212, 98);
+  font-size: 35px;
+}
+#modal_setting_onephrase .modal_content_header_close {
+  font-size: 25px;
+  margin-right: 10px;
+  font-weight: bold;
+  color: rgb(255, 212, 98);
+  align-self: flex-start;
+}
+#modal_setting_onephrase .modal_content_header_close:hover, #modal_setting_onephrase .modal_content_header_close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+#modal_setting_onephrase .modal_content_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30px;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+#modal_setting_onephrase .modal_content_body_name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+#modal_setting_onephrase .modal_content_body_name span {
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+#modal_setting_onephrase .modal_content_body_name form input {
+  margin-bottom: 30px;
+}
+#modal_setting_onephrase .modal_content_body_name form input::-moz-placeholder {
+  margin-left: auto;
+  margin-right: auto;
+}
+#modal_setting_onephrase .modal_content_body_name form input::placeholder {
+  margin-left: auto;
+  margin-right: auto;
+}
+#modal_setting_onephrase .modal_content_body_name form button {
+  height: auto;
+  width: auto;
+  padding: 10px 30px;
+}
+
+#modal_setting_mailaddress .modal_content {
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: 10% auto;
+  border-radius: 20px;
+  width: 60%;
+  height: auto;
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
+#modal_setting_mailaddress .modal_content_header {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  height: auto;
+}
+#modal_setting_mailaddress .modal_content_header_title {
+  margin-left: 20%;
+  color: rgb(255, 212, 98);
+  font-size: 35px;
+}
+#modal_setting_mailaddress .modal_content_header_close {
+  font-size: 25px;
+  margin-right: 10px;
+  font-weight: bold;
+  color: rgb(255, 212, 98);
+  align-self: flex-start;
+}
+#modal_setting_mailaddress .modal_content_header_close:hover, #modal_setting_mailaddress .modal_content_header_close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+#modal_setting_mailaddress .modal_content_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30px;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+#modal_setting_mailaddress .modal_content_body_name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+#modal_setting_mailaddress .modal_content_body_name span {
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+#modal_setting_mailaddress .modal_content_body_name form input {
+  margin-bottom: 30px;
+}
+#modal_setting_mailaddress .modal_content_body_name form input::-moz-placeholder {
+  margin-left: auto;
+  margin-right: auto;
+}
+#modal_setting_mailaddress .modal_content_body_name form input::placeholder {
+  margin-left: auto;
+  margin-right: auto;
+}
+#modal_setting_mailaddress .modal_content_body_name form button {
+  height: auto;
+  width: auto;
+  padding: 10px 30px;
+}
+
+#modal_setting_password .modal_content {
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: 10% auto;
+  border-radius: 20px;
+  width: 60%;
+  height: auto;
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
+#modal_setting_password .modal_content_header {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  height: auto;
+}
+#modal_setting_password .modal_content_header_title {
+  margin-left: 25%;
+  color: rgb(255, 212, 98);
+  font-size: 35px;
+}
+#modal_setting_password .modal_content_header_close {
+  font-size: 25px;
+  margin-right: 10px;
+  font-weight: bold;
+  color: rgb(255, 212, 98);
+  align-self: flex-start;
+}
+#modal_setting_password .modal_content_header_close:hover, #modal_setting_password .modal_content_header_close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+#modal_setting_password .modal_content_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30px;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+#modal_setting_password .modal_content_body_name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+#modal_setting_password .modal_content_body_name span {
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+#modal_setting_password .modal_content_body_name form input {
+  margin-bottom: 30px;
+}
+#modal_setting_password .modal_content_body_name form input::-moz-placeholder {
+  margin-left: auto;
+  margin-right: auto;
+}
+#modal_setting_password .modal_content_body_name form input::placeholder {
+  margin-left: auto;
+  margin-right: auto;
+}
+#modal_setting_password .modal_content_body_name form button {
   height: auto;
   width: auto;
   padding: 10px 30px;
@@ -516,7 +760,7 @@
 }
 #modal_setting_onephrase_delete .modal_content_header_title {
   margin-left: 25%;
-  color: rgb(255, 212, 98);
+  color: red;
   font-size: 35px;
 }
 #modal_setting_onephrase_delete .modal_content_header_close {
@@ -547,6 +791,7 @@
   background-color: rgb(255, 212, 98);
   cursor: pointer;
   transition: all 0.2s;
+  margin-top: 50px;
 }
 #modal_setting_onephrase_delete .modal_content_body_deleteButton:hover {
   transform: translateY(2px);

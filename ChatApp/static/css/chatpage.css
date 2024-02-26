@@ -46,16 +46,21 @@
   align-self: flex-start;
   width: auto;
   height: auto;
-  background-color: #f0f0f0;
+  margin-left: 30px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+.chat_container_friends_text span:nth-child(1) {
+  display: block;
+  margin-bottom: 5px;
+}
+.chat_container_friends_text span:nth-child(2) {
+  margin-left: 30px;
+  padding: 0 20px;
   border: 1px solid black;
+  background-color: #f0f0f0;
   border-radius: 10px;
   box-shadow: 0.5px 0.5px 2px black;
-  margin-left: 50px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-.chat_container_friends_text span {
-  padding: 0 20px;
 }
 .chat_container_my_text {
   flex: none;

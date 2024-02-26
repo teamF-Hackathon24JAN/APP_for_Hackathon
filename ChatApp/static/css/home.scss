@@ -137,12 +137,24 @@
           // background-size: 0 1px;
           transition: background-size 0.6s, transform 0.6s, font-weight 2s;
           margin-bottom: 15px;
-          transform: translateX(-20px);
+          transform: translateX(-10px);
           cursor: pointer;
+          display: flex;
+          align-items: center;
 
           &:hover {
             // background-size: 100% 1px;
             transform: scale(1.1);
+          }
+
+          & span {
+            display: inline-block;
+            height: 20px;
+            width: 20px;
+            background-color: lightgray;
+            border-radius: 50%;
+            margin-right: 10px;
+            margin-top: 5px;
           }
         }
       }
@@ -239,7 +251,7 @@
         width: 80px;
         border-radius: 50%;
         background-color: lightgray;
-        // margin-left: 40px;
+        margin-left: 80px;
         // margin-right: 40px;
       }
 
@@ -339,16 +351,31 @@
             margin-bottom: 10px;
             // margin-left: auto;
             // margin-right: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            // display: flex;
+            // flex-direction: column;
+            // align-items: center;
             width: 100%;
             overflow-y: scroll;
 
-            & span {
+            & li {
+              margin-left: 15%;
+              list-style: none;
               font-size: 20px;
-              flex: none;
-              margin-top: 15px;
+              margin-bottom: 10px;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+
+              & span {
+                display: inline-block;
+                height: 20px;
+                width: 20px;
+                border-radius: 50%;
+                background-color: black;
+                margin-right: 10px;
+                transform: translateY(1px);
+
+              }
             }
           }
         }
@@ -678,13 +705,11 @@
               color: black;
             }
 
-
-             &:hover {
+            &:hover {
               background-size: 100% 1px;
             }
           }
         }
-
 
         &_tab-content {
           width: 80%;
@@ -692,12 +717,10 @@
           // border: 1px solid #ffd000;
           margin-right: 40px;
 
-          & .content{
-
-            &:active{
+          & .content {
+            &:active {
               display: block;
             }
-
 
             & .channel-Name {
               display: block;
@@ -711,10 +734,10 @@
               display: flex;
               display: row;
 
-              & .Addedfriend{
+              & .Addedfriend {
                 display: flex;
                 flex-direction: column;
-                width:300px;
+                width: 300px;
                 height: 200px;
                 margin: 20px 20px 20px 100px;
                 border: 1px solid #ffd000;
@@ -731,7 +754,7 @@
               & .Addfriend {
                 display: flex;
                 flex-direction: column;
-                width:300px;
+                width: 300px;
                 height: 200px;
                 margin: 20px 20px 20px 40px;
                 border: 1px solid #ffd000;
@@ -743,15 +766,11 @@
                   margin-bottom: 5px;
                   margin-left: 5px;
                 }
-
-
               }
             }
-
           }
 
-          
-          & .channel_changeButton{
+          & .channel_changeButton {
             height: auto;
             width: auto;
             margin: 5px auto;
@@ -760,13 +779,11 @@
             font-family: kiwi maru;
             padding: 10px 20px;
             border-radius: 10px;
-            
-            
+
             & a {
               text-decoration: none;
               color: black;
             }
-
           }
         }
       }
