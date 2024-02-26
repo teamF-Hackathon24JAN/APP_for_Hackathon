@@ -34,7 +34,7 @@ CREATE TABLE friends(
     id serial PRIMARY KEY,
     user_id integer REFERENCES users(id),
     friend_id integer REFERENCES users(id)
-)
+);
 
 CREATE TABLE fixed_phrases (
     id serial PRIMARY KEY,
