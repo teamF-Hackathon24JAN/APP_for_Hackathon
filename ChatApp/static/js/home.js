@@ -78,10 +78,10 @@ friendaddmodal.addEventListener('click',() => {
 
 
 
-const home_channels_edit = document.getElementById('home_channels_edit');
+const home_channels_edit = document.getElementById('home_channels_add');
 
 home_channels_edit.addEventListener('click', () => {
-  const modal_home_channels_edit = document.getElementById('modal_home_channels_edit');
+  const modal_home_channels_edit = document.getElementById('modal_home_channels_add');
   modal_home_channels_edit.style.display = 'block'
 }) 
   
@@ -111,24 +111,24 @@ channel_vars.forEach(channel => {
 });
 
 
-document.querySelectorAll('.tab').forEach((tab) => {
-  tab.addEventListener('click', function() {
-    const target = this.getAttribute('data-tab');
+// document.querySelectorAll('.tab').forEach((tab) => {
+//   tab.addEventListener('click', function() {
+//     const target = this.getAttribute('data-tab');
     
-    // 以前のアクティブなタブの内容を非表示にする
-    document.querySelectorAll('.content').forEach((content) => {
-      content.style.display = 'none';
-    });
+//     // 以前のアクティブなタブの内容を非表示にする
+//     document.querySelectorAll('.content').forEach((content) => {
+//       content.style.display = 'none';
+//     });
 
-    // クリックされたタブに関連するコンテンツを表示
-    document.getElementById(target).style.display = 'block';
+//     // クリックされたタブに関連するコンテンツを表示
+//     document.getElementById(target).style.display = 'block';
 
-    // 以前のアクティブなタブのスタイルをリセット
-    document.querySelectorAll('.tab').forEach((tab) => {
-      tab.classList.remove('active');
-    });
+//     // 以前のアクティブなタブのスタイルをリセット
+//     document.querySelectorAll('.tab').forEach((tab) => {
+//       tab.classList.remove('active');
+//     });
 
-    // クリックされたタブのスタイルをアクティブに
-    this.classList.add('active');
-  });
-});
+//     // クリックされたタブのスタイルをアクティブに
+//     this.classList.add('active');
+//   });
+// });

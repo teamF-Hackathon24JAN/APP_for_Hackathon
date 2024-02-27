@@ -237,7 +237,7 @@
       height: 20%;
       display: flex;
       align-items: center;
-      justify-content: space-around;
+      // justify-content: space-around;
       transition: background-color 0.8s;
 
       & > * {
@@ -251,8 +251,8 @@
         width: 80px;
         border-radius: 50%;
         background-color: lightgray;
-        margin-left: 80px;
-        // margin-right: 40px;
+        margin-left: 10%;
+        margin-right: 20px;
       }
 
       & h2 {
@@ -261,7 +261,7 @@
       }
 
       .onephrase {
-        margin-left: 300px;
+        margin-left: 40%;
         padding-top: 10px;
         font-size: 25px;
       }
@@ -374,7 +374,6 @@
                 background-color: black;
                 margin-right: 10px;
                 transform: translateY(1px);
-
               }
             }
           }
@@ -614,7 +613,7 @@
   }
 }
 
-#modal_home_channels_edit {
+#modal_home_channels_add {
   & .modal {
     &_content {
       background-color: rgba(0, 0, 0, 0.8);
@@ -640,7 +639,7 @@
         // display: inline-block;
 
         &_title {
-          margin-left: 34%;
+          margin-left: 35%;
           color: rgb(255, 212, 98);
           font-size: 35px;
         }
@@ -670,121 +669,62 @@
         flex-direction: row;
         align-items: center;
         font-size: 30px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         margin-top: 0;
         // height: 60%;
+        
 
-        &_tabs {
-          width: 200px;
-          height: 300px;
-          margin-left: 40px;
-          overflow-y: scroll;
-          display: flex;
-          align-items: center;
-          flex-direction: column;
-          // border: 1px solid yellow;
+        & form {
+          margin: 0 24%;
+          
+          
+          & > * {
+            display: block;
+          }
 
-          & .tab {
-            // background-color: yellow;
-            height: auto;
-            font-size: 40px;
-            margin-top: 30px;
-            // width: 200px;
-            padding: 0;
+          & .channel_name {
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 10px;
+
+          }
+
+          & .channel_name_input {
+            display: block;
+            margin-top: 10px;
+            width: 100%;
+            margin-bottom: 40px;
+          }
+
+          & .channel_discription {
+            display: block;
+            margin-bottom: 10px;
+          
+          }
+
+          & .channel_discription_input {
+            display: block;
+            margin-bottom: 10px;
             margin-left: auto;
             margin-right: auto;
-            background-image: linear-gradient(90deg, #ffd000, #ffd000);
-            background-repeat: no-repeat;
-            background-position: left bottom;
-            background-size: 0 1px;
-            transition: background-size 0.6s;
-            cursor: pointer;
+            
+          }
 
-            &.active {
-              background-color: rgb(255, 212, 98);
-              color: black;
-            }
+          & .channnel_add_button {
+            display: block;
+            margin-top:30px;
+            border: none;
+            transition: all 0.2s;
 
             &:hover {
-              background-size: 100% 1px;
+              transform: translateY(3px);
             }
-          }
-        }
 
-        &_tab-content {
-          width: 80%;
-          height: 80%;
-          // border: 1px solid #ffd000;
-          margin-right: 40px;
-
-          & .content {
             &:active {
-              display: block;
-            }
-
-            & .channel-Name {
-              display: block;
-              margin: 10px auto;
-              width: 60%;
-              height: 50px;
-              font-size: 30px;
-            }
-
-            & .tab_channels_friendselect {
-              display: flex;
-              display: row;
-
-              & .Addedfriend {
-                display: flex;
-                flex-direction: column;
-                width: 300px;
-                height: 200px;
-                margin: 20px 20px 20px 100px;
-                border: 1px solid #ffd000;
-                overflow-y: scroll;
-
-                & span {
-                  font-size: 25px;
-                  margin-top: 10px;
-                  margin-bottom: 5px;
-                  margin-left: 5px;
-                }
-              }
-
-              & .Addfriend {
-                display: flex;
-                flex-direction: column;
-                width: 300px;
-                height: 200px;
-                margin: 20px 20px 20px 40px;
-                border: 1px solid #ffd000;
-                overflow-y: scroll;
-
-                & span {
-                  font-size: 25px;
-                  margin-top: 10px;
-                  margin-bottom: 5px;
-                  margin-left: 5px;
-                }
-              }
+              transform: translateY(4px);
             }
           }
 
-          & .channel_changeButton {
-            height: auto;
-            width: auto;
-            margin: 5px auto;
-            display: block;
-            font-size: 25px;
-            font-family: kiwi maru;
-            padding: 10px 20px;
-            border-radius: 10px;
-
-            & a {
-              text-decoration: none;
-              color: black;
-            }
-          }
         }
       }
     }
