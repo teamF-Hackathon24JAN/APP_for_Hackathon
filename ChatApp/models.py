@@ -14,6 +14,7 @@ class dbConnect:
             conn.commit()
         except Exception as e:
             print(e + "が発生しています")
+            return None
         finally:
             cur.close()
 
@@ -28,6 +29,7 @@ class dbConnect:
             return user
         except Exception as e:
             print(e + "が発生しています")
+            return None
         finally:
             cur.close()
     
@@ -42,6 +44,21 @@ class dbConnect:
             return user
         except Exception as e:
             print(str(e) + 'が発生しています')
+            return None
+        finally:
+            cur.close()
+
+#channelテーブルのチャンネル名から該当した行を取り出す
+    def getChannelByName(channel_name):
+        try:
+            conn = DB.getConnection()
+            cur = conn.cursor()
+            sql = "SELECT * FROM channels WHERE name=%s;"
+            cur.execute(sql, (channel_name))
+            channel = cur.fetchone()
+            return channel
+        except Exception as e:
+            print(e + 'が発生しています')
             return None
         finally:
             cur.close()

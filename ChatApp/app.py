@@ -116,21 +116,23 @@ def home():
             channels=channels
         )
 
-# チャンネルの追加
+
+
+# チャンネルの更新
 @app.route('/home', methods=['POST'])
-def addFriend():
+def update_channel():
     session_id = session.get("session_id")
-    if uid is None:
+    if session_id is None:
         return redirect('/login')
-    friend_id = request.form.get('FriendId')
-    friend = dbConnect.getChannelByName(channel_name)
-    if channel == None:
-        channel_description = request.form.get('channelDescription')
-        dbConnect.addChannel(uid, channel_name, channel_description)
-        return redirect('/')
-    else:
-        error = '既に同じ名前のチャンネルが存在しています'
-        return render_template('error/error.html', error_message=error)
+    
+    user = dbConnect.getUserBySessionID(session_id)
+    user_id = user["id"]        
+    cid = request.form.get('cid')
+    channel_name = request.form.get('channelTitle')
+    channel_description = request.form.get('channelDescription')
+
+    dbConnect.updateChannel(user_id, channel_name, channel_description, cid)
+    return redirect('/home/{cid}'.format(cid = cid))
 
 
 # 設定ページの表示
