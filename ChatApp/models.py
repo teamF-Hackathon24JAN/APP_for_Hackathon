@@ -5,12 +5,12 @@ from util.DB import DB
 
 # データベースに接続し、ユーザーを新規登録する
 class dbConnect:
-    def createUser(session_id, name, email, password):
+    def createUser(session_id, name, email, password, picture, one_phrase):
         try:
             conn = DB.getConnection()
             cur = conn.cursor()
-            sql = "INSERT INTO users (session_id, name, email, password) VALUES (%s, %s, %s, %s);"
-            cur.execute(sql, (session_id, name, email, password))
+            sql = "INSERT INTO users (session_id, name, email, password, picture, one_phrase) VALUES (%s, %s, %s, %s, %s, %s);"
+            cur.execute(sql, (session_id, name, email, password, picture, one_phrase))
             conn.commit()
         except Exception as e:
             print(e + "が発生しています")
@@ -28,6 +28,21 @@ class dbConnect:
             return user
         except Exception as e:
             print(e + "が発生しています")
+        finally:
+            cur.close()
+    
+#session_IDからuser(usersテーブル)を取得する
+    def getUserBySessinID(session_id):
+        try:
+            conn = DB.getConnection()
+            cur = conn.cursor()
+            sql = "SELECT * FROM users WHERE session_id = %s;"
+            cur.execute(sql, (session_id))
+            user = cur.fetchone()
+            return user
+        except Exception as e:
+            print(str(e) + 'が発生しています')
+            return None
         finally:
             cur.close()
 
@@ -71,8 +86,6 @@ class dbConnect:
             # カーソルオブジェクトを閉じる
             cur.close()
 
-    
-    
     def createMessage(user_id, cid, message):
     # tryブロックを使用して、データベースへの接続と操作を試みる
         try:
@@ -118,22 +131,6 @@ class dbConnect:
         finally:
             # finallyブロックは、tryブロックの実行が成功したか、エラーが発生したかに関わらず実行
             # カーソルオブジェクトを閉じる
-            cur.close()
-
-
-#session_IDからuser_id(usersテーブルのid)を取得する
-    def getUserID(session_id):
-        try:
-            conn = DB.getConnection()
-            cur = conn.cursor()
-            sql = "SELECT * FROM users WHERE session_id%s;"
-            cur.execute(sql, (session_id,))
-            user_id = cur.fetchone()
-            return user_id["id"]
-        except Exception as e:
-            print(str(e) + 'が発生しています')
-            return None
-        finally:
             cur.close()
             
 #メッセージの削除
