@@ -106,7 +106,7 @@ const channel_vars = document.querySelectorAll('._channels-var');
 
 channel_vars.forEach(channel => {
     channel.addEventListener('click',( ) => {
-        window.location.href = '/chatpage'
+        window.location.href = '/chatpage/1'
     });
 });
 
