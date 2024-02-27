@@ -32,5 +32,9 @@ RUN pip install -U pip && \
     pip install -r requirements.txt
 # ソースコードをコンテナにコピー
 COPY . /code/
+# ユーザー 'appuser' の作成
+RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
+# 以降のコマンドを 'appuser' で実行
+USER appuser
 
 CMD ["uwsgi", "app.ini"]
