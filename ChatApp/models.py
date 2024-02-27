@@ -68,7 +68,7 @@ class dbConnect:
             # カーソルオブジェクトを作成。これを使用してSQLクエリを実行
             cur = conn.cursor()
             # SQL文を定義
-            sql = "SELECT id, friend_id, u.name AS friend_name, u.one_phrase AS friend_one_phrase, u.picture AS friend_picture FROM friends AS f INNER JOIN users AS u ON f.friend_id = u.id WHERE user_id = %s;"
+            sql = "SELECT f.id, friend_id, u.name AS friend_name, u.one_phrase AS friend_one_phrase, u.picture AS friend_picture FROM friends AS f INNER JOIN users AS u ON f.friend_id = u.id WHERE user_id = %s;"
             # executeメソッドを使用してSQL文を実行
             cur.execute(sql, (user_id))
             # fetchallメソッドを使用してクエリ結果の全ての行を取得
@@ -111,6 +111,54 @@ class dbConnect:
             # カーソルオブジェクトを閉じる
             cur.close()
 
+# 自分が参加しているチャンネルを取得
+    def getJoinedChannelById(user_id):
+        try:
+            # データベースへの接続を確立
+            conn = DB.getConnection()
+            # カーソルを作成
+            cur = conn.cursor()
+            # 実行するSQL文を定義。ここでは指定されたidを持つチャンネルを検索
+            sql = "SELECT user_id, u.name AS user_name, channel_id, c.name AS channel_name, c.description FROM channels_users AS cs INNER JOIN users AS u ON cs.user_id = u.id INNER JOIN channels AS c ON cs.channel_id = c.id WHERE cs.user_id = %s;"
+            # SQL文を実行。パラメータとしてuidを渡す
+            cur.execute(sql, (user_id,))
+            # 結果を取得
+            channels = cur.fetchall()
+            # 取得したチャンネル情報を返す
+            return channels
+        except Exception as e:
+            # 例外が発生した場合、エラーをコンソールに出力
+            print(str(e) + 'が発生しています')
+            # 例外が発生した場合はNoneを返す
+            return None
+        finally:
+            # 最後に必ずカーソルを閉じる
+            cur.close()
+
+# チャンネル参加者を取得
+    def getChannelMemberAll(channel_id):
+        try:
+            # データベースへの接続を確立
+            conn = DB.getConnection()
+            # カーソルを作成
+            cur = conn.cursor()
+            # 実行するSQL文を定義。ここでは指定されたidを持つチャンネルを検索
+            sql = "SELECT cs.id, channel_id, c.name as channel_name, user_id, u.name as user_name, u.picture AS user_picture FROM channels_users AS cs INNER JOIN users AS u ON cs.user_id = u.id INNER JOIN channels AS c ON cs.channel_id = c.id WHERE cs.channel_id = %s;"
+            
+            # SQL文を実行。パラメータとしてuidを渡す
+            cur.execute(sql, (channel_id))
+            # 結果を取得
+            channels = cur.fetchall()
+            # 取得したチャンネル情報を返す
+            return channelMembers
+        except Exception as e:
+            # 例外が発生した場合、エラーをコンソールに出力
+            print(str(e) + 'が発生しています')
+            # 例外が発生した場合はNoneを返す
+            return None
+        finally:
+            # 最後に必ずカーソルを閉じる
+            cur.close()
 
     def createMessage(user_id, cid, message):
     # tryブロックを使用して、データベースへの接続と操作を試みる
@@ -172,52 +220,3 @@ class dbConnect:
             abort(500)
         finally:
             cur.close
-
-# 自分が参加しているチャンネルを取得
-    def getJoinedChannelById(user_id):
-        try:
-            # データベースへの接続を確立
-            conn = DB.getConnection()
-            # カーソルを作成
-            cur = conn.cursor()
-            # 実行するSQL文を定義。ここでは指定されたidを持つチャンネルを検索
-            sql = "SELECT user_id, u.name as user_name, channel_id, c.name as channel_name, c.description FROM channels_users AS cs INNER JOIN users AS u ON cs.user_id = u.id INNER JOIN channels AS c ON cs.channel_id = c.id WHERE cs.user_id = %s;"
-            # SQL文を実行。パラメータとしてuidを渡す
-            cur.execute(sql, (user_id,))
-            # 結果を取得
-            channels = cur.fetchall()
-            # 取得したチャンネル情報を返す
-            return channels
-        except Exception as e:
-            # 例外が発生した場合、エラーをコンソールに出力
-            print(str(e) + 'が発生しています')
-            # 例外が発生した場合はNoneを返す
-            return None
-        finally:
-            # 最後に必ずカーソルを閉じる
-            cur.close()
-
-# チャンネル参加者を取得
-    def getChannelMemberAll(channel_id):
-        try:
-            # データベースへの接続を確立
-            conn = DB.getConnection()
-            # カーソルを作成
-            cur = conn.cursor()
-            # 実行するSQL文を定義。ここでは指定されたidを持つチャンネルを検索
-            sql = "SELECT channel_id, c.name as channel_name, user_id, u.name as user_name FROM channels_users AS cs INNER JOIN users AS u ON cs.user_id = u.id INNER JOIN channels AS c ON cs.channel_id = c.id WHERE cs.channel_id = %s;"
-            
-            # SQL文を実行。パラメータとしてuidを渡す
-            cur.execute(sql, (user_id,))
-            # 結果を取得
-            channels = cur.fetchall()
-            # 取得したチャンネル情報を返す
-            return channelMembers
-        except Exception as e:
-            # 例外が発生した場合、エラーをコンソールに出力
-            print(str(e) + 'が発生しています')
-            # 例外が発生した場合はNoneを返す
-            return None
-        finally:
-            # 最後に必ずカーソルを閉じる
-            cur.close()
