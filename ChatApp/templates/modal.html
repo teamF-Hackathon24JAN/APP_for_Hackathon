@@ -11,7 +11,8 @@
       <span>ともだちのID</span>
       <form action="" method="POST">
         <input type="text" placeholder="IDを入力してね" />
-        <button type="submit">けんさく</button>
+        <button id="search" type="submit">けんさく</button>
+
       </form>
     </div>
   </div>
@@ -25,15 +26,19 @@
         >&times;</span
       >
     </div>
+    {% for friend in friends %}
     <div class="modal_content_body">
-      <div class="modal_content_body_photo"></div>
+      <div class="modal_content_body_photo">
+        <img src="{{ friend.friend_picture }}" />
+      </div>
       <div class="modal_content_body_name">
-        <span>なまえ</span>
+        <span>{{ friend.friend_name }}</span>
       </div>
       <div class="modal_content_body_onephrase">
-        <span>明日もたくさん働こう！！！</span>
+        <span> {{ friend.friend_one_phrase }} </span>
       </div>
     </div>
+    {% endfor %}
   </div>
 </div>
 

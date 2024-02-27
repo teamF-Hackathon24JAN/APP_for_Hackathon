@@ -104,12 +104,16 @@ def home():
         #辞書型friends{id, friend_id, friend_name, friend_one_phrase, friend_picture}
         friends = dbConnect.getFriendAll(user_id)
         #チャンネル情報の取得
-
+        #辞書型friends{user_id, user_name, channel_id, channel_name, description}
+        channels = dbConnect.getJoinedChannelById(user_id)
+        #channel_id = channels["channel_id"]
+        #channel_members = dbConnect.getChannelMemberAll(channel_id)
 
         return render_template(
             'home.html',
             user_id=user_id, user_name=user_name, user_picture=user_picture, user_one_phrase=user_one_phrase,
-            friends=friends
+            friends=friends,
+            channels=channels
         )
 
 # チャンネルの追加
