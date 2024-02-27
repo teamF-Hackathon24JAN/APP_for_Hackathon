@@ -29,24 +29,12 @@
     <div class="friends-container">
       <div id="friends-scrollcontainer">
         <ul>
-          <li class="list"><span></span>aaaa</li>
-          <li class="list"><span></span>rrrr</li>
-          <li class="list"><span></span>dddd</li>
-          <li class="list"><span></span>wwww</li>
-          <li class="list"><span></span>aaaa</li>
-          <li class="list"><span></span>rrrr</li>
-          <li class="list"><span></span>dddd</li>
-          <li class="list"><span></span>wwww</li>
-          <li class="list"><span></span>aaaa</li>
-          <li class="list"><span></span>rrrr</li>
-          <li class="list"><span></span>dddd</li>
-          <li class="list"><span></span>wwww</li>
-          <li class="list"><span></span>aaaa</li>
-          <li class="list"><span></span>rrrr</li>
-          <li class="list"><span></span>dddd</li>
-          <li class="list"><span></span>wwww</li>
-          <li class="list"><span></span>aaaa</li>
-          <li class="list"><span></span>rrrr</li>
+          {% for friend in friends %}
+            <li class="list">
+              <img src= {{ friend.friend_picture }} style="height:20px;"/> 
+              {{ friend.friend_name }}
+            </li>
+          {% endfor %}
         </ul>
       </div>
       <div class="scroll-icon">
@@ -58,11 +46,7 @@
 
   <div class="_rightside">
     <div class="_proile">
-      <img 
-          src ="{{ user_picture }}"
-          class ="profile_photo"
-        />
-      </span>
+        <img src ="{{ user_picture }}" class ="profile_photo"/>
       <h2>{{ user_name }}#{{user_id}}</h2>
       <span class="onephrase">{{ user_one_phrase }}</span>
     </div>
@@ -73,74 +57,20 @@
       </div>
       <div id="channel-boxes">
         <div class="_channels-var">
-          <span class="channel-name">1.......</span>
-          <span class="channel-member-title">めんばー</span>
-          <div class="channel-members">
-            <ul>
-              <li><span></span>CCレモン</li>
-              <li><span></span>コカコーラ</li>
-              <li><span></span>チャミスル</li>
-              <li><span></span>ゆうと</li>
-              <li><span></span>マッコリ</li>
-              <li><span></span>cccc</li>
-            </ul>
-          </div>
-        </div>
-        <div class="_channels-var">
-          <span class="channel-name">2.......</span>
-          <span class="channel-member-title">めんばー</span>
-          <div class="channel-members">
-            <ul>
-              <li><span></span>CCレモン</li>
-              <li><span></span>コカコーラ</li>
-              <li><span></span>チャミスル</li>
-              <li><span></span>ゆうと</li>
-              <li><span></span>マッコリ</li>
-              <li><span></span>cccc</li>
-            </ul>
-          </div>
-        </div>
-        <div class="_channels-var">
-          <span class="channel-name">3.......</span>
-          <span class="channel-member-title">めんばー</span>
-          <div class="channel-members">
-            <ul>
-              <li><span></span>CCレモン</li>
-              <li><span></span>コカコーラ</li>
-              <li><span></span>チャミスル</li>
-              <li><span></span>ゆうと</li>
-              <li><span></span>マッコリ</li>
-              <li><span></span>cccc</li>
-            </ul>
-          </div>
-        </div>
-        <div class="_channels-var">
-          <span class="channel-name">4.......</span>
-          <span class="channel-member-title">めんばー</span>
-          <div class="channel-members">
-            <ul>
-              <li><span></span>CCレモン</li>
-              <li><span></span>コカコーラ</li>
-              <li><span></span>チャミスル</li>
-              <li><span></span>ゆうと</li>
-              <li><span></span>マッコリ</li>
-              <li><span></span>cccc</li>
-            </ul>
-          </div>
-        </div>
-        <div class="_channels-var">
-          <span class="channel-name">5.......</span>
-          <span class="channel-member-title">めんばー</span>
-          <div class="channel-members">
-            <ul>
-              <li><span></span>CCレモン</li>
-              <li><span></span>コカコーラ</li>
-              <li><span></span>チャミスル</li>
-              <li><span></span>ゆうと</li>
-              <li><span></span>マッコリ</li>
-              <li><span></span>cccc</li>
-            </ul>
-          </div>
+          {% for channel in channels %}
+            <span class="channel-name">{{ channel.channel_id }}.{{ channel.channel_name }}</span>
+            <span class="channel-member-title">めんばー</span>
+            <div class="channel-members">
+              <ul>
+                <li><span></span>CCレモン</li>
+                <li><span></span>コカコーラ</li>
+                <li><span></span>チャミスル</li>
+                <li><span></span>ゆうと</li>
+                <li><span></span>マッコリ</li>
+                <li><span></span>cccc</li>
+              </ul>
+            </div>
+          {% endfor %}
         </div>
       </div>
       <div class="channels-scrollicon">
