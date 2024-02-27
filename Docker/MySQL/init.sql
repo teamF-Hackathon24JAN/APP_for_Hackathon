@@ -50,6 +50,21 @@ CREATE TABLE messages (
     created_at timestamp not null default current_timestamp
 );
 
-INSERT INTO users(id,session_id, name, email, password,picture,one_phrase)VALUES(1,'970af84c-dd40-47ff-af23-282b72b7cca8','テスト','test@gmail.com','37268335dd6931045bdcdf92623ff819a64244b53d0e746d438797349d4da578',hoge.com,'残業上等');
-INSERT INTO channels(id, name, description)VALUES(1,'ぼっち部屋' ,'テストさんの孤独な部屋です');
-INSERT INTO messages(id, user_id, channel_id, message)VALUES(1, 1, '1', '誰かかまってください、、')
+
+INSERT INTO users(id, session_id, name, email, password, picture, one_phrase) VALUES(1, '1', 'いち', 'one@gmail.com', '1234', 'hoge.com', '1残業上等');
+INSERT INTO users(id, session_id, name, email, password, picture, one_phrase) VALUES(2, '2', 'にー', 'two@gmail.com', '1234', 'hoge.com', '2残業上等');
+INSERT INTO users(id, session_id, name, email, password, picture, one_phrase) VALUES(3, '3', 'さん', 'three@gmail.com', '1234', 'hoge.com', '3残業上等');
+INSERT INTO users(id, session_id, name, email, password, picture, one_phrase) VALUES(4, '4', 'よん', 'four@gmail.com', '1234', 'hoge.com', '4残業上等');
+INSERT INTO users(id, session_id, name, email, password, picture, one_phrase) VALUES(5, '5', 'ごー', 'five@gmail.com', '1234', 'hoge.com', '5残業上等');
+INSERT INTO users(id, session_id, name, email, password, picture, one_phrase) VALUES(6, '6', 'ろく', 'six@gmail.com', '1234', 'hoge.com', '6残業上等');
+
+INSERT INTO channels(id, name, description) VALUES(1, 'テスト', 'テストさんの孤独な部屋です');
+
+INSERT INTO channels_users(id, user_id, channel_id) VALUES(1, '1', '1');
+INSERT INTO channels_users(id, user_id, channel_id) VALUES(2, '2', '1');
+INSERT INTO channels_users(id, user_id, channel_id) VALUES(3, '3', '1');
+INSERT INTO channels_users(id, user_id, channel_id) VALUES(4, '4', '1');
+INSERT INTO channels_users(id, user_id, channel_id) VALUES(5, '5', '1');
+INSERT INTO channels_users(id, user_id, channel_id) VALUES(6, '6', '1');
+
+INSERT INTO messages(id, uid, cid, message)VALUES(1, '970af84c-dd40-47ff-af23-282b72b7cca8', '1', '誰かかまってください、、')

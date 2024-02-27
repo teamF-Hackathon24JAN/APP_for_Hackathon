@@ -19,6 +19,14 @@ app = Flask(__name__) #Flaskクラスのインスタンスを作る
 app.secret_key = uuid.uuid4().hex #uuid=(universal unique identifer)36文字の英数字からなる一意の識別子、sessionを暗号化するための鍵を設定
 app.permanent_session_lifetime = timedelta(days = 30) #sessionの有効期限を定める　30日間
 
+# ルート直下の処理（セッション確保時はhome、ない場合はloginへ遷移
+@app.route('/')
+def route():
+    session_id = session.get("session_id")
+    if session_id is None:
+        return redirect('/login')
+    else:
+        return redirect('/home')
 
 # # サインアップページの表示
 @app.route('/signup', methods=['GET']) #ルーティングURLと処理を対応づける、methodを指定しないと、デフォルトでGETリクエストがルーティングされる
@@ -77,8 +85,8 @@ def userLogin():
                 session['session_id'] = user["session_id"]#セッションにセッションIDを保存、保持したい情報を辞書データとして登録
                 return redirect('/')
 
-#（仮あとで削除）ログイン前、ログイン後のホーム表示
-@app.route('/')
+# ホームへの遷移
+@app.route('/home')
 def home():
     session_id = session.get("session_id")
     if session_id is None:
@@ -92,11 +100,12 @@ def index():
     session_id = session.get("session_id")
     if session_id is None:
         return redirect('/login')
-    else:
-        user_id = dbConnect.getUserID(session_id)
-        channels = dbConnect.getChannelAll()
-        channels.reverse()
-    return render_template('index.html', channels=channels, user_id=user_id)
+# 一旦動作確認のためコメントアウト
+#    else:
+#        user_id = dbConnect.getUserID(session_id)
+#        channels = dbConnect.getChannelAll()
+#        channels.reverse()
+    return render_template('/setting.html')
 
 
 ## ログアウト
@@ -119,14 +128,14 @@ def add_message():
 
     message = request.form.get('message')
     channel_id = request.form.get('channel_id')
-    user_id = dbConnect.getSerialID(session_id)
+    user_id = dbConnect.getSerialID('session_id')
     
     # メッセージが存在する場合のみ、データベースにメッセージを追加
     if message:
         dbConnect.createMessage(user_id, channel_id, message)
     else:
         # メッセージが空の場合は、エラーメッセージと共に元のページに戻る
-        return redirect('/error_page') 
+        return redirect('/error_page')
 
     # チャンネル情報とそのチャンネルのメッセージを取得してテンプレートに渡す
     channel = dbConnect.getChannelById(channel_id)
@@ -145,7 +154,7 @@ def detail(channel_id):
         return redirect('/login')
     
     #user_idを取得
-    user_id = dbConnect.getSerialID(session_id)  
+    user_id = dbConnect.getSerialID(session_id)
 
     # パスパラメーターから取得したチャンネルIDを使用し、チャンネルの情報をデータベースから取得
     channel = dbConnect.getChannelById(channel_id)
