@@ -168,6 +168,24 @@ def detail(channel_id):
     # 取得したチャンネル情報とメッセージ、ユーザーIDをdetail.htmlテンプレートに渡し、そのテンプレートを使用してレンダリングしたページを返す
     return render_template('detail.html', message=message, channel=channel, user_id=user_id)
 
+# メッセージの削除
+@app.route('/delete_message', methods=['POST'])
+def delete_message():
+    session_id = session.get("session_id")
+    if session_id is None:
+        return redirect('/login')
+
+    message_id = request.form.get('message_id')
+    channel_id = request.form.get('channel_id')
+
+    # message_idの存在を確認し、あるならば（True）メッセージの削除関数を実行
+    if message_id:
+        dbConnect.deleteMessage(message_id)
+
+    #　メッセージの削除後にチャンネル詳細を再表示
+    return redirect('/detail/{channel_id}'.format(channel_id = channel_id))
+
+
 
 # # チャンネル作成機能
 @app.route('/', methods=['post'])

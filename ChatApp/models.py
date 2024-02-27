@@ -120,7 +120,8 @@ class dbConnect:
             # カーソルオブジェクトを閉じる
             cur.close()
 
-    #session_IDからuser_id(usersテーブルのid)を取得する
+
+#session_IDからuser_id(usersテーブルのid)を取得する
     def getUserID(session_id):
         try:
             conn = DB.getConnection()
@@ -134,6 +135,20 @@ class dbConnect:
             return None
         finally:
             cur.close()
+            
+#メッセージの削除
+    def deleteMessage(message_id):
+        try:
+            conn = DB.getConnection()
+            cur = conn.cursor()
+            sql = "DELETE FROM channels WHERE id=%s;"
+            cur.execute(sql, (message_id))
+            conn.commit()
+        except Exception as e:
+            print(e + 'が発生しています')
+            abort(500)
+        finally:
+            cur.close
 
 # 自分が参加しているチャンネルを取得
     def getJoinedChannelById(user_id):
