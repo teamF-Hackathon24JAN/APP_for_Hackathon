@@ -29,7 +29,7 @@ def route():
         return redirect('/home')
 
 # # サインアップページの表示
-@app.route('/signup', methods=['GET']) #ルーティングURLと処理を対応づける、methodを指定しないと、デフォルトでGETリクエストがルーティングされる
+@app.route('/signup') #ルーティングURLと処理を対応づける、methodを指定しないと、デフォルトでGETリクエストがルーティングされる
 def signup():
     return render_template('registration/signup.html') #htmlを読み込んで返す
 
@@ -88,19 +88,46 @@ def userLogin():
                 return redirect('/')
 
 # ホームへの遷移
-@app.route('/home')
+@app.route('/home', methods=['GET'])
 def home():
     session_id = session.get("session_id")
     if session_id is None:
         return redirect('/login')
     else:
-        user = dbConnect.getUserBySessinID(session_id)
+        #ユーザー情報の取得
+        user = dbConnect.getUserBySessionID(session_id)
         user_id = user["id"]
         user_name = user["name"]
         user_picture = user["picture"]
         user_one_phrase = user["one_phrase"]
+        #フレンド情報の取得
+        #辞書型friends{id, friend_id, friend_name, friend_one_phrase, friend_picture}
+        friends = dbConnect.getFriendAll(user_id)
+        #チャンネル情報の取得
 
-        return render_template('home.html', user_id=user_id, user_name=user_name, user_picture=user_picture, user_one_phrase=user_one_phrase)
+
+        return render_template(
+            'home.html',
+            user_id=user_id, user_name=user_name, user_picture=user_picture, user_one_phrase=user_one_phrase,
+            friends=friends
+        )
+
+# チャンネルの追加
+@app.route('/home', methods=['POST'])
+def addFriend():
+    session_id = session.get("session_id")
+    if uid is None:
+        return redirect('/login')
+    friend_id = request.form.get('FriendId')
+    friend = dbConnect.getChannelByName(channel_name)
+    if channel == None:
+        channel_description = request.form.get('channelDescription')
+        dbConnect.addChannel(uid, channel_name, channel_description)
+        return redirect('/')
+    else:
+        error = '既に同じ名前のチャンネルが存在しています'
+        return render_template('error/error.html', error_message=error)
+
 
 # 設定ページの表示
 @app.route('/setting')
@@ -108,11 +135,18 @@ def index():
     session_id = session.get("session_id")
     if session_id is None:
         return redirect('/login')
-# 一旦動作確認のためコメントアウト
-#    else:
-#        user_id = dbConnect.getUserID(session_id)
-#        channels = dbConnect.getChannelAll()
-#        channels.reverse()
+    
+    else:
+        user = dbConnect.getUserBySessionID(session_id)
+        user_id = user["id"]
+        user_name = user["name"]
+        user_picture = user["picture"]
+        user_one_phrase = user["one_phrase"]
+        user_birthday = user["birthday"]
+
+        #fixed_phrases = getFixedPhraseAll(user_id)
+
+        #channels.reverse()
     return render_template('/setting.html')
 
 
@@ -151,8 +185,8 @@ def add_message():
     
     return render_template('detail.html', message=message, channel=channel, user_id=user_id)
 
-# # メッセージ一覧機能
-@app.route('/detail/<channel_id>')
+# # チャットページ、
+@app.route('/chatpage/<channel_id>')
 def detail(channel_id):
     # 現在のセッションからユーザーID ('uid') を取得
     session_id = session.get("session_id")
@@ -162,19 +196,20 @@ def detail(channel_id):
         return redirect('/login')
     
     #user_idを取得
-    user_id = dbConnect.getSerialID(session_id)
+#    user = dbConnect.getUserBySessionID(session_id)
+#    user_id = user["id"]
 
     # パスパラメーターから取得したチャンネルIDを使用し、チャンネルの情報をデータベースから取得
-    channel = dbConnect.getChannelById(channel_id)
+#    channel = dbConnect.getChannelById(channel_id)
     
     # 指定されたチャンネルIDに関連する全てのメッセージを取得
-    messages = dbConnect.getMessageAll(channel_id)
+#    messages = dbConnect.getMessageAll(channel_id)
 
     #ユーザーIDを取得
-    user_id = dbConnect.getSerialID()
+#    user_id = dbConnect.getSerialID()
 
     # 取得したチャンネル情報とメッセージ、ユーザーIDをdetail.htmlテンプレートに渡し、そのテンプレートを使用してレンダリングしたページを返す
-    return render_template('detail.html', message=message, channel=channel, user_id=user_id)
+    return render_template('chatpage.html')
 
 # メッセージの削除
 @app.route('/delete_message', methods=['POST'])
