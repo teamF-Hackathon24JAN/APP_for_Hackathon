@@ -39,6 +39,8 @@ def userSignup():
     name = request.form.get('name') #フォームからnameを取得
     email = request.form.get('email') #フォームからemailを取得
     password = request.form.get('password') #フォームからpasswordを取得
+    picture = "https://test-fteam.s3.ap-northeast-1.amazonaws.com/default_icon.JPG"
+    one_phrase = "ひとこと が とうろく されていません"
 
     pattern = "^[a-z0-9_+-]+(\.[a-z0-9_+-]+)*[a-z0-9_+-]+@[a-z]+(\.[a-z]+)*\.[a-z]+$" #正規表現でemailアドレスの形式を指定
     
@@ -54,7 +56,7 @@ def userSignup():
         if DBuser != None: #登録されているメーアドレスが一意であるかの確認
             flash('このめーるあどれすはすでに登録されているようです')
         else:
-            dbConnect.createUser(session_id, name, email, password)
+            dbConnect.createUser(session_id, name, email, password, picture, one_phrase)
             UserId = str(session_id) #session_idを文字列に変換
             session['session_id'] = UserId #セッションにユーザーIDを保存、保持したい情報を辞書データとして登録
             return redirect('/') #新規登録完了後、セッションを保持した状態で'/'へ遷移
@@ -92,7 +94,13 @@ def home():
     if session_id is None:
         return redirect('/login')
     else:
-        return render_template('home.html')
+        user = dbConnect.getUserBySessinID(session_id)
+        user_id = user["id"]
+        user_name = user["name"]
+        user_picture = user["picture"]
+        user_one_phrase = user["one_phrase"]
+
+        return render_template('home.html', user_id=user_id, user_name=user_name, user_picture=user_picture, user_one_phrase=user_one_phrase)
 
 # 設定ページの表示
 @app.route('/setting')

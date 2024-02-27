@@ -55,15 +55,17 @@
       </div>
     </div>
   </div>
+
   <div class="_rightside">
     <div class="_proile">
       <span class="profile_photo">
-        <img src="{{ url_for('static',filename='image/default_icon.JPG') }}"
-        class="profile_photo"
-      />
+        <img 
+          src ="{{ user_picture }}"
+          class ="profile_photo"
+        />
       </span>
-      <h2>名前</h2>
-      <span class="onephrase">ひとこと・・・・・・・・・・・・・・</span>
+      <h2>{{ user_name }}#{{user_id}}</h2>
+      <span class="onephrase">{{ user_one_phrase }}</span>
     </div>
     <div class="_channels">
       <div class="channel_header">
