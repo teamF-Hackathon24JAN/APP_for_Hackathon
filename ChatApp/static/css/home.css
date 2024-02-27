@@ -175,7 +175,6 @@
   height: 20%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
   transition: background-color 0.8s;
 }
 .main ._rightside ._proile > * {
@@ -188,14 +187,15 @@
   width: 80px;
   border-radius: 50%;
   background-color: lightgray;
-  margin-left: 80px;
+  margin-left: 10%;
+  margin-right: 20px;
 }
 .main ._rightside ._proile h2 {
   font-size: 40px;
   padding-top: 5px;
 }
 .main ._rightside ._proile .onephrase {
-  margin-left: 300px;
+  margin-left: 40%;
   padding-top: 10px;
   font-size: 25px;
 }
@@ -473,7 +473,7 @@
   text-decoration: none;
 }
 
-#modal_home_channels_edit .modal_content {
+#modal_home_channels_add .modal_content {
   background-color: rgba(0, 0, 0, 0.8);
   margin: 8% auto;
   border-radius: 20px;
@@ -483,7 +483,7 @@
   animation-duration: 1.2s;
   animation-fill-mode: forwards;
 }
-#modal_home_channels_edit .modal_content_header {
+#modal_home_channels_add .modal_content_header {
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -491,12 +491,12 @@
   align-items: center;
   height: auto;
 }
-#modal_home_channels_edit .modal_content_header_title {
-  margin-left: 34%;
+#modal_home_channels_add .modal_content_header_title {
+  margin-left: 35%;
   color: rgb(255, 212, 98);
   font-size: 35px;
 }
-#modal_home_channels_edit .modal_content_header_close {
+#modal_home_channels_add .modal_content_header_close {
   font-size: 25px;
   margin-right: 10px;
   font-weight: bold;
@@ -504,110 +504,56 @@
   align-self: flex-start;
   transition: all 0.2s;
 }
-#modal_home_channels_edit .modal_content_header_close:hover, #modal_home_channels_edit .modal_content_header_close:focus {
+#modal_home_channels_add .modal_content_header_close:hover, #modal_home_channels_add .modal_content_header_close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
 }
-#modal_home_channels_edit .modal_content_body {
+#modal_home_channels_add .modal_content_body {
   height: 400px;
   display: flex;
   flex-direction: row;
   align-items: center;
   font-size: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   margin-top: 0;
 }
-#modal_home_channels_edit .modal_content_body_tabs {
-  width: 200px;
-  height: 300px;
-  margin-left: 40px;
-  overflow-y: scroll;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+#modal_home_channels_add .modal_content_body form {
+  margin: 0 24%;
 }
-#modal_home_channels_edit .modal_content_body_tabs .tab {
-  height: auto;
-  font-size: 40px;
-  margin-top: 30px;
-  padding: 0;
+#modal_home_channels_add .modal_content_body form > * {
+  display: block;
+}
+#modal_home_channels_add .modal_content_body form .channel_name {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#modal_home_channels_add .modal_content_body form .channel_name_input {
+  display: block;
+  margin-top: 10px;
+  width: 100%;
+  margin-bottom: 40px;
+}
+#modal_home_channels_add .modal_content_body form .channel_discription {
+  display: block;
+  margin-bottom: 10px;
+}
+#modal_home_channels_add .modal_content_body form .channel_discription_input {
+  display: block;
+  margin-bottom: 10px;
   margin-left: auto;
   margin-right: auto;
-  background-image: linear-gradient(90deg, #ffd000, #ffd000);
-  background-repeat: no-repeat;
-  background-position: left bottom;
-  background-size: 0 1px;
-  transition: background-size 0.6s;
-  cursor: pointer;
 }
-#modal_home_channels_edit .modal_content_body_tabs .tab.active {
-  background-color: rgb(255, 212, 98);
-  color: black;
-}
-#modal_home_channels_edit .modal_content_body_tabs .tab:hover {
-  background-size: 100% 1px;
-}
-#modal_home_channels_edit .modal_content_body_tab-content {
-  width: 80%;
-  height: 80%;
-  margin-right: 40px;
-}
-#modal_home_channels_edit .modal_content_body_tab-content .content:active {
+#modal_home_channels_add .modal_content_body form .channnel_add_button {
   display: block;
+  margin-top: 30px;
+  border: none;
+  transition: all 0.2s;
 }
-#modal_home_channels_edit .modal_content_body_tab-content .content .channel-Name {
-  display: block;
-  margin: 10px auto;
-  width: 60%;
-  height: 50px;
-  font-size: 30px;
+#modal_home_channels_add .modal_content_body form .channnel_add_button:hover {
+  transform: translateY(3px);
 }
-#modal_home_channels_edit .modal_content_body_tab-content .content .tab_channels_friendselect {
-  display: flex;
-  display: row;
-}
-#modal_home_channels_edit .modal_content_body_tab-content .content .tab_channels_friendselect .Addedfriend {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  height: 200px;
-  margin: 20px 20px 20px 100px;
-  border: 1px solid #ffd000;
-  overflow-y: scroll;
-}
-#modal_home_channels_edit .modal_content_body_tab-content .content .tab_channels_friendselect .Addedfriend span {
-  font-size: 25px;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  margin-left: 5px;
-}
-#modal_home_channels_edit .modal_content_body_tab-content .content .tab_channels_friendselect .Addfriend {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  height: 200px;
-  margin: 20px 20px 20px 40px;
-  border: 1px solid #ffd000;
-  overflow-y: scroll;
-}
-#modal_home_channels_edit .modal_content_body_tab-content .content .tab_channels_friendselect .Addfriend span {
-  font-size: 25px;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  margin-left: 5px;
-}
-#modal_home_channels_edit .modal_content_body_tab-content .channel_changeButton {
-  height: auto;
-  width: auto;
-  margin: 5px auto;
-  display: block;
-  font-size: 25px;
-  font-family: kiwi maru;
-  padding: 10px 20px;
-  border-radius: 10px;
-}
-#modal_home_channels_edit .modal_content_body_tab-content .channel_changeButton a {
-  text-decoration: none;
-  color: black;
+#modal_home_channels_add .modal_content_body form .channnel_add_button:active {
+  transform: translateY(4px);
 }/*# sourceMappingURL=home.css.map */
