@@ -89,6 +89,22 @@ def userLogin():
                 session['session_id'] = user["session_id"]#セッションにセッションIDを保存、保持したい情報を辞書データとして登録
                 return redirect('/')
 
+# パスワード再設定
+@app.route('/passwordlost')
+def passwordlost():
+    #フォームから送信されたパスワードを変数emailに格納
+    email = request.form.get('email')
+    password = request.form.get('password')
+    user = dbConnect.getUser(email)
+
+    #if user is not None:
+    #    flash('')
+
+
+
+
+    return redirect('/login')#ログイン画面へ遷移する
+
 # ログアウト、セッションクリア
 @app.route('/logout')
 def logout():
@@ -251,20 +267,20 @@ def add_message(channel_id):
     if session_id is None:
         return redirect('/login')
 
-#    message = request.form.get('message')
-#    channel_id = request.form.get('channel_id')
-#    user_id = dbConnect.getSerialID('session_id')
-    
-    # メッセージが存在する場合のみ、データベースにメッセージを追加
-#    if message:
-#        dbConnect.createMessage(user_id, channel_id, message)
-#    else:
-#        # メッセージが空の場合は、エラーメッセージと共に元のページに戻る
-#        return redirect('/error_page')
-#
-#    # チャンネル情報とそのチャンネルのメッセージを取得してテンプレートに渡す
-#    channel = dbConnect.getChannelById(channel_id)
-#    message = dbConnect.getMessageAll(channel_id)
+    message = request.form.get('message')
+    channel_id = request.form.get('channel_id')
+    user_id = dbConnect.getSerialID('session_id')
+   
+   # メッセージが存在する場合のみ、データベースにメッセージを追加
+    if message:
+        dbConnect.createMessage(user_id, channel_id, message)
+    else:
+        # メッセージが空の場合は、エラーメッセージと共に元のページに戻る
+        return redirect('/error_page')
+
+    # チャンネル情報とそのチャンネルのメッセージを取得してテンプレートに渡す
+    channel = dbConnect.getChannelById(channel_id)
+    message = dbConnect.getMessageAll(channel_id)
     #message=message, channel=channel, user_id=user_id
     return render_template('chatpage.html')
 
@@ -278,18 +294,15 @@ def detail(channel_id):
     if session is None:
         return redirect('/login')
     
-    #user_idを取得
-#    user = dbConnect.getUserBySessionID(session_id)
-#    user_id = user["id"]
+    # user_idを取得
+    user = dbConnect.getUserBySessionID(session_id)
+    user_id = user["id"]
 
     # パスパラメーターから取得したチャンネルIDを使用し、チャンネルの情報をデータベースから取得
-#    channel = dbConnect.getChannelById(channel_id)
+    channel = dbConnect.getChannelById(channel_id)
     
     # 指定されたチャンネルIDに関連する全てのメッセージを取得
-#    messages = dbConnect.getMessageAll(channel_id)
-
-    #ユーザーIDを取得
-#    user_id = dbConnect.getSerialID()
+    messages = dbConnect.getMessageAll(channel_id)
 
     # 取得したチャンネル情報とメッセージ、ユーザーIDをdetail.htmlテンプレートに渡し、そのテンプレートを使用してレンダリングしたページを返す
     return render_template('chatpage.html')

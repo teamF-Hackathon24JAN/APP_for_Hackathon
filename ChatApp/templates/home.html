@@ -58,17 +58,23 @@
       <div id="channel-boxes">
         {% for channel in channels %}
           <div name="channel_{{ channel.channel_id }}" class="_channels-var">
-              <span class="channel-name">{{ channel.channel_id }}.{{ channel.channel_name }}</span>
-              <span class="channel-member-title">ちゃんねるせつめい</span>
-              <div class="channel-members">
-                <ul>
-                  <div>{{ channel.description }}</div>
-                </ul>
-              </div>
-              <form action="" method="POST">
-                <input name="" value="{{ channel.channel_id }}" />
-                <button>ちゃんねるへ</button>
-              </form>
+            <span class="channel-name">{{ channel.channel_id }}.{{ channel.channel_name }}</span>
+            <span class="channel-member-title">ちゃんねるせつめい</span>
+            <div class="channel-members">
+              <ul>
+                <div>{{ channel.description }}</div>
+              </ul>
+            </div>
+            <a href="/chatpage/{{ channel.channel_id }}" >
+              <img src='https://test-fteam.s3.ap-northeast-1.amazonaws.com/default_icon.JPG' style="width:80px;" alt="チャンネルボタン">
+            </a>
+            <!--
+            <form action="" method="POST">
+              <input name="channel_id" value="{{ channel.channel_id }}" />
+              
+              <button>ちゃんねるへ</button>
+            </form>
+          -->
           </div>
         {% endfor %}
       </div>
