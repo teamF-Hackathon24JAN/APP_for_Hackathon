@@ -69,7 +69,7 @@
 }
 .main ._leftside {
   height: 100%;
-  width: 16%;
+  width: 25%;
   border: 1px solid black;
   border-right: none;
   display: flex;
@@ -183,8 +183,8 @@
   animation-fill-mode: forwards;
 }
 .main ._rightside ._proile .profile_photo {
-  height: 80px;
-  width: 80px;
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
   background-color: lightgray;
   margin-left: 10%;
@@ -195,9 +195,9 @@
   padding-top: 5px;
 }
 .main ._rightside ._proile .onephrase {
-  margin-left: 40%;
+  margin-left: 10%;
   padding-top: 10px;
-  font-size: 25px;
+  font-size: 28px;
 }
 .main ._rightside ._channels {
   background-color: rgba(128, 128, 128, 0.21);
@@ -238,7 +238,7 @@
   margin-left: 40px;
   height: 350px;
   font-size: 20px;
-  width: 1200px;
+  width: 1100px;
   padding: 20px;
   overflow-x: scroll;
 }
@@ -262,33 +262,11 @@
   margin-bottom: 30px;
 }
 .main ._rightside ._channels #channel-boxes ._channels-var .channel-member-title {
-  align-self: flex-start;
-  margin-left: 20px;
   font-size: 25px;
 }
 .main ._rightside ._channels #channel-boxes ._channels-var .channel-members {
   margin-top: 20px;
   margin-bottom: 10px;
-  width: 100%;
-  overflow-y: scroll;
-}
-.main ._rightside ._channels #channel-boxes ._channels-var .channel-members li {
-  margin-left: 15%;
-  list-style: none;
-  font-size: 20px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-.main ._rightside ._channels #channel-boxes ._channels-var .channel-members li span {
-  display: inline-block;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  background-color: black;
-  margin-right: 10px;
-  transform: translateY(1px);
 }
 .main ._rightside ._channels .channels-scrollicon {
   margin: 0 20px;

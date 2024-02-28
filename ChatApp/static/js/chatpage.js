@@ -71,14 +71,6 @@ window.addEventListener('DOMContentLoaded',( ) => {
 
 
 
-const friendAddmodal = document.getElementById('friendAdd');
-
-friendAddmodal.addEventListener('click',() => {
-    const modalfriadd = document.getElementById('modal_friendAdd');
-    modalfriadd.style.display = "block";
-})
-
-
 const chatpage_fixedphrases = document.getElementById('chatpage_fixedphrases');
 
 chatpage_fixedphrases.addEventListener('click', () => {
