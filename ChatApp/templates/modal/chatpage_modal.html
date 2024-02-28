@@ -12,13 +12,8 @@
     </div>
     <div class="modal_content_body">
       <div class="modal_content_body_box">
-        <span class="modal_content_body_box_fixedphrase">あ</span>
-        <span class="modal_content_body_box_fixedphrase">い</span>
-        <span class="modal_content_body_box_fixedphrase">う</span>
-        <span class="modal_content_body_box_fixedphrase">え</span>
-        <span class="modal_content_body_box_fixedphrase">お</span>
-        <span class="modal_content_body_box_fixedphrase">か</span>
-      </div>
+        {% for fixed_phrase in fixed_phrase %}
+        <span class="modal_content_body_box_fixedphrase">{{ fixed_phrase.phrase }}</span>
       <button class="modal_content_body_insert">使用する</button>
     </div>
   </div>

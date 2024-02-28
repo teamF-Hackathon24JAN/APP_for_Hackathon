@@ -69,8 +69,6 @@ window.addEventListener('DOMContentLoaded',( ) => {
   scrollmessage.scrollTop = scrollmessage.scrollHeight;
 })
 
-
-
 const chatpage_fixedphrases = document.getElementById('chatpage_fixedphrases');
 
 chatpage_fixedphrases.addEventListener('click', () => {
