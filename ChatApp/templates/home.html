@@ -27,16 +27,16 @@
       add_circle
     </span>
     <div class="friends-container">
-      <div id="friends-scrollcontainer">
-        <ul>
-          {% for friend in friends %}
+      {% for friend in friends %}
+        <div id="friends-scrollcontainer">
+          <ul>
             <li class="list">
-              <img src= {{ friend.friend_picture }} style="height:20px;"/> 
+              <img src="{{ friend.friend_picture }}" style="height:20px;"/> 
               {{ friend.friend_name }}
             </li>
-          {% endfor %}
-        </ul>
-      </div>
+          </ul>
+        </div>
+      {% endfor %}
       <div class="scroll-icon">
         <span id="upicon">↑</span>
         <span id="downicon">↓</span>
@@ -46,32 +46,31 @@
 
   <div class="_rightside">
     <div class="_proile">
-        <img src ="{{ user_picture }}" class ="profile_photo"/>
-      <h2>{{ user_name }}#{{user_id}}</h2>
-      <span class="onephrase">{{ user_one_phrase }}</span>
+        <img src ="{{ user.picture }}" class ="profile_photo"/>
+      <h2>{{ user.name }}#{{ user.id }}</h2>
+      <span class="onephrase">{{ user.one_phrase }}</span>
     </div>
     <div class="_channels">
       <div class="channel_header">
-        <h2>ちゃんねる</h2>
+        <h2>ちゃんねる{{ channel_id }}</h2>
         <span id="home_channels_add" class="material-symbols-outlined"> add_circle</span>
       </div>
       <div id="channel-boxes">
-        <div class="_channels-var">
-          {% for channel in channels %}
-            <span class="channel-name">{{ channel.channel_id }}.{{ channel.channel_name }}</span>
-            <span class="channel-member-title">めんばー</span>
-            <div class="channel-members">
-              <ul>
-                <li><span></span>CCレモン</li>
-                <li><span></span>コカコーラ</li>
-                <li><span></span>チャミスル</li>
-                <li><span></span>ゆうと</li>
-                <li><span></span>マッコリ</li>
-                <li><span></span>cccc</li>
-              </ul>
-            </div>
-          {% endfor %}
-        </div>
+        {% for channel in channels %}
+          <div name="channel_{{ channel.channel_id }}" class="_channels-var">
+              <span class="channel-name">{{ channel.channel_id }}.{{ channel.channel_name }}</span>
+              <span class="channel-member-title">ちゃんねるせつめい</span>
+              <div class="channel-members">
+                <ul>
+                  <div>{{ channel.description }}</div>
+                </ul>
+              </div>
+              <form action="" method="POST">
+                <input name="" value="{{ channel.channel_id }}" />
+                <button>ちゃんねるへ</button>
+              </form>
+          </div>
+        {% endfor %}
       </div>
       <div class="channels-scrollicon">
         <span id="lefticon">←</span>
@@ -82,7 +81,7 @@
 </main>
 
 <!-- modal.htmlの読み込み -->
-{% include 'modal.html' %}
+{% include 'modal/home_modal.html' %}
 
 <script src="{{ url_for('static', filename='/js/home.js') }}"></script>
 

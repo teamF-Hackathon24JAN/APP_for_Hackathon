@@ -49,19 +49,19 @@ class dbConnect:
             cur.close()
 
 #channelテーブルのチャンネル名から該当した行を取り出す
-    def getChannelByName(channel_name):
-        try:
-            conn = DB.getConnection()
-            cur = conn.cursor()
-            sql = "SELECT * FROM channels WHERE name=%s;"
-            cur.execute(sql, (channel_name))
-            channel = cur.fetchone()
-            return channel
-        except Exception as e:
-            print(e + 'が発生しています')
-            return None
-        finally:
-            cur.close()
+#    def getChannelByName(channel_name):
+#        try:
+#            conn = DB.getConnection()
+#            cur = conn.cursor()
+#            sql = "SELECT * FROM channels WHERE name=%s;"
+#            cur.execute(sql, (channel_name))
+#            channel = cur.fetchone()
+#            return channel
+#        except Exception as e:
+#            print(e + 'が発生しています')
+#            return None
+#        finally:
+#            cur.close()
 
 # フレンド追加機能、検索したユーザーのIDを格納
     def addFriend(user_id, friend_id):
@@ -102,6 +102,71 @@ class dbConnect:
             # カーソルオブジェクトを閉じる
             cur.close()
 
+# 名前変更機能
+    def updateUserName(name, user_id):
+        try:
+            conn = DB.getConnection()
+            cur = conn.cursor()
+            sql = "UPDATE users SET name = %s WHERE id = %s;"
+            cur.execute(sql, (name, user_id))
+            conn.commit()
+        except Exception as e:
+            print(e + 'が発生しています')
+        finally:
+            cur.close()
+
+# ひとこと変更機能
+    def updateOnePhrase(one_phrase, user_id):
+        try:
+            conn = DB.getConnection()
+            cur = conn.cursor()
+            sql = "UPDATE users SET one_phrase = %s WHERE id = %s;"
+            cur.execute(sql, (one_phrase, user_id))
+            conn.commit()
+        except Exception as e:
+            print(e + 'が発生しています')
+        finally:
+            cur.close()
+
+# メールアドレス変更機能
+    def updateUserEmail(email, user_id):
+        try:
+            conn = DB.getConnection()
+            cur = conn.cursor()
+            sql = "UPDATE users SET email = %s WHERE id = %s;"
+            cur.execute(sql, (email, user_id))
+            conn.commit()
+        except Exception as e:
+            print(e + 'が発生しています')
+        finally:
+            cur.close()
+
+# パスワード変更機能
+    def updateUserPassword(password, user_id):
+        try:
+            conn = DB.getConnection()
+            cur = conn.cursor()
+            sql = "UPDATE users SET password = %s WHERE id = %s;"
+            cur.execute(sql, (password, user_id))
+            conn.commit()
+        except Exception as e:
+            print(e + 'が発生しています')
+        finally:
+            cur.close()
+
+# 定型文新規作成用
+    def createFixedPhrase(user_id, phrase):
+        try:
+            conn = DB.getConnection()
+            cur = conn.cursor()
+            sql = "INSERT INTO fixed_phrases (user_id, phrase) VALUES (%s, %s);"
+            cur.execute(sql, (user_id, phrase))
+            conn.commit()
+        except Exception as e:
+            print(e + 'が発生しています')
+        finally:
+            cur.close()
+
 # 自分が登録した定型文テーブルを取得する
     def getFixedPhraseAll(user_id):
      # tryブロックを使用して、データーベースへの接続と操作を試みる
@@ -111,7 +176,7 @@ class dbConnect:
             # カーソルオブジェクトを作成。これを使用してSQLクエリを実行
             cur = conn.cursor()
             # SQL文を定義
-            sql = "SELECT id, user_id, fixed_phrase FROM fixed_phrases WHERE user_id = %s;"
+            sql = "SELECT id, user_id, phrase FROM fixed_phrases WHERE user_id = %s;"
             # executeメソッドを使用してSQL文を実行
             cur.execute(sql, (user_id))
             # fetchallメソッドを使用してクエリ結果の全ての行を取得
@@ -126,6 +191,47 @@ class dbConnect:
         finally:
             # finallyブロックは、tryブロックの実行が成功したか、エラーが発生したかに関わらず実行
             # カーソルオブジェクトを閉じる
+            cur.close()
+
+# チャンネル作成機能
+    def createChannel(channel_name, description, owner_id):
+        try:
+            conn = DB.getConnection()
+            cur = conn.cursor()
+            sql = "INSERT INTO channels (name, description, owner_id) VALUES (%s, %s, %s);"
+            cur.execute(sql, (channel_name, description, owner_id))
+            conn.commit()
+        except Exception as e:
+            print(e + 'が発生しています')
+        finally:
+            cur.close()
+
+# 作成したチャンネルのidを取得
+    def getCreatedChannelId(channel_name, owner_id):
+        try:
+            conn = DB.getConnection()
+            cur = conn.cursor()
+            sql = "SELECT * FROM channels WHERE name = %s AND owner_id = %s;"
+            cur.execute(sql, (channel_name, owner_id))
+            channel = cur.fetchone()
+            channel_id = channel["id"]
+            return channel_id
+        except Exception as e:
+            print(e + 'が発生しています')
+        finally:
+            cur.close()
+
+# 作成したチャンネルに自分を追加
+    def insertMe(user_id, channel_id):
+        try:
+            conn = DB.getConnection()
+            cur = conn.cursor()
+            sql = "INSERT INTO channels_users (user_id, channel_id) VALUES (%s, %s);"
+            cur.execute(sql, (user_id, channel_id))
+            conn.commit()
+        except Exception as e:
+            print(e + 'が発生しています')
+        finally:
             cur.close()
 
 # 自分が参加しているチャンネルを取得
@@ -165,7 +271,7 @@ class dbConnect:
             # SQL文を実行。パラメータとしてuidを渡す
             cur.execute(sql, (channel_id))
             # 結果を取得
-            channels = cur.fetchall()
+            channelMembers = cur.fetchall()
             # 取得したチャンネル情報を返す
             return channelMembers
         except Exception as e:

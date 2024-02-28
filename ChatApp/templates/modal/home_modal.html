@@ -10,9 +10,28 @@
     <div class="modal_content_body">
       <span>ともだちのID</span>
       <form action="" method="POST">
-        <input type="text" placeholder="IDを入力してね" />
-        <button type="submit">けんさく</button>
+        <input name="friend_id" type="text" placeholder="IDを入力してね" />
+        <button type="submit" id="search" >けんさく</button>
       </form>
+
+      <!--
+      画面遷移なしでPOSTするためのコード(非同期通信)
+      <script>
+        const searchSubmit = document.querySelector('search');
+        const form = document.querySelector('#form');
+        form.addEventListener('submit', (event) => {
+          event.stopPropagation();
+          event.preventDefault();
+          const formData = new formData(form);
+          const options = {
+            method: 'POST',
+            body: formData,
+          }
+          const url = form.getAttribute('action');
+          fetch(url, options);
+        });
+      </script>
+      -->
     </div>
   </div>
 </div>
@@ -52,8 +71,8 @@
         <span class="channel_name">ちゃんねるのなまえ</span>
         <input class="channel_name_input" type="text" name="channel_name" placeholder="ちゃんねるめいをにゅうりょく" >
         <span class="channel_discription">ちゃんねるのせつめい</span>
-        <input class="channel_discription_input" type="text" name="channel_discription" placeholder="ちゃんねるのせつめいをにゅうりょく">
-        <button class="channnel_add_button">さくせい！</button>
+        <input class="channel_discription_input" type="text" name="channel_description" placeholder="ちゃんねるのせつめいをにゅうりょく">
+        <button type="submit" class="channnel_add_button">さくせい！</button>
       </form>
     </div>
   </div>

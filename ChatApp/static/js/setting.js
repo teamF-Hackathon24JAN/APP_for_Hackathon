@@ -51,14 +51,14 @@ setting_mailaddress.addEventListener('click', (e) => {
 
 const setting_password = document.getElementById('setting_password');
 
-setting_password.addEventListener('click', (e) => {
-  const phraseText = e.target.textContent;
+setting_password.addEventListener('click', () => {
+  // const phraseText = e.target.textContent;
 
       // モーダルのinput要素を取得
-      const modalInput = document.querySelector('.modal_set_password');
+      // const modalInput = document.querySelector('.modal_set_password');
 
       // 取得したテキストをモーダルのinputのvalueにセット
-      modalInput.value = phraseText;
+      // modalInput.value = phraseText;
 
   const modal_setting_onephrase = document.getElementById('modal_setting_password');
   modal_setting_onephrase.style.display = 'block';

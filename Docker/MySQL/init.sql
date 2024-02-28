@@ -21,7 +21,8 @@ CREATE TABLE users (
 CREATE TABLE channels (
     id serial PRIMARY KEY,
     name varchar(255) UNIQUE NOT NULL,
-    description varchar(255)
+    description varchar(255),
+    owner_id integer REFERENCES users(id)
 );
 
 CREATE TABLE channels_users (
@@ -60,7 +61,7 @@ INSERT INTO users(id, session_id, name, email, password, picture, one_phrase) VA
 INSERT INTO users(id, session_id, name, email, password, picture, one_phrase) VALUES(7, 'd9f77623-4b63-48f0-bfd9-37e3a55bc8de', 'asdf', 'asdf@gmail.com', 'f0e4c2f76c58916ec258f246851bea091d14d4247a2fc3e18694461b1816e13b', 'https://test-fteam.s3.ap-northeast-1.amazonaws.com/default_icon.JPG', 'ひとこと が とうろく されていません');
 INSERT INTO users(id, session_id, name, email, password, picture, one_phrase) VALUES(8, '845f952b-56ee-4664-8456-893728e08fe8', 'nao', 'naoentry@gmail.com', 'f0e4c2f76c58916ec258f246851bea091d14d4247a2fc3e18694461b1816e13b', 'https://test-fteam.s3.ap-northeast-1.amazonaws.com/default_icon.JPG', 'ひとこと が とうろく されていません');
 
-INSERT INTO channels(id, name, description) VALUES(1, 'テスト', 'テストさんの孤独な部屋です');
+INSERT INTO channels(id, name, description, owner_id) VALUES(1, 'テスト', 'テストさんの孤独な部屋です', 8);
 
 INSERT INTO channels_users(id, user_id, channel_id) VALUES(1, 1, 1);
 INSERT INTO channels_users(id, user_id, channel_id) VALUES(2, 2, 1);
