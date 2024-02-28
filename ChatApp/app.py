@@ -10,10 +10,12 @@ from datetime import timedelta #timedeltaは経過時間、二つの日付や時
 import hashlib #外部に漏れてほしくないデータを固定の長さの値に変換（ハッシュ化）するモジュール
 import uuid #universal unique identifer 一意な識別子を生成する
 import re #正規表現モジュール　文字列内で文字の組み合わせを照合するために用いるパターンを扱う
+import time
 
 #models.pyで定義したクラスdbConnectを呼び出す
 from models import dbConnect
 
+debug = True
 
 app = Flask(__name__) #Flaskクラスのインスタンスを作る
 app.secret_key = uuid.uuid4().hex #uuid=(universal unique identifer)36文字の英数字からなる一意の識別子、sessionを暗号化するための鍵を設定
@@ -87,76 +89,7 @@ def userLogin():
                 session['session_id'] = user["session_id"]#セッションにセッションIDを保存、保持したい情報を辞書データとして登録
                 return redirect('/')
 
-# ホームへの遷移
-@app.route('/home', methods=['GET'])
-def home():
-    session_id = session.get("session_id")
-    if session_id is None:
-        return redirect('/login')
-    else:
-        #ユーザー情報の取得
-        user = dbConnect.getUserBySessionID(session_id)
-        user_id = user["id"]
-        user_name = user["name"]
-        user_picture = user["picture"]
-        user_one_phrase = user["one_phrase"]
-        #フレンド情報の取得
-        #辞書型friends{id, friend_id, friend_name, friend_one_phrase, friend_picture}
-        friends = dbConnect.getFriendAll(user_id)
-        #チャンネル情報の取得
-        #辞書型friends{user_id, user_name, channel_id, channel_name, description}
-        channels = dbConnect.getJoinedChannelById(user_id)
-        #channel_id = channels["channel_id"]
-        #channel_members = dbConnect.getChannelMemberAll(channel_id)
-
-        return render_template(
-            'home.html',
-            user_id=user_id, user_name=user_name, user_picture=user_picture, user_one_phrase=user_one_phrase,
-            friends=friends,
-            channels=channels
-        )
-
-
-
-# チャンネルの更新
-@app.route('/home', methods=['POST'])
-def update_channel():
-    session_id = session.get("session_id")
-    if session_id is None:
-        return redirect('/login')
-    
-    user = dbConnect.getUserBySessionID(session_id)
-    user_id = user["id"]        
-    cid = request.form.get('cid')
-    channel_name = request.form.get('channelTitle')
-    channel_description = request.form.get('channelDescription')
-
-    dbConnect.updateChannel(user_id, channel_name, channel_description, cid)
-    return redirect('/home/{cid}'.format(cid = cid))
-
-
-# 設定ページの表示
-@app.route('/setting')
-def index():
-    session_id = session.get("session_id")
-    if session_id is None:
-        return redirect('/login')
-    
-    else:
-        user = dbConnect.getUserBySessionID(session_id)
-        user_id = user["id"]
-        user_name = user["name"]
-        user_picture = user["picture"]
-        user_one_phrase = user["one_phrase"]
-        user_birthday = user["birthday"]
-
-        #fixed_phrases = getFixedPhraseAll(user_id)
-
-        #channels.reverse()
-    return render_template('/setting.html')
-
-
-## ログアウト
+# ログアウト、セッションクリア
 @app.route('/logout')
 def logout():
     session.clear()#セッション情報を削除
@@ -166,30 +99,174 @@ def logout():
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=False)
 
+# ホームへの遷移
+@app.route('/home')
+def home():
+    session_id = session.get("session_id")
+    if session_id is None:
+        return redirect('/login')
+    else:
+        #ユーザー情報の取得
+        user = dbConnect.getUserBySessionID(session_id)
+        user_id = user["id"]
+        #フレンド情報の取得
+        #辞書型friends{id, friend_id, friend_name, friend_one_phrase, friend_picture}
+        friends = dbConnect.getFriendAll(user_id)
+        #チャンネル情報の取得
+        #辞書型friends{user_id, user_name, channel_id, channel_name, description}
+        channels = dbConnect.getJoinedChannelById(user_id)
+
+        return render_template('home.html', user=user, friends=friends, channels=channels)
+
+# # チャンネル作成機能
+@app.route('/home', methods=['POST'])
+def add_channel():
+    # セッションからuidを取得
+    session_id = session.get('session_id')
+    # uidがNoneだった場合ログインページにリダイレクト
+    if session_id is None:
+        return redirect('/login')
+    
+    else:
+        #user_idを取得
+        user = dbConnect.getUserBySessionID(session_id)
+        user_id = user["id"]
+        owner_id = user_id
+
+        # フォームからフォームから検索したユーザーIDを取得
+        friend_id = request.form.get('friend_id')
+        # フォームからチャンネル名を取得
+        channel_name = request.form.get('channel_name')
+        description = request.form.get('channel_description')
+        # 遷移先のチャンネルIDを取得
+        #channel_id = request.form.get('channel_id')
+        #chatpage = '/chatpage/' + channel_id
+
+        # チャンネル遷移
+        #if channel_id is not None:
+        #    redirect('/chatpage/1')
+        #else:
+        #    pass
+
+        if friend_id is not None:
+            # 検索したIDをフレンドIDとして追加
+            dbConnect.addFriend(user_id, friend_id)
+            # 相手のフレンド欄に自分を追加
+            dbConnect.addFriend(friend_id, user_id)
+        else:
+            pass
+
+        if channel_name is not None:   
+            # 新しいチャンネルをデータベースに追加
+            dbConnect.createChannel(channel_name, description, owner_id)
+            # 新しいチャンネルのシリアルIDを取得
+            channel_id = dbConnect.getCreatedChannelId(channel_name, owner_id)
+            # 新しいチャンネルに自分を追加
+            dbConnect.insertMe(user_id, channel_id)
+        else:
+            pass
+
+        # ホームページにリダイレクト
+        return redirect('/home')
+
+@app.route('/setting', methods=['POST'])
+def add_phrase():
+
+    # セッションからuidを取得
+    session_id = session.get('session_id')
+
+    # uidがNoneだった場合ログインページにリダイレクト
+    if session_id is None:
+        return redirect('/login')
+    
+    else:
+        #user_idを取得
+        user = dbConnect.getUserBySessionID(session_id)
+        user_id = user["id"]
+
+        # 各フォームから情報を取得
+        name = request.form.get('name')
+        one_phrase = request.form.get('one_phrase')
+        email = request.form.get('email')
+        password = request.form.get('password')
+        phrase = request.form.get('fixed_phrase')
+
+        #名前の変更機能
+        if name is not None:
+            dbConnect.updateUserName(name, user_id)
+        else:
+            pass
+
+        #ひとことの変更機能
+        if one_phrase is not None:
+            dbConnect.updateOnePhrase(one_phrase, user_id)
+        else:
+            pass
+
+        #メールアドレスの変更機能
+        if email is not None:
+            dbConnect.updateUserEmail(email, user_id)
+        else:
+            pass
+
+        #パスワードの変更機能
+        if password is not None:
+            dbConnect.updateUserPassword(password, user_id)
+        else:
+            pass
+        
+        #定型文の追加機能
+        if phrase is not None:
+            # 新しい定型文をデータベースに追加
+            dbConnect.createFixedPhrase(user_id, phrase)
+        else:
+            pass
+
+        # 設定にリダイレクト
+        return redirect('/setting')
+
+# 設定ページの表示
+@app.route('/setting')
+def setting():
+    session_id = session.get("session_id")
+    if session_id is None:
+        return redirect('/login')
+    
+    else:
+        #自分のユーザー情報を取得
+        # 辞書型users{id, session_id, name, email, password, picure, birthday, one_phrase}
+        user = dbConnect.getUserBySessionID(session_id)
+        user_id = user["id"]
+        #自分のユーザーIDに紐づく定型文を取得
+        fixed_phrases = dbConnect.getFixedPhraseAll(user_id)
+
+        #channels.reverse()
+    return render_template('/setting.html', user=user, fixed_phrases=fixed_phrases)
+
 # # メッセージ作成機能
-@app.route('/message', methods=['POST'])
-def add_message():
+@app.route('/chatpage/<channel_id>', methods=['POST'])
+def add_message(channel_id):
     session_id = session.get("session_id")
     # ユーザーがログインしていない場合は、ログインページにリダイレクトする
-    if not session_id:
+    if session_id is None:
         return redirect('/login')
 
-    message = request.form.get('message')
-    channel_id = request.form.get('channel_id')
-    user_id = dbConnect.getSerialID('session_id')
+#    message = request.form.get('message')
+#    channel_id = request.form.get('channel_id')
+#    user_id = dbConnect.getSerialID('session_id')
     
     # メッセージが存在する場合のみ、データベースにメッセージを追加
-    if message:
-        dbConnect.createMessage(user_id, channel_id, message)
-    else:
-        # メッセージが空の場合は、エラーメッセージと共に元のページに戻る
-        return redirect('/error_page')
-
-    # チャンネル情報とそのチャンネルのメッセージを取得してテンプレートに渡す
-    channel = dbConnect.getChannelById(channel_id)
-    message = dbConnect.getMessageAll(channel_id)
-    
-    return render_template('detail.html', message=message, channel=channel, user_id=user_id)
+#    if message:
+#        dbConnect.createMessage(user_id, channel_id, message)
+#    else:
+#        # メッセージが空の場合は、エラーメッセージと共に元のページに戻る
+#        return redirect('/error_page')
+#
+#    # チャンネル情報とそのチャンネルのメッセージを取得してテンプレートに渡す
+#    channel = dbConnect.getChannelById(channel_id)
+#    message = dbConnect.getMessageAll(channel_id)
+    #message=message, channel=channel, user_id=user_id
+    return render_template('chatpage.html')
 
 # # チャットページ、
 @app.route('/chatpage/<channel_id>')
@@ -233,36 +310,3 @@ def delete_message():
 
     #　メッセージの削除後にチャンネル詳細を再表示
     return redirect('/detail/{channel_id}'.format(channel_id = channel_id))
-
-
-
-# # チャンネル作成機能
-@app.route('/', methods=['post'])
-def add_channel():
-    # セッションからuidを取得
-    session_id = session.get('session_id')
-
-    # uidがNoneだった場合ログインページにリダイレクト
-    if session_id is None:
-        return redirect('/login')
-    
-    #user_idを取得
-    user_id = dbConnect.getSerialID(session_id)
-
-    # フォームからチャンネル名を取得
-    channel_name = request.form.get('channel-title')
-    # データベースからチャンネル名で検索
-    channel = dbConnect.getChannelByName(channel_name)
-
-    # もしチャンネルが存在しない場合
-    if channel == None:
-        # フォームからチャンネルの説明を取得
-        channel_description = request.form.get('channel-description')
-        # 新しいチャンネルをデータベースに追加
-        dbChannel.addChannel(user_id, channel_name, channel_description)
-        # ホームページにリダイレクト
-        return redirect('/')
-    else:
-        # もしチャンネルがすでに存在する場合エラーメッセージを表示
-        error = 'すでに同じチャンネルが存在しています'
-        return render_template('error/error.html', error_message=error)

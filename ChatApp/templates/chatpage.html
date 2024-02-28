@@ -89,12 +89,12 @@
         </div>
       </div>
       <div class="chat_container_textform">
-        <form action="" method="POST">
+        <form action="" >
           <div>
-            <input type="text" />
+            <input name="massage" type="text" />
             <span id="chatpage_fixedphrases" class="material-symbols-outlined">description</span>
           </div>
-          <button class="material-symbols-outlined">send</button>
+          <button type="submit" class="material-symbols-outlined">send</button>
         </form>
       </div>
     </div>
@@ -102,7 +102,7 @@
 </main>
 
 <!-- modal.htmlの読み込み -->
-{% include 'modal.html' %}
+{% include 'modal/chatpage_modal.html' %}
 <script src="{{ url_for('static', filename='/js/chatpage.js') }}"></script>
 
 {% endblock %}

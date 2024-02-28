@@ -19,22 +19,22 @@
 <main class="setting_main">
   <div class="setting_main_leftside">
     <div class="setting_main_leftside_name">
-      <span class="setting_main_leftside_name_myphoto"></span>
-      <span class="setting_main_leftside_name_myname">名前</span>
+      <img src="{{ user.picture }}" class="setting_main_leftside_name_myphoto"/>
+      <span class="setting_main_leftside_name_myname">{{ user.name }}#{{ user.id }}</span>
       <span id="setting_name" class="material-symbols-outlined">border_color</span>
     </div>
     <div class="setting_main_leftside_profile">
       <div class="setting_main_leftside_profile_onephrase">
         <span>ひとこと</span>
-        <span id="setting_onephrase">ひとことですよ</span>
+        <span id="setting_onephrase">{{ user.one_phrase }}</span>
       </div>
       <div class="setting_main_leftside_profile_mailaddress">
         <span>めーるあどれす</span>
-        <span id="setting_mailaddress">.......@gmail.com</span>
+        <span id="setting_mailaddress">{{ user.email }}</span>
       </div>
       <div class="setting_main_leftside_profile_password">
         <span>ぱすわーど</span>
-        <span id="setting_password">ぱすわーどですよ</span>
+        <span id="setting_password">**********</span>
       </div>
     </div>
     <!-- <span id="setting_profile" class="setting_main_leftside_change">へんこう</span> -->
@@ -53,41 +53,20 @@
         <a class="material-symbols-outlined delete">delete</a>
       </div> -->
       <!-- {% endfor %} -->
+      {% for fixed_phrase in fixed_phrases %}
       <div class="setting_main_rightside_fixedphrases_phrase">
-        <span class="phrase">おはよう</span>
+        <span class="phrase">{{ fixed_phrase.phrase }}</span>
         <a class="material-symbols-outlined edit">border_color</a>
         <a class="material-symbols-outlined delete">delete</a>
       </div>
-      <div class="setting_main_rightside_fixedphrases_phrase">
-        <span class="phrase">こんにちは</span>
-        <a class="material-symbols-outlined edit">border_color</a>
-        <a class="material-symbols-outlined delete">delete</a>
-      </div>
-      <div class="setting_main_rightside_fixedphrases_phrase">
-        <span class="phrase">今日どこ行く？</span>
-        <span class="material-symbols-outlined edit">border_color</span>
-        <span class="material-symbols-outlined delete">delete</span>
-      </div>
-      <div class="setting_main_rightside_fixedphrases_phrase">
-        <span class="phrase">明日は雨降るから傘必要だよ</span>
-        <span class="material-symbols-outlined edit">border_color</span>
-        <span class="material-symbols-outlined delete">delete</span>
-      </div>
-      <div class="setting_main_rightside_fixedphrases_phrase">
-        <span class="phrase">今日のご飯は、なんでしょうか？</span>
-        <span class="material-symbols-outlined edit">border_color</span>
-        <span class="material-symbols-outlined delete">delete</span>
-      </div>
-      <div class="setting_main_rightside_fixedphrases_phrase">
-        <span class="phrase">今日疲れすぎて外食したい気分</span>
-        <span class="material-symbols-outlined edit">border_color</span>
-        <span class="material-symbols-outlined delete">delete</span>
-      </div>
+      {% endfor %}
     </div>
-    <div class="setting_main_rightside_addphrase">
-      <input type="text" placeholder="ついかしたいていけいぶんを入力してね">
-      <a href="">ついか</a>
-    </div>
+    <form action="" method="POST">
+      <div class="setting_main_rightside_addphrase">
+        <input name="fixed_phrase" type="text" placeholder="ついかしたいていけいぶんを入力してね">
+        <button type="submit" class="channnel_add_button">ついか</button>
+      </div>
+    </form>
   </div>
 </main>
 
@@ -95,6 +74,6 @@
 
 
 <!-- modal.htmlの読み込み -->
-{% include 'modal.html' %}
+{% include 'modal/setting_modal.html' %}
 <script src="{{ url_for('static', filename='/js/setting.js') }}"></script>
 {% endblock %}

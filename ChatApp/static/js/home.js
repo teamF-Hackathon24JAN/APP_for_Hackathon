@@ -19,6 +19,14 @@ friendlists.forEach((friendlist,i) =>{
     });
 });
 
+const search = document.getElementById('search');
+
+search.addEventListener('click',() => {
+  const modal_delete = document.getElementById("modal_friendAdd");
+  modal_delete.style.display = 'none';
+  const modal_friend = document.getElementById('modal_friend');
+  modal_friend.style.display = 'block';
+})
 
 const header_home = document.getElementById('header_home');
 
@@ -92,6 +100,9 @@ home_channels_edit.addEventListener('click', () => {
       document.getElementById(modalId).style.display = "none";
     });
   });
+
+  const ChannnelAddButton = document.getElementById('channnel_add_button');
+
   
   // モーダルの外側をクリックした時に閉じるイベントリスナーの追加
   window.addEventListener('click', function(event) {
@@ -100,15 +111,14 @@ home_channels_edit.addEventListener('click', () => {
     }
   });
 
+  const page = '/chatpage/' + 1;
+  const channelnumber = 'channel_' + 1
+  const channel_vars = document.getElementById(channelnumber);
 
-
-const channel_vars = document.querySelectorAll('._channels-var');
-
-channel_vars.forEach(channel => {
-    channel.addEventListener('click',( ) => {
-        window.location.href = '/chatpage/1'
+    channel_vars.addEventListener('click',( ) => {
+    window.location.href = page
     });
-});
+
 
 
 // document.querySelectorAll('.tab').forEach((tab) => {
