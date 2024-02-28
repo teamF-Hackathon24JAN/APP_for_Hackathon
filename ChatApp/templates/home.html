@@ -23,20 +23,18 @@
 <main class="main">
   <div class="_leftside">
     <h2>ともだち</h2>
-    <span id="friendAdd" class="material-symbols-outlined">
-      add_circle
-    </span>
+    <span id="friendAdd" class="material-symbols-outlined"> add_circle </span>
     <div class="friends-container">
-      {% for friend in friends %}
-        <div id="friends-scrollcontainer">
-          <ul>
-            <li class="list">
-              <img src="{{ friend.friend_picture }}" style="height:20px;"/> 
-              {{ friend.friend_name }}
-            </li>
-          </ul>
-        </div>
-      {% endfor %}
+      <div id="friends-scrollcontainer">
+        {% for friend in friends %}
+        <ul>
+          <li class="list">
+            <img src="{{ friend.friend_picture }}" style="height:20px;" />
+            {{ friend.friend_name }}
+          </li>
+        </ul>
+        {% endfor %}
+      </div>
       <div class="scroll-icon">
         <span id="upicon">↑</span>
         <span id="downicon">↓</span>
@@ -46,29 +44,33 @@
 
   <div class="_rightside">
     <div class="_proile">
-        <img src ="{{ user.picture }}" class ="profile_photo"/>
+      <img src="{{ user.picture }}" class="profile_photo" />
       <h2>{{ user.name }}#{{ user.id }}</h2>
       <span class="onephrase">{{ user.one_phrase }}</span>
     </div>
     <div class="_channels">
       <div class="channel_header">
         <h2>ちゃんねる{{ channel_id }}</h2>
-        <span id="home_channels_add" class="material-symbols-outlined"> add_circle</span>
+        <span id="home_channels_add" class="material-symbols-outlined">
+          add_circle</span
+        >
       </div>
       <div id="channel-boxes">
         {% for channel in channels %}
           <div name="channel_{{ channel.channel_id }}" class="_channels-var">
-              <span class="channel-name">{{ channel.channel_id }}.{{ channel.channel_name }}</span>
-              <span class="channel-member-title">ちゃんねるせつめい</span>
-              <div class="channel-members">
-                <ul>
-                  <div>{{ channel.description }}</div>
-                </ul>
-              </div>
-              <form action="" method="POST">
-                <input name="" value="{{ channel.channel_id }}" />
-                <button>ちゃんねるへ</button>
-              </form>
+            <span class="channel-name"
+              >{{ channel.channel_id }}.{{ channel.channel_name }}</span>
+            <span class="channel-member-title">ちゃんねるせつめい</span>
+            <div class="channel-members">
+              <ul>
+                <div>{{ channel.description }}</div>
+              </ul>
+            </div>
+            <a href="/chatpage/{{ channel.channel_id }}">チャンネルへ</a>
+            <!-- <form action="" method="POST">
+              <input name="" value="{{ channel.channel_id }}" />
+              <button>ちゃんねるへ</button>
+            </form> -->
           </div>
         {% endfor %}
       </div>

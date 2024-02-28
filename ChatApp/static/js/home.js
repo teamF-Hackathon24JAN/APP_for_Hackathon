@@ -115,9 +115,17 @@ home_channels_edit.addEventListener('click', () => {
   const channelnumber = 'channel_' + 1
   const channel_vars = document.getElementById(channelnumber);
 
-    channel_vars.addEventListener('click',( ) => {
-    window.location.href = page
-    });
+  // const channel_Vars = document.querySelectorAll('._channels-var');
+  // channel_Vars.forEach(channel_var => {
+  //   channel_var.addEventListener('click',() => {
+  //     window.location.href = '/chatpage';
+  //   });
+  // });
+
+    // channel_vars.addEventListener('click',( ) => {
+    //   let 
+    // window.location.href = '/chatpage';
+    // });
 
 
 
