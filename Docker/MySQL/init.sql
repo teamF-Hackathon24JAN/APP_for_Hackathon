@@ -10,7 +10,7 @@ GRANT ALL PRIVILEGES ON gutara_chat.* TO 'admin';
 CREATE TABLE users (
     id serial PRIMARY KEY,
     session_id varchar(255) UNIQUE NOT NULL,
-    name varchar(255) UNIQUE NOT NULL,
+    name varchar(255) NOT NULL,
     email varchar(255) UNIQUE NOT NULL,
     password varchar(255) NOT NULL,
     picture varchar(255),

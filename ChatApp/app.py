@@ -259,28 +259,32 @@ def setting():
         #channels.reverse()
     return render_template('/setting.html', user=user, fixed_phrases=fixed_phrases)
 
-# # メッセージ作成機能
+# メッセージ作成機能
 @app.route('/chatpage/<channel_id>', methods=['POST'])
 def add_message(channel_id):
     session_id = session.get("session_id")
     # ユーザーがログインしていない場合は、ログインページにリダイレクトする
     if session_id is None:
         return redirect('/login')
+    else:
+        pass
+
+    user = getUserBySessionID(session_id)
+    user_id = user["id"]
 
     message = request.form.get('message')
-    channel_id = request.form.get('channel_id')
-    user_id = dbConnect.getSerialID('session_id')
+    #channel_id = request.form.get('channel_id')
    
    # メッセージが存在する場合のみ、データベースにメッセージを追加
-    if message:
+    if message is not None:
         dbConnect.createMessage(user_id, channel_id, message)
     else:
         # メッセージが空の場合は、エラーメッセージと共に元のページに戻る
         return redirect('/error_page')
 
     # チャンネル情報とそのチャンネルのメッセージを取得してテンプレートに渡す
-    channel = dbConnect.getChannelById(channel_id)
-    message = dbConnect.getMessageAll(channel_id)
+    #channel = dbConnect.getChannelById(channel_id)
+    #message = dbConnect.getMessageAll(channel_id)
     #message=message, channel=channel, user_id=user_id
     return render_template('chatpage.html')
 
@@ -304,8 +308,12 @@ def detail(channel_id):
     # 指定されたチャンネルIDに関連する全てのメッセージを取得
     messages = dbConnect.getMessageAll(channel_id)
 
-    # 取得したチャンネル情報とメッセージ、ユーザーIDをdetail.htmlテンプレートに渡し、そのテンプレートを使用してレンダリングしたページを返す
-    return render_template('chatpage.html')
+    if messages is None:
+        messages = []
+    else:
+        pass
+        
+    return render_template('chatpage.html', channel=channel, messages=messages, user_id=user_id)
 
 # メッセージの削除
 @app.route('/delete_message', methods=['POST'])

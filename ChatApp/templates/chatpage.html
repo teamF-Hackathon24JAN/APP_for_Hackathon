@@ -55,38 +55,16 @@
   </div>
   <div class="chat_rightside">
     <div class="chat_name">
-      <span>ゆうと</span>
+      <span>{{ channel.channel_name }}</span>
     </div>
     <div class="chat_container">
       <div id="messagearea" class="chat_container_scroll">
+        {% for message in messages %}
         <div class="chat_container_friends_text">
-          <span>ちゃみする</span>
-          <span>明日は、とても忙しいから覚悟しておいてね！</span>
+          <span>{{ message.user_id }}</span>
+          <span>{{ mesasge.message }}</span>
         </div>
-        <div class="chat_container_my_text">
-          <span>そんなばかな</span>
-        </div>
-        <div class="chat_container_friends_text">
-          <span>ちゃみする</span>
-          <span>そんなことがあり得るんですよ</span>
-        </div>
-        <div class="chat_container_my_text">
-          <span>仕方ないな</span>
-        </div>
-        <div class="chat_container_friends_text">
-          <span>ちゃみする</span>
-          <span>お前明日までっていただろ</span>
-        </div>
-        <div class="chat_container_my_text">
-          <span>そんなの聞いてないですよ</span>
-        </div>
-        <div class="chat_container_friends_text">
-          <span>ちゃみする</span>
-          <span>聞いてないとは言わせないぞ！</span>
-        </div>
-        <div class="chat_container_my_text">
-          <span>お前がやれや！！！！！ </span>
-        </div>
+        {% endfor %}
       </div>
       <div class="chat_container_textform">
         <form action="" >
