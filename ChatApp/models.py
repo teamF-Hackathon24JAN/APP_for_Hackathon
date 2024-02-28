@@ -221,6 +221,20 @@ class dbConnect:
         finally:
             cur.close()
 
+# チャンネルのidからチャンネル情報を取得
+    def getChannelById(channel_id):
+        try:
+            conn = DB.getConnection()
+            cur = conn.cursor()
+            sql = "SELECT * FROM channels WHERE id = %s;"
+            cur.execute(sql, (channel_id))
+            channel = cur.fetchone()
+            return channel
+        except Exception as e:
+            print(e + 'が発生しています')
+        finally:
+            cur.close()
+
 # 作成したチャンネルに自分を追加
     def insertMe(user_id, channel_id):
         try:
@@ -294,6 +308,7 @@ class dbConnect:
             sql = "INSERT INTO messages(user_id, channel_id, message) VALUES(%s, %s, %s)"
             # executeメソッドを使用してSQL文を実行。プレースホルダーにはuid, cid, messageの値を渡す
             cur.execute(sql, (user_id, cid, message))
+            conn.commit()
         except Exception as e:
             # エラーが発生した場合、エラーメッセージを出力
             print(str(e) + 'が発生しています')
@@ -304,7 +319,7 @@ class dbConnect:
             # カーソルオブジェクトを閉じる
             cur.close()
 
-    def getMessageAll(cid):
+    def getMessageAll(channel_id):
         # tryブロックを使用して、データーベースへの接続と操作を試みる
         try:
             # データベース接続を取得
@@ -312,10 +327,10 @@ class dbConnect:
             # カーソルオブジェクトを作成。これを使用してSQLクエリを実行
             cur = conn.cursor()
             # SQL文を定義。このSQL文では、指定されたcidに対するメッセージとそれに関連するユーザー情報を取得
-            sql = "SELECT id, u.uid, user_name, message FROM messages AS m INNER JOIN users AS u ON m.uid = u.id WHERE cid = %s;"
+            sql = "SELECT id, user_id, u.name as user_name, message FROM messages AS m INNER JOIN users AS u ON m.user_id = u.id WHERE channel_id = %s;"
             # executeメソッドを使用してSQL文を実行
             # cidの値をSQLクエリのパラメータとして渡す
-            cur.execute(sql, (cid,))
+            cur.execute(sql, (channel_id))
             # fetchallメソッドを使用してクエリ結果の全ての行を取得
             messages = cur.fetchall()
             # 取得したメッセージ情報を返す
