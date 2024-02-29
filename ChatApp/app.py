@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, render_template, session, flash, abort
+from flask import Flask, request, redirect, render_template, session, flash, abort, url_for
 # Flask ルーティング
 # request データを受け取る、取得、参照
 # redirect 自動的に指定した他のページに転送
@@ -15,11 +15,13 @@ import time
 #models.pyで定義したクラスdbConnectを呼び出す
 from models import dbConnect
 
-debug = True
 
 app = Flask(__name__) #Flaskクラスのインスタンスを作る
 app.secret_key = uuid.uuid4().hex #uuid=(universal unique identifer)36文字の英数字からなる一意の識別子、sessionを暗号化するための鍵を設定
 app.permanent_session_lifetime = timedelta(days = 30) #sessionの有効期限を定める　30日間
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", debug=True)
 
 # ルート直下の処理（セッション確保時はhome、ない場合はloginへ遷移
 @app.route('/')
@@ -111,10 +113,6 @@ def logout():
     session.clear()#セッション情報を削除
     return redirect('/login')#ログイン画面へ遷移する
 
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=False)
-
 # ホームへの遷移
 @app.route('/home')
 def home():
@@ -154,15 +152,6 @@ def add_channel():
         # フォームからチャンネル名を取得
         channel_name = request.form.get('channel_name')
         description = request.form.get('channel_description')
-        # 遷移先のチャンネルIDを取得
-        #channel_id = request.form.get('channel_id')
-        #chatpage = '/chatpage/' + channel_id
-
-        # チャンネル遷移
-        #if channel_id is not None:
-        #    redirect('/chatpage/1')
-        #else:
-        #    pass
 
         if friend_id is not None:
             # 検索したIDをフレンドIDとして追加
@@ -269,28 +258,26 @@ def add_message(channel_id):
     else:
         pass
 
-    user = getUserBySessionID(session_id)
+    user = dbConnect.getUserBySessionID(session_id)
     user_id = user["id"]
 
     message = request.form.get('message')
     #channel_id = request.form.get('channel_id')
-   
+    
    # メッセージが存在する場合のみ、データベースにメッセージを追加
-    if message is not None:
-        dbConnect.createMessage(user_id, channel_id, message)
+    if message == "":
+        pass
     else:
+        dbConnect.createMessage(user_id, channel_id, message)
+    #else:
         # メッセージが空の場合は、エラーメッセージと共に元のページに戻る
-        return redirect('/error_page')
-
-    # チャンネル情報とそのチャンネルのメッセージを取得してテンプレートに渡す
-    #channel = dbConnect.getChannelById(channel_id)
-    #message = dbConnect.getMessageAll(channel_id)
-    #message=message, channel=channel, user_id=user_id
-    return render_template('chatpage.html')
+    #    return redirect('/error_page')
+    
+    return redirect(url_for('chatpage', channel_id=channel_id))
 
 # # チャットページ、
 @app.route('/chatpage/<channel_id>')
-def detail(channel_id):
+def chatpage(channel_id):
     # 現在のセッションからユーザーID ('uid') を取得
     session_id = session.get("session_id")
     
@@ -301,19 +288,30 @@ def detail(channel_id):
     # user_idを取得
     user = dbConnect.getUserBySessionID(session_id)
     user_id = user["id"]
-
+    # channel_memberを取得
+    members = dbConnect.getChannelMemberAll(channel_id)
     # パスパラメーターから取得したチャンネルIDを使用し、チャンネルの情報をデータベースから取得
+    # 辞書型channel{id, name, description, owner_id}
     channel = dbConnect.getChannelById(channel_id)
-    
     # 指定されたチャンネルIDに関連する全てのメッセージを取得
     messages = dbConnect.getMessageAll(channel_id)
+    #自分のユーザーIDに紐づく定型文を取得
+    fixed_phrases = dbConnect.getFixedPhraseAll(user_id)
 
+    # メッセージテーブルがNoneの場合、空のカラムを渡す
     if messages is None:
         messages = []
     else:
         pass
-        
-    return render_template('chatpage.html', channel=channel, messages=messages, user_id=user_id)
+    
+    return render_template(
+        'chatpage.html', 
+        fixed_phrases=fixed_phrases, 
+        channel=channel, 
+        messages=messages, 
+        members=members, 
+        user_id=user_id
+        )
 
 # メッセージの削除
 @app.route('/delete_message', methods=['POST'])

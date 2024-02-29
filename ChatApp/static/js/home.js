@@ -15,6 +15,10 @@ friendlists.forEach((friendlist,i) =>{
     friendlist.animate(keyframes,options);
 
     friendlist.addEventListener('click', () => {
+      console.log(friendlist.dataset.id)
+      friend_name = document.getElementById('fname')
+      friend_phrase = document.getElementById('fphrase')
+      friend_name.textContent = friendlist.dataset.id
       document.getElementById('modal_friend').style.display = 'block';
     });
 });

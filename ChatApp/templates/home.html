@@ -28,7 +28,7 @@
       <div id="friends-scrollcontainer">
         {% for friend in friends %}
         <ul>
-          <li class="list">
+          <li class="list" data-id="{{ friend.friend_id }}">
             <img src="{{ friend.friend_picture }}" style="height:20px;" />
             {{ friend.friend_name }}#{{ friend.friend_id }}
           </li>
@@ -50,7 +50,7 @@
     </div>
     <div class="_channels">
       <div class="channel_header">
-        <h2>ちゃんねる{{ channel_id }}</h2>
+        <h2>ちゃんねる</h2>
         <span id="home_channels_add" class="material-symbols-outlined">
           add_circle</span
         >
@@ -66,8 +66,8 @@
                 <div>{{ channel.description }}</div>
               </ul>
             </div>
-            <a href="/chatpage/{{ channel.channel_id }}" >
-              <img src='https://test-fteam.s3.ap-northeast-1.amazonaws.com/default_icon.JPG' style="width:80px;" alt="チャンネルボタン">
+            <a href="/chatpage/{{ channel.channel_id }}">
+              <img src='https://test-fteam.s3.ap-northeast-1.amazonaws.com/UI/button-1157299_640.png' style="width:200px;" alt="チャンネルボタン">
             </a>
           </div>
         {% endfor %}
