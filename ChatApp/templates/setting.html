@@ -55,11 +55,13 @@
       <!-- {% endfor %} -->
       {% for fixed_phrase in fixed_phrases %}
       <div class="setting_main_rightside_fixedphrases_phrase">
-        <span class="phrase">{{ fixed_phrase.id }}.{{ fixed_phrase.phrase }}</span>
+        <form action="" method="POST">
+        <span class="phrase">{{ fixed_phrase.phrase }}</span>
         <!--
           <a class="material-symbols-outlined edit">border_color</a>
         -->
-        <a class="material-symbols-outlined delete">delete</a>
+        <button type="submit" name="phrase_id" value="{{ fixed_phrase.id }}"class="material-symbols-outlined delete">delete</button>
+        </form>
       </div>
       {% endfor %}
     </div>
