@@ -47,29 +47,34 @@ friendlists.forEach((friendlist,i) =>{
     });
 });
 
-const friendscontainer = document.querySelector('#friends-scrollcontainer');
+const friendaddmodal = document.getElementById('friendAdd');
 
-const upbutton = document.querySelector('#upicon');
-const downbutton = document.querySelector('#downicon');
-
-
-upbutton.addEventListener('click', () => {
-    // containerを上方向に50pxスクロールさせる
-    friendscontainer.scrollBy({top: -50, behavior: 'smooth' });
+friendaddmodal.addEventListener('click',() => {
+    const modalfriadd = document.getElementById('modal_friendAdd');
+    modalfriadd.style.display = "block";
 });
 
-downbutton.addEventListener('click', () => {
-      // containerを下方向に50pxスクロールさせる
-      friendscontainer.scrollBy({top: 50, behavior: 'smooth' });
-});
+// const friendscontainer = document.querySelector('#friends-scrollcontainer');
+
+// const upbutton = document.querySelector('#upicon');
+// const downbutton = document.querySelector('#downicon');
+
+
+// upbutton.addEventListener('click', () => {
+//     // containerを上方向に50pxスクロールさせる
+//     friendscontainer.scrollBy({top: -50, behavior: 'smooth' });
+// });
+
+// downbutton.addEventListener('click', () => {
+//       // containerを下方向に50pxスクロールさせる
+//       friendscontainer.scrollBy({top: 50, behavior: 'smooth' });
+// });
 
 window.addEventListener('DOMContentLoaded',( ) => {
     const scrollmessage = document.getElementById("messagearea");
   // 要素内の最下部にスクロール
   scrollmessage.scrollTop = scrollmessage.scrollHeight;
 })
-
-
 
 const chatpage_fixedphrases = document.getElementById('chatpage_fixedphrases');
 
@@ -91,4 +96,13 @@ chatpage_fixedphrases.addEventListener('click', () => {
     if (event.target.classList.contains("modal")) {
       event.target.style.display = "none";
     }
+  });
+
+  const select_phrases = document.querySelectorALL('.modal_content_body_box_fixedphrase');
+
+  select_phrases.forEach((select_phrase) => {
+    select_phrase.addEventListener('dbclick',(e) => {
+      const messageInput = document.getElementById('messageInput');
+      messageInput.value = e.target.textContent;
+    });
   });

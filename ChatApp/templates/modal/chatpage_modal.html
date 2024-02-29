@@ -12,14 +12,47 @@
     </div>
     <div class="modal_content_body">
       <div class="modal_content_body_box">
-        <span class="modal_content_body_box_fixedphrase">あ</span>
-        <span class="modal_content_body_box_fixedphrase">い</span>
-        <span class="modal_content_body_box_fixedphrase">う</span>
-        <span class="modal_content_body_box_fixedphrase">え</span>
-        <span class="modal_content_body_box_fixedphrase">お</span>
-        <span class="modal_content_body_box_fixedphrase">か</span>
+        {% for fixed_phrase in fixed_phrases %}
+        <span class="modal_content_body_box_fixedphrase">{{ fixed_phrase.phrase }}</span>
+        {% endfor %}
       </div>
-      <button class="modal_content_body_insert">使用する</button>
+    </div>
+  </div>
+</div>
+
+<div id="modal_friendAdd" class="modal" style="display: none">
+  <div class="modal_content">
+    <div class="modal_content_header">
+      <span class="modal_content_header_title">ともだちついか</span>
+      <span class="modal_content_header_close" data-modal="modal_friendAdd"
+        >&times;</span
+      >
+    </div>
+    <div class="modal_content_body">
+      <span>ともだちのID</span>
+      <form action="" method="POST">
+        <input name="friend_id" type="text" placeholder="IDを入力してね" />
+        <button type="submit" id="search">ついか</button>
+      </form>
+
+      <!--
+      画面遷移なしでPOSTするためのコード(非同期通信)
+      <script>
+        const searchSubmit = document.querySelector('search');
+        const form = document.querySelector('#form');
+        form.addEventListener('submit', (event) => {
+          event.stopPropagation();
+          event.preventDefault();
+          const formData = new formData(form);
+          const options = {
+            method: 'POST',
+            body: formData,
+          }
+          const url = form.getAttribute('action');
+          fetch(url, options);
+        });
+      </script>
+      -->
     </div>
   </div>
 </div>

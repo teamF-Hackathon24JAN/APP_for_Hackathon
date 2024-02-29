@@ -15,6 +15,10 @@ friendlists.forEach((friendlist,i) =>{
     friendlist.animate(keyframes,options);
 
     friendlist.addEventListener('click', () => {
+      console.log(friendlist.dataset.id)
+      friend_name = document.getElementById('fname')
+      friend_phrase = document.getElementById('fphrase')
+      friend_name.textContent = friendlist.dataset.id
       document.getElementById('modal_friend').style.display = 'block';
     });
 });
@@ -47,23 +51,23 @@ header_signout.addEventListener('click',() => {
 })
 
 
-const upbutton = document.querySelector('#upicon');
-const downbutton = document.querySelector('#downicon');
-const friendscontainer = document.querySelector('#friends-scrollcontainer');
+// const upbutton = document.querySelector('#upicon');
+// const downbutton = document.querySelector('#downicon');
+// const friendscontainer = document.querySelector('#friends-scrollcontainer');
 
 const leftbutton = document.querySelector('#lefticon');
 const rightbutton = document.querySelector('#righticon');
 const channelscontainer = document.querySelector('#channel-boxes');
 
-upbutton.addEventListener('click', () => {
-    // containerを上方向に50pxスクロールさせる
-    friendscontainer.scrollBy({top: -50, behavior: 'smooth' });
-});
+// upbutton.addEventListener('click', () => {
+//     // containerを上方向に50pxスクロールさせる
+//     friendscontainer.scrollBy({top: -50, behavior: 'smooth' });
+// });
 
-downbutton.addEventListener('click', () => {
-      // containerを下方向に50pxスクロールさせる
-      friendscontainer.scrollBy({top: 50, behavior: 'smooth' });
-});
+// downbutton.addEventListener('click', () => {
+//       // containerを下方向に50pxスクロールさせる
+//       friendscontainer.scrollBy({top: 50, behavior: 'smooth' });
+// });
 
 leftbutton.addEventListener('click', () => {
         // containerを左方向に100pxスクロールさせる

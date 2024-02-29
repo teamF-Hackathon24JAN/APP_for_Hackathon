@@ -70,7 +70,7 @@
   line-height: 60px;
   padding-left: 10px;
   background-color: lightgray;
-  transition: 0.6s;
+  transition: all 0.6s;
   cursor: pointer;
 }
 .setting_main_leftside_profile_onephrase span:nth-child(2):hover {
@@ -94,6 +94,7 @@
   height: 40px;
   line-height: 40px;
   padding-left: 10px;
+  transition: all 0.6s;
   cursor: pointer;
 }
 .setting_main_leftside_profile_mailaddress span:nth-child(2):hover {
@@ -118,6 +119,7 @@
   line-height: 40px;
   padding-left: 10px;
   cursor: pointer;
+  transition: all 0.6s;
 }
 .setting_main_leftside_profile_password span:nth-child(2):hover {
   background-color: rgba(0, 0, 0, 0.713);
@@ -240,16 +242,13 @@
   margin: 10px 10px 5px 10px;
   text-align: center;
 }
-.setting_main_rightside_addphrase a {
-  flex: none;
-  text-align: center;
+.setting_main_rightside_addphrase .channnel_add_button {
+  height: 50px;
   width: 100px;
-  align-self: center;
-  margin-right: 10px;
-  background-color: rgb(250, 203, 73);
+  display: block;
+  margin: 10px auto 10px auto;
   border-radius: 10px;
-  text-decoration: none;
-  margin-bottom: 20px;
+  font-family: kiwi maru;
 }
 
 #modal_setting_name .modal_content {
