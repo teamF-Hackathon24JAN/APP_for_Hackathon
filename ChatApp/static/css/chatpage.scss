@@ -138,15 +138,19 @@
           }
         }
 
+        & a {
+          align-self: flex-end;
+        
+
         & button {
           font-size: 50px;
           border: none;
           background-color: transparent;
-          align-self: flex-end;
           height: 40px;
           width: 40px;
           margin-bottom: 5px;
         }
+      }
       }
     }
   }

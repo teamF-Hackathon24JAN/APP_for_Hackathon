@@ -114,11 +114,13 @@
   z-index: 20;
   cursor: pointer;
 }
-.chat_container_textform form button {
+.chat_container_textform form a {
+  align-self: flex-end;
+}
+.chat_container_textform form a button {
   font-size: 50px;
   border: none;
   background-color: transparent;
-  align-self: flex-end;
   height: 40px;
   width: 40px;
   margin-bottom: 5px;
