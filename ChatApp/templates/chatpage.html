@@ -3,7 +3,7 @@
 {% endblock %} {% block body %}
 <header>
   <div class="home_header">
-    <h1>ぐーたらちゃっと</h1>
+    <a class="chat__name" href="/">ぐーたらちゃっと</a>
     <div class="home_header_nav-box">
       <div id="header_home" class="home_header_nav-box_icons">
         <span class="material-symbols-outlined"> cottage</span>
@@ -29,7 +29,7 @@
         <ul>
           {% for member in members %}
           <li class="list">
-            <img src="{{ member.member_picture }}" style="height:20px;" />
+            <img src="{{ member.member_picture }}" style="height:30px;border-radius: 50%;" />
             {{ member.member_name }}#{{ member.member_id }}
           </li>
           {% endfor %}
@@ -45,7 +45,10 @@
   </div>
   <div class="chat_rightside">
     <div class="chat_name">
-      <span>{{ channel.name }}</span>
+      <div>
+        <span>{{ channel.name }}</span>
+        <span id="channel_edit" class="material-symbols-outlined">add_circle</span>
+      </div>
     </div>
     <div class="chat_container">
       <div id="messagearea" class="chat_container_scroll">
@@ -70,7 +73,7 @@
           <span id="chatpage_fixedphrases" class="material-symbols-outlined">description</span>
           </div>
           <a href="/chatpage/{{ channel.id }}">
-          <button type="submit" class="material-symbols-outlined">send</button>
+          <button type="submit" class="material-symbols-outlined send">send</button>
           </a>
         </form>
       </div>

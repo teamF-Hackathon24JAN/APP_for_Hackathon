@@ -69,6 +69,14 @@ friendaddmodal.addEventListener("click", () => {
 //       friendscontainer.scrollBy({top: 50, behavior: 'smooth' });
 // });
 
+
+const channel_edit = document.getElementById('channel_edit');
+
+channel_edit.addEventListener('click', ( ) => {
+  const modal_channel_edit = document.getElementById('modal_channel_edit');
+  modal_channel_edit.style.display = 'block';
+});
+
 window.addEventListener("DOMContentLoaded", () => {
   const scrollmessage = document.getElementById("messagearea");
   // 要素内の最下部にスクロール
@@ -79,8 +87,7 @@ const chatpage_fixedphrases = document.getElementById("chatpage_fixedphrases");
 
 chatpage_fixedphrases.addEventListener("click", () => {
   const modal_chatpage_fixedphrases = document.getElementById(
-    "modal_chatpage_fixedphrases"
-  );
+    "modal_chatpage_fixedphrases");
   modal_chatpage_fixedphrases.style.display = "block";
 });
 
@@ -109,5 +116,21 @@ select_phrases.forEach((select_phrase) => {
   select_phrase.addEventListener("dblclick", (e) => {
     const messageInput = document.getElementById("messageInput");
     messageInput.value = e.target.textContent;
+    modal_chatpage_fixedphrases = document.getElementById(
+      "modal_chatpage_fixedphrases"
+    );
+    modal_chatpage_fixedphrases.style.display = "none";
+  });
+});
+
+select_phrases.forEach(selected_phrase => {
+  selected_phrase.addEventListener('click', (e) => {
+    select_phrases.forEach(phrase => {
+      if (phrase !== e.target) {
+        phrase.classList.remove('clicked');
+      }
+    });
+    e.target.classList.add('clicked');
+    e.stopPropagation();
   });
 });
