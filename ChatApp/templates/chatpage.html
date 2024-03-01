@@ -23,17 +23,17 @@
 <main class="main">
   <div class="_leftside">
     <h2>ちゃんねるめんばー</h2>
-    <!-- <span id="friendAdd" class="material-symbols-outlined"> add_circle </span> -->
+    <span id="friendAdd" class="material-symbols-outlined"> add_circle </span>
     <div class="friends-container">
       <div id="friends-scrollcontainer">
-        {% for member in members %}
         <ul>
+          {% for member in members %}
           <li class="list">
             <img src="{{ member.member_picture }}" style="height:20px;" />
             {{ member.member_name }}#{{ member.member_id }}
           </li>
+          {% endfor %}
         </ul>
-        {% endfor %}
       </div>
       <div class="scroll-icon">
         <span id="upicon">↑</span>
@@ -57,7 +57,7 @@
       <div class="chat_container_textform">
         <form action="" method="POST">
           <div>
-            <input name="message" type="text" >
+            <input id="messageInput" name="message" type="text" >
           <span id="chatpage_fixedphrases" class="material-symbols-outlined">description</span>
           </div>
           <a href="/chatpage/{{ channel.id }}">

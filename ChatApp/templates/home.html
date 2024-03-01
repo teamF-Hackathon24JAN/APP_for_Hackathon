@@ -7,15 +7,15 @@
     <div class="home_header_nav-box">
       <div id="header_home" class="home_header_nav-box_icons">
         <span class="material-symbols-outlined"> cottage</span>
-        <a href="">ほーむ</a>
+        <a>ほーむ</a>
       </div>
       <div id="header_setting" class="home_header_nav-box_icons">
         <span class="material-symbols-outlined"> settings</span>
-        <a href="">せってぃんぐ</a>
+        <a>せってぃんぐ</a>
       </div>
       <div id="header_signout" class="home_header_nav-box_icons">
         <span class="material-symbols-outlined"> logout</span>
-        <a href="">さいんあうと</a>
+        <a>さいんあうと</a>
       </div>
     </div>
   </div>
@@ -26,18 +26,14 @@
     <span id="friendAdd" class="material-symbols-outlined"> add_circle </span>
     <div class="friends-container">
       <div id="friends-scrollcontainer">
-        {% for friend in friends %}
         <ul>
+          {% for friend in friends %}
           <li class="list" data-id="{{ friend.friend_id }}">
-            <img src="{{ friend.friend_picture }}" style="height:20px;" />
+            <img src="{{ friend.friend_picture }}" style="height:30px;border-radius: 50%;" />
             {{ friend.friend_name }}#{{ friend.friend_id }}
           </li>
+          {% endfor %}
         </ul>
-        {% endfor %}
-      </div>
-      <div class="scroll-icon">
-        <span id="upicon">↑</span>
-        <span id="downicon">↓</span>
       </div>
     </div>
   </div>
@@ -46,7 +42,11 @@
     <div class="_proile">
       <img src="{{ user.picture }}" class="profile_photo" />
       <h2>{{ user.name }}#{{ user.id }}</h2>
+      {% if user.onephrase %}
       <span class="onephrase">{{ user.one_phrase }}</span>
+      {% else %}
+      <span class="onephrase">ひとことがありません</span>
+      {% endif %}
     </div>
     <div class="_channels">
       <div class="channel_header">
@@ -61,12 +61,10 @@
             <span class="channel-name">{{ channel.channel_id }}.{{ channel.channel_name }}</span>
 
             <span class="channel-member-title">ちゃんねるせつめい</span>
-            <div class="channel-members">
-              <ul>
+            <div class="channel-description">
                 <div>{{ channel.description }}</div>
-              </ul>
             </div>
-            <a href="/chatpage/{{ channel.channel_id }}">
+            <a class="chatpage_link" href="/chatpage/{{ channel.channel_id }}">
               <img src='https://test-fteam.s3.ap-northeast-1.amazonaws.com/UI/button-1157299_640.png' style="width:200px;" alt="チャンネルボタン">
             </a>
           </div>

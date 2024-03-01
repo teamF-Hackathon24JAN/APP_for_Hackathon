@@ -80,35 +80,35 @@ setting_delete.addEventListener('click', () => {
 
 
 //定型分の編集モーダルの表示
-const fixedphrase_edit_els = document.querySelectorAll('.material-symbols-outlined.edit');
+// const fixedphrase_edit_els = document.querySelectorAll('.material-symbols-outlined.edit');
 
-fixedphrase_edit_els.forEach(el => {
-    el.addEventListener('click', (e) => {
+// fixedphrase_edit_els.forEach(el => {
+//     el.addEventListener('click', (e) => {
 
-      const phraseText = e.target.parentNode.querySelector('.phrase').textContent;
+//       const phraseText = e.target.parentNode.querySelector('.phrase').textContent;
 
-      // モーダルのinput要素を取得
-      const modalInput = document.querySelector('.modal_content_body_editInput');
+//       // モーダルのinput要素を取得
+//       const modalInput = document.querySelector('.modal_content_body_editInput');
 
-      // 取得したテキストをモーダルのinputのvalueにセット
-      modalInput.value = phraseText;
+//       // 取得したテキストをモーダルのinputのvalueにセット
+//       modalInput.value = phraseText;
 
-        document.getElementById('modal_setting_onephrase_edit').style.display = 'block';
-    });
-});
+//         document.getElementById('modal_setting_onephrase_edit').style.display = 'block';
+//     });
+// });
 
 
 //定型分の削除モーダルの表示
 // const fixedphrase_delete_els = document.querySelectorAll('.material-symbols-outlined.delete');
-// 
+
 // fixedphrase_delete_els.forEach(el => {
 //     el.addEventListener('click', (e) => {
 //       const phraseText = e.target.closest('.setting_main_rightside_fixedphrases_phrase')
 //                                .querySelector('.phrase').textContent;
-//         
+
 //         // モーダル内の<span>にテキストを設定
 //         document.querySelector('#modal_setting_onephrase_delete .modal_content_body span').textContent = phraseText;
-// 
+
 //         document.getElementById('modal_setting_onephrase_delete').style.display = 'block';
 //     });
 // });
