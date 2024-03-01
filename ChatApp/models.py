@@ -336,6 +336,19 @@ class dbConnect:
             # 最後に必ずカーソルを閉じる
             cur.close()
 
+# フレンド追加機能、検索したユーザーのIDを格納
+    def addChannelMenber(member_id, channel_id):
+        try:
+            conn = DB.getConnection()
+            cur = conn.cursor()
+            sql = "INSERT INTO channels_users (user_id, channel_id) VALUES (%s, %s);"
+            cur.execute(sql, (member_id, channel_id))
+            conn.commit()
+        except Exception as e:
+            print(e + 'が発生しています')
+        finally:
+            cur.close()
+
     def createMessage(user_id, channel_id, message):
     # tryブロックを使用して、データベースへの接続と操作を試みる
         try:

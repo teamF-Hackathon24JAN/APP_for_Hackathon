@@ -13,25 +13,6 @@
         <input name="friend_id" type="text" placeholder="IDを入力してね" />
         <button type="submit" id="search" >ついか</button>
       </form>
-
-      <!--
-      画面遷移なしでPOSTするためのコード(非同期通信)
-      <script>
-        const searchSubmit = document.querySelector('search');
-        const form = document.querySelector('#form');
-        form.addEventListener('submit', (event) => {
-          event.stopPropagation();
-          event.preventDefault();
-          const formData = new formData(form);
-          const options = {
-            method: 'POST',
-            body: formData,
-          }
-          const url = form.getAttribute('action');
-          fetch(url, options);
-        });
-      </script>
-      -->
     </div>
   </div>
 </div>

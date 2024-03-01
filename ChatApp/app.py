@@ -20,8 +20,6 @@ app = Flask(__name__) #Flaskクラスのインスタンスを作る
 app.secret_key = uuid.uuid4().hex #uuid=(universal unique identifer)36文字の英数字からなる一意の識別子、sessionを暗号化するための鍵を設定
 app.permanent_session_lifetime = timedelta(days = 30) #sessionの有効期限を定める　30日間
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True)
 
 # ルート直下の処理（セッション確保時はhome、ない場合はloginへ遷移
 @app.route('/')
@@ -274,16 +272,25 @@ def add_message(channel_id):
     user_id = user["id"]
 
     message = request.form.get('message')
-    #channel_id = request.form.get('channel_id')
+    member_id = request.form.get('member_id')
     
+    if message is not None:
    # メッセージが存在する場合のみ、データベースにメッセージを追加
-    if message == "":
-        pass
+        if message == "":
+            pass
+        else:
+            dbConnect.createMessage(user_id, channel_id, message)
     else:
-        dbConnect.createMessage(user_id, channel_id, message)
-    #else:
-        # メッセージが空の場合は、エラーメッセージと共に元のページに戻る
-    #    return redirect('/error_page')
+        pass
+
+    if member_id is not None:
+   # メッセージが存在する場合のみ、データベースにメッセージを追加
+        if member_id == "":
+            pass
+        else:
+            dbConnect.addChannelMenber(member_id, channel_id)
+    else:
+        pass    
     
     return redirect(url_for('chatpage', channel_id=channel_id))
 
@@ -341,3 +348,7 @@ def delete_message():
 
     #　メッセージの削除後にチャンネル詳細を再表示
     return redirect('/detail/{channel_id}'.format(channel_id = channel_id))
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", debug=True)

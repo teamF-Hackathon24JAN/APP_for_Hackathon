@@ -16,6 +16,7 @@ friendlists.forEach((friendlist,i) =>{
 
     friendlist.addEventListener('click', () => {
       console.log(friendlist.dataset.id)
+      // list_data = {{ input_from_python | tojson }};
       friend_name = document.getElementById('fname')
       friend_phrase = document.getElementById('fphrase')
       friend_name.textContent = friendlist.dataset.id
