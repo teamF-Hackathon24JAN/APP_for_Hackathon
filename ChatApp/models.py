@@ -128,6 +128,19 @@ class dbConnect:
             # カーソルオブジェクトを閉じる
             cur.close()
 
+# パスワード変更機能
+    def updateUserPicuture(picture, user_id):
+        try:
+            conn = DB.getConnection()
+            cur = conn.cursor()
+            sql = "UPDATE users SET picture = %s WHERE id = %s;"
+            cur.execute(sql, (picture, user_id))
+            conn.commit()
+        except Exception as e:
+            print(e + 'が発生しています')
+        finally:
+            cur.close()
+
 # 名前変更機能
     def updateUserName(name, user_id):
         try:
@@ -342,7 +355,7 @@ class dbConnect:
             conn = DB.getConnection()
             cur = conn.cursor()
             sql = "INSERT INTO channels_users (user_id, channel_id) VALUES (%s, %s);"
-            cur.execute(sql, (member_id, channel_id))
+            cur.execute(sql, (channel_id, friend_id))
             conn.commit()
         except Exception as e:
             print(e + 'が発生しています')
