@@ -14,6 +14,7 @@ import time
 
 #models.pyで定義したクラスdbConnectを呼び出す
 from models import dbConnect
+from s3 import awsConnect
 
 
 app = Flask(__name__) #Flaskクラスのインスタンスを作る
@@ -352,3 +353,32 @@ def delete_message():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
+
+
+# # ファイル送信
+@app.route('/test')
+def upload_form():
+    return render_template('/test.html')
+
+
+@app.route('/test', methods=['POST'])
+def upload_image():
+    # ファイルがリクエストに含まれているか確認
+    if 'image' not in request.files:
+        return "ファイルがリクエストに含まれていません", 400
+    
+    # ファイルオブジェクトを取得
+    file = request.files['image']
+    
+    # ファイル名を取得
+    file_name = file.filename
+    
+    user_id = 8
+
+    # boto3でイメージファイルをs3へアップロード
+    object_url = awsConnect.uploadImage(file, file_name, user_id)
+    # オブジェクトURLをusers(picture)に格納
+    dbConnect.updateUserPicuture(object_url, user_id)
+    
+    return render_template('/test.html', file=file, file_name=object_url)
+
