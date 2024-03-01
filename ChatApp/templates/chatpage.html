@@ -35,9 +35,11 @@
           {% endfor %}
         </ul>
       </div>
+      <!--
       <div class="scroll-icon">
         <span id="upicon">↑</span>
         <span id="downicon">↓</span>
+      -->
       </div>
     </div>
   </div>
@@ -48,10 +50,17 @@
     <div class="chat_container">
       <div id="messagearea" class="chat_container_scroll">
         {% for message in messages %}
-        <div class="chat_container_friends_text">
-          <span>{{ message.user_name }}</span>
-          <span>{{ message.message }}</span>
-        </div>
+          {% if message.user_id == user_id %}
+            <div class="chat_container_my_text">
+              <!-- <span>{{ message.user_name }}</span> -->
+              <span>{{ message.message }}</span>
+            </div>
+          {% else %}
+            <div class="chat_container_friends_text">
+              <span>{{ message.user_name }}</span>
+              <span>{{ message.message }}</span>
+            </div>
+          {% endif %}
         {% endfor %}
       </div>
       <div class="chat_container_textform">
