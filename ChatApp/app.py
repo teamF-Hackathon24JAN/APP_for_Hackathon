@@ -152,14 +152,18 @@ def add_channel():
         # フォームからチャンネル名を取得
         channel_name = request.form.get('channel_name')
         description = request.form.get('channel_description')
+        friend_ids = dbConnect.getFriendIdAll(user_id)
 
-        if friend_id is not None:
-            # 検索したIDをフレンドIDとして追加
-            dbConnect.addFriend(user_id, friend_id)
-            # 相手のフレンド欄に自分を追加
-            dbConnect.addFriend(friend_id, user_id)
-        else:
-            pass
+        #if friend_id is not None:
+        #    if friend_id in friend_ids.values():
+        #        pass
+        #    else:
+        # 検索したIDをフレンドIDとして追加
+        dbConnect.addFriend(user_id, friend_id)
+        # 相手のフレンド欄に自分を追加
+        dbConnect.addFriend(friend_id, user_id)
+        #else:
+        #    pass
 
         if channel_name is not None:   
             # 新しいチャンネルをデータベースに追加
@@ -195,6 +199,7 @@ def add_phrase():
         email = request.form.get('email')
         password = request.form.get('password')
         phrase = request.form.get('fixed_phrase')
+        delete_phrase_id = request.form.get('phrase_id')
 
         #名前の変更機能
         if name is not None:
@@ -227,6 +232,13 @@ def add_phrase():
         else:
             pass
 
+        #定型文の削除機能
+        if delete_phrase_id is not None:
+            # 新しい定型文をデータベースに追加
+            dbConnect.deleteFixedPhrase(delete_phrase_id)
+        else:
+            pass
+        
         # 設定にリダイレクト
         return redirect('/setting')
 

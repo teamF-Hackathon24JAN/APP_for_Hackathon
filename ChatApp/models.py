@@ -102,6 +102,32 @@ class dbConnect:
             # カーソルオブジェクトを閉じる
             cur.close()
 
+# フレンド一覧機能、自分のuser_idに紐付けされているfriend_idを一覧で引き出す
+    def getFriendIdAll(user_id):
+    # tryブロックを使用して、データーベースへの接続と操作を試みる
+        try:
+            # データベース接続を取得
+            conn = DB.getConnection()
+            # カーソルオブジェクトを作成。これを使用してSQLクエリを実行
+            cur = conn.cursor()
+            # SQL文を定義
+            sql = "SELECT friend_id FROM friends WHERE user_id = %s;"
+            # executeメソッドを使用してSQL文を実行
+            cur.execute(sql, (user_id))
+            # fetchallメソッドを使用してクエリ結果の全ての行を取得
+            friend_ids = cur.fetchall()
+            # 取得した情報を返す
+            return friend_ids
+        except Exception as e:
+            # エラーが発生した場合、エラーメッセージを出力
+            print(str(e) + 'が発生しています')
+            # エラーが発生した場合はNoneを返す
+            return None
+        finally:
+            # finallyブロックは、tryブロックの実行が成功したか、エラーが発生したかに関わらず実行
+            # カーソルオブジェクトを閉じる
+            cur.close()
+
 # 名前変更機能
     def updateUserName(name, user_id):
         try:
@@ -161,6 +187,19 @@ class dbConnect:
             cur = conn.cursor()
             sql = "INSERT INTO fixed_phrases (user_id, phrase) VALUES (%s, %s);"
             cur.execute(sql, (user_id, phrase))
+            conn.commit()
+        except Exception as e:
+            print(e + 'が発生しています')
+        finally:
+            cur.close()
+
+#定型文の削除
+    def deleteFixedPhrase(phrase_id):
+        try:
+            conn = DB.getConnection()
+            cur = conn.cursor()
+            sql = "DELETE FROM fixed_phrases WHERE id=%s;"
+            cur.execute(sql, (phrase_id))
             conn.commit()
         except Exception as e:
             print(e + 'が発生しています')

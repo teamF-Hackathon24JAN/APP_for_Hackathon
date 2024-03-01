@@ -99,19 +99,19 @@ fixedphrase_edit_els.forEach(el => {
 
 
 //定型分の削除モーダルの表示
-const fixedphrase_delete_els = document.querySelectorAll('.material-symbols-outlined.delete');
-
-fixedphrase_delete_els.forEach(el => {
-    el.addEventListener('click', (e) => {
-      const phraseText = e.target.closest('.setting_main_rightside_fixedphrases_phrase')
-                               .querySelector('.phrase').textContent;
-        
-        // モーダル内の<span>にテキストを設定
-        document.querySelector('#modal_setting_onephrase_delete .modal_content_body span').textContent = phraseText;
-
-        document.getElementById('modal_setting_onephrase_delete').style.display = 'block';
-    });
-});
+// const fixedphrase_delete_els = document.querySelectorAll('.material-symbols-outlined.delete');
+// 
+// fixedphrase_delete_els.forEach(el => {
+//     el.addEventListener('click', (e) => {
+//       const phraseText = e.target.closest('.setting_main_rightside_fixedphrases_phrase')
+//                                .querySelector('.phrase').textContent;
+//         
+//         // モーダル内の<span>にテキストを設定
+//         document.querySelector('#modal_setting_onephrase_delete .modal_content_body span').textContent = phraseText;
+// 
+//         document.getElementById('modal_setting_onephrase_delete').style.display = 'block';
+//     });
+// });
 
 
   // モーダルを閉じる（クローズボタン）イベントリスナーの追加
