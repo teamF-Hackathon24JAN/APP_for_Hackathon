@@ -66,7 +66,7 @@
       <div class="chat_container_textform">
         <form action="" method="POST">
           <div>
-            <input id="messageInput" name="message" type="text" >
+            <input id="messageInput" name="message" type="text" pattern=".*\S+.*" required>
           <span id="chatpage_fixedphrases" class="material-symbols-outlined">description</span>
           </div>
           <a href="/chatpage/{{ channel.id }}">
