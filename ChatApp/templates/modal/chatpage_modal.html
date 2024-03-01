@@ -38,4 +38,27 @@
   </div>
 </div>
 
+
+<div id="modal_channel_edit" class="modal" style="display: none">
+  <div class="modal_content">
+    <div class="modal_content_header">
+      <span class="modal_content_header_title">ちゃんねるをへんしゅう</span>
+      <span
+        class="modal_content_header_close"
+        data-modal="modal_channel_edit"
+        >&times;</span
+      >
+    </div>
+    <div class="modal_content_body">
+      <form action="" method="POST">
+        <span class="channel_name">ちゃんねるのなまえ</span>
+        <input class="channel_name_input" type="text" name="channel_name" value="{{ channel.name }}" placeholder="ちゃんねるめいをにゅうりょく" >
+        <span class="channel_discription">ちゃんねるのせつめい</span>
+        <input class="channel_discription_input" type="text" name="channel_description" value="{{ channel.description }}" placeholder="ちゃんねるのせつめいをにゅうりょく">
+        <button type="submit" class="channnel_edit_button">へんしゅう！</button>
+      </form>
+    </div>
+  </div>
+</div>
+
 <!-- 設定画面のモーダル -->

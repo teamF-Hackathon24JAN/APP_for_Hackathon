@@ -3,7 +3,7 @@
 {% endblock %} {% block body %}
 <header>
   <div class="home_header">
-    <h1>ぐーたらちゃっと</h1>
+    <a class="chat__name" href="/">ぐーたらちゃっと</a>
     <div class="home_header_nav-box">
       <div id="header_home" class="home_header_nav-box_icons">
         <span class="material-symbols-outlined"> cottage</span>
@@ -60,12 +60,12 @@
           <div name="channel_{{ channel.channel_id }}" class="_channels-var">
             <span class="channel-name">{{ channel.channel_id }}.{{ channel.channel_name }}</span>
 
-            <span class="channel-member-title">ちゃんねるせつめい</span>
+            <!-- <span class="channel-member-title">ちゃんねるせつめい</span> -->
             <div class="channel-description">
                 <div>{{ channel.description }}</div>
             </div>
             <a class="chatpage_link" href="/chatpage/{{ channel.channel_id }}">
-              <img src='https://test-fteam.s3.ap-northeast-1.amazonaws.com/UI/button-1157299_640.png' style="width:200px;" alt="チャンネルボタン">
+              <img src='https://test-fteam.s3.ap-northeast-1.amazonaws.com/UI/channel_button.svg' style="width:200px;" alt="チャンネルボタン">
             </a>
           </div>
         {% endfor %}

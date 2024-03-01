@@ -265,6 +265,8 @@
           color: black;
           transition: all 0.2s;
           cursor: pointer;
+          background-color: transparent;
+          border: none;
 
           &:hover {
             transform: scale(1.2);

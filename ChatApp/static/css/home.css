@@ -6,14 +6,17 @@
   justify-content: space-between;
   align-items: center;
 }
-.home_header h1 {
+.home_header .chat__name {
+  text-decoration: none;
   font-size: 50px;
+  color: black;
   margin-left: 70px;
   font-family: hachi maru pop;
   text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   animation-name: apploaded;
   animation-duration: 2s;
   animation-timing-function: cubic-bezier(1, 1.67, 0.58, 1);
+  cursor: pointer;
 }
 .home_header_nav-box {
   display: flex;
@@ -120,7 +123,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  margin-left: 5%;
+  margin-left: 20%;
 }
 .main ._leftside .friends-container #friends-scrollcontainer .list:hover {
   transform: scale(1.1);
@@ -256,15 +259,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 300px;
+  width: 350px;
   background-color: lightgray;
   border: 1px solid black;
   transition: all 0.2s;
   box-shadow: 0 1px 5px black;
 }
 .main ._rightside ._channels #channel-boxes ._channels-var .channel-name {
-  font-size: 40px;
+  font-size: 30px;
   margin-bottom: 30px;
+  margin-top: 10px;
 }
 .main ._rightside ._channels #channel-boxes ._channels-var .channel-member-title {
   font-size: 25px;
@@ -538,6 +542,8 @@
   display: block;
   margin-top: 30px;
   border: none;
+  width: auto;
+  padding: 10px 20px;
   transition: all 0.2s;
 }
 #modal_home_channels_add .modal_content_body form .channnel_add_button:hover {
