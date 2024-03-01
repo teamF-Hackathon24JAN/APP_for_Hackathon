@@ -105,7 +105,7 @@ setting_delete.addEventListener('click', () => {
 //     el.addEventListener('click', (e) => {
 //       const phraseText = e.target.closest('.setting_main_rightside_fixedphrases_phrase')
 //                                .querySelector('.phrase').textContent;
-        
+
 //         // モーダル内の<span>にテキストを設定
 //         document.querySelector('#modal_setting_onephrase_delete .modal_content_body span').textContent = phraseText;
 
