@@ -14,12 +14,19 @@ friendlists.forEach((friendlist,i) =>{
     };
     friendlist.animate(keyframes,options);
 
-    friendlist.addEventListener('click', () => {
-      console.log(friendlist.dataset.id)
+      friendlist.addEventListener('click', (e) => {
+      // Flaskから受け取ったJSONデータをJavaScriptオブジェクトに変換
+
       // list_data = {{ input_from_python | tojson }};
-      friend_name = document.getElementById('fname')
-      friend_phrase = document.getElementById('fphrase')
-      friend_name.textContent = friendlist.dataset.id
+      const value1 = e.target.getAttribute('data-value1');
+      const value2 = e.target.getAttribute('data-value2');
+      const value3 = e.target.getAttribute('data-value3');
+      document.getElementById('value1').textContent = value1;
+      document.getElementById('value2').textContent = value2;
+      document.getElementById('value3').src = value3;
+      //friend_name = document.getElementById('fname')
+      //friend_phrase = document.getElementById('fphrase')
+      //friend_name.textContent = friendlist.dataset.id
 
       document.getElementById('modal_friend').style.display = 'block';
     });

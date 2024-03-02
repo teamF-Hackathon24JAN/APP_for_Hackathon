@@ -28,7 +28,7 @@
       <div id="friends-scrollcontainer">
         <ul>
           {% for friend in friends %}
-          <li class="list" data-id="{{ friend.friend_id }}">
+          <li class="list" data-value1="{{ friend.friend_one_phrase }}" data-value2="{{ friend.friend_name }}#{{ friend.friend_id }}" data-value3="{{ friend.friend_picture }}">
             <img src="{{ friend.friend_picture }}" style="height:30px;border-radius: 50%;" />
             {{ friend.friend_name }}#{{ friend.friend_id }}
           </li>

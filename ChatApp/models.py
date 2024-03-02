@@ -287,6 +287,19 @@ class dbConnect:
         finally:
             cur.close()
 
+# チャンネル情報の編集機能
+    def updateChannel(channel_name, channel_description, channel_id):
+        try:
+            conn = DB.getConnection()
+            cur = conn.cursor()
+            sql = "UPDATE channels SET name = %s, description = %s WHERE id = %s;"
+            cur.execute(sql, (channel_name, channel_description, channel_id))
+            conn.commit()
+        except Exception as e:
+            print(e + 'が発生しています')
+        finally:
+            cur.close()
+
 # 作成したチャンネルに自分を追加
     def insertMe(user_id, channel_id):
         try:
@@ -332,7 +345,7 @@ class dbConnect:
             # カーソルを作成
             cur = conn.cursor()
             # 実行するSQL文を定義。ここでは指定されたidを持つチャンネルを検索
-            sql = "SELECT cs.id, user_id as member_id, u.name as member_name, u.picture AS member_picture FROM channels_users AS cs INNER JOIN users AS u ON cs.user_id = u.id INNER JOIN channels AS c ON cs.channel_id = c.id WHERE cs.channel_id = %s;"
+            sql = "SELECT cs.id, user_id as member_id, u.name as member_name, u.picture AS member_picture, u.one_phrase AS member_one_phrase FROM channels_users AS cs INNER JOIN users AS u ON cs.user_id = u.id INNER JOIN channels AS c ON cs.channel_id = c.id WHERE cs.channel_id = %s;"
             
             # SQL文を実行。パラメータとしてuidを渡す
             cur.execute(sql, (channel_id))
