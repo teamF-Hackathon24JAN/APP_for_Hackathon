@@ -156,16 +156,17 @@ def add_channel():
         description = request.form.get('channel_description')
         friend_ids = dbConnect.getFriendIdAll(user_id)
 
-        #if friend_id is not None:
-        #    if friend_id in friend_ids.values():
-        #        pass
-        #    else:
-        # 検索したIDをフレンドIDとして追加
-        dbConnect.addFriend(user_id, friend_id)
-        # 相手のフレンド欄に自分を追加
-        dbConnect.addFriend(friend_id, user_id)
-        #else:
-        #    pass
+        if friend_id is not None:
+            # 自分のフレンドIDを入力した場合
+            if str(user_id) == str(friend_id):
+                pass
+            else:
+                # 検索したIDをフレンドIDとして追加
+                dbConnect.addFriend(user_id, friend_id)
+                # 相手のフレンド欄に自分を追加
+                dbConnect.addFriend(friend_id, user_id)
+        else:
+            pass
 
         if channel_name is not None:   
             # 新しいチャンネルをデータベースに追加
@@ -205,61 +206,60 @@ def add_phrase():
 
 
         # 画像ファイル変更機能
-        if 'image' not in request.files:
-            return "ファイルがリクエストに含まれていません", 400
+        if 'image' in request.files:
 
-        # ファイルオブジェクトを取得
-        file = request.files['image']
+            # ファイルオブジェクトを取得
+            file = request.files['image']
 
-        if file is not None:
-            # ファイル名を取得
-            file_name = file.filename
+            if file is not None:
+                # ファイル名を取得
+                file_name = file.filename
 
-            # boto3でイメージファイルをs3へアップロード
-            object_url = awsConnect.uploadImage(file, file_name, user_id)
-            # オブジェクトURLをusers(picture)に格納
-            dbConnect.updateUserPicuture(object_url, user_id)
+                # boto3でイメージファイルをs3へアップロード
+                object_url = awsConnect.uploadImage(file, file_name, user_id)
+                # オブジェクトURLをusers(picture)に格納
+                dbConnect.updateUserPicuture(object_url, user_id)
+            else:
+                pass
+
         else:
-            pass
-        
+            #名前の変更機能
+            if name is not None:
+                dbConnect.updateUserName(name, user_id)
+            else:
+                pass
 
-        #名前の変更機能
-        if name is not None:
-            dbConnect.updateUserName(name, user_id)
-        else:
-            pass
+            #ひとことの変更機能
+            if one_phrase is not None:
+                dbConnect.updateOnePhrase(one_phrase, user_id)
+            else:
+                pass
 
-        #ひとことの変更機能
-        if one_phrase is not None:
-            dbConnect.updateOnePhrase(one_phrase, user_id)
-        else:
-            pass
+            #メールアドレスの変更機能
+            if email is not None:
+                dbConnect.updateUserEmail(email, user_id)
+            else:
+                pass
 
-        #メールアドレスの変更機能
-        if email is not None:
-            dbConnect.updateUserEmail(email, user_id)
-        else:
-            pass
+            #パスワードの変更機能
+            if password is not None:
+                dbConnect.updateUserPassword(password, user_id)
+            else:
+                pass
 
-        #パスワードの変更機能
-        if password is not None:
-            dbConnect.updateUserPassword(password, user_id)
-        else:
-            pass
-        
-        #定型文の追加機能
-        if phrase is not None:
-            # 新しい定型文をデータベースに追加
-            dbConnect.createFixedPhrase(user_id, phrase)
-        else:
-            pass
+            #定型文の追加機能
+            if phrase is not None:
+                # 新しい定型文をデータベースに追加
+                dbConnect.createFixedPhrase(user_id, phrase)
+            else:
+                pass
 
-        #定型文の削除機能
-        if delete_phrase_id is not None:
-            # 新しい定型文をデータベースに追加
-            dbConnect.deleteFixedPhrase(delete_phrase_id)
-        else:
-            pass
+            #定型文の削除機能
+            if delete_phrase_id is not None:
+                # 新しい定型文をデータベースに追加
+                dbConnect.deleteFixedPhrase(delete_phrase_id)
+            else:
+                pass
         
         # 設定にリダイレクト
         return redirect('/setting')
@@ -381,4 +381,3 @@ def delete_message():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=False)
-
