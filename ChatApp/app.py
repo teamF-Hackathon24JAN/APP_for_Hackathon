@@ -203,6 +203,26 @@ def add_phrase():
         phrase = request.form.get('fixed_phrase')
         delete_phrase_id = request.form.get('phrase_id')
 
+
+        # 画像ファイル変更機能
+        if 'image' not in request.files:
+            return "ファイルがリクエストに含まれていません", 400
+
+        # ファイルオブジェクトを取得
+        file = request.files['image']
+
+        if file is not None:
+            # ファイル名を取得
+            file_name = file.filename
+
+            # boto3でイメージファイルをs3へアップロード
+            object_url = awsConnect.uploadImage(file, file_name, user_id)
+            # オブジェクトURLをusers(picture)に格納
+            dbConnect.updateUserPicuture(object_url, user_id)
+        else:
+            pass
+        
+
         #名前の変更機能
         if name is not None:
             dbConnect.updateUserName(name, user_id)
@@ -360,41 +380,5 @@ def delete_message():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True)
-
-
-# # ファイル送信
-@app.route('/test')
-def upload_form():
-    return render_template('/test.html')
-
-
-@app.route('/test', methods=['POST'])
-def upload_image():
-
-
-    session_id = session.get("session_id")
-    # もしユーザーIDが存在しない場合、ユーザーがログインしていない場合は、ログインページにリダイレクト
-    if session is None:
-        return redirect('/login')
-    # user_idを取得
-    user = dbConnect.getUserBySessionID(session_id)
-    user_id = user["id"]
-
-    # ファイルがリクエストに含まれているか確認
-    if 'image' not in request.files:
-        return "ファイルがリクエストに含まれていません", 400
-    
-    # ファイルオブジェクトを取得
-    file = request.files['image']
-    
-    # ファイル名を取得
-    file_name = file.filename
-
-    # boto3でイメージファイルをs3へアップロード
-    object_url = awsConnect.uploadImage(file, file_name, user_id)
-    # オブジェクトURLをusers(picture)に格納
-    dbConnect.updateUserPicuture(object_url, user_id)
-    
-    return redirect('/setting')
+    app.run(host="0.0.0.0", debug=False)
 
