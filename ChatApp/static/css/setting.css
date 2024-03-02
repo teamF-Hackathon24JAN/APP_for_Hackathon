@@ -32,7 +32,6 @@
   border-radius: 50%;
   background-color: lightgray;
   margin-left: 100px;
-  margin-right: 50px;
 }
 .setting_main_leftside_name_myname {
   font-size: 40px;
@@ -48,6 +47,9 @@
 }
 .setting_main_leftside_name .material-symbols-outlined:hover {
   transform: scale(1.2);
+}
+.setting_main_leftside_name .material-symbols-outlined.edit_picture {
+  margin-right: 10%;
 }
 .setting_main_leftside_profile {
   display: flex;
@@ -253,6 +255,86 @@
   font-family: kiwi maru;
 }
 
+#modal_setting_picture .modal_content {
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: 10% auto;
+  border-radius: 20px;
+  width: 60%;
+  height: auto;
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
+#modal_setting_picture .modal_content_header {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  height: auto;
+}
+#modal_setting_picture .modal_content_header_title {
+  margin-left: 23%;
+  color: rgb(255, 212, 98);
+  font-size: 35px;
+}
+#modal_setting_picture .modal_content_header_close {
+  font-size: 25px;
+  margin-right: 10px;
+  font-weight: bold;
+  color: rgb(255, 212, 98);
+  align-self: flex-start;
+}
+#modal_setting_picture .modal_content_header_close:hover, #modal_setting_picture .modal_content_header_close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+#modal_setting_picture .modal_content .modal_container {
+  font-size: 30px;
+  height: 200px;
+  margin-bottom: 20px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#modal_setting_picture .modal_content .modal_container > * {
+  border: none;
+}
+#modal_setting_picture .modal_content .modal_container .setting_photo {
+  width: auto;
+}
+#modal_setting_picture .modal_content .modal_container .setting_photo .imageform {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 100px;
+  width: auto;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+#modal_setting_picture .modal_content .modal_container .setting_photo .imageform .image {
+  width: auto;
+  font-size: 25px;
+  height: auto;
+  font-family: kiwi maru;
+}
+#modal_setting_picture .modal_content .modal_container .setting_photo .imageform .imageAppload {
+  font-size: 25px;
+  width: auto;
+  height: auto;
+}
+#modal_setting_picture .modal_content .modal_container .setting_photo .photo_kinds {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  color: rgb(255, 212, 98);
+  text-align: center;
+  font-family: kiwi maru;
+}
+
 #modal_setting_name .modal_content {
   background-color: rgba(0, 0, 0, 0.8);
   margin: 10% auto;
@@ -323,6 +405,11 @@
   height: auto;
   width: auto;
   padding: 10px 30px;
+  border: none;
+  transition: all 0.3s;
+}
+#modal_setting_name .modal_content_body_name form button:hover {
+  transform: translateY(3px);
 }
 
 #modal_setting_onephrase .modal_content {
@@ -395,6 +482,11 @@
   height: auto;
   width: auto;
   padding: 10px 30px;
+  border: none;
+  transition: all 0.3s;
+}
+#modal_setting_onephrase .modal_content_body_name form button:hover {
+  transform: translateY(3px);
 }
 
 #modal_setting_mailaddress .modal_content {
@@ -467,6 +559,11 @@
   height: auto;
   width: auto;
   padding: 10px 30px;
+  border: none;
+  transition: all 0.3s;
+}
+#modal_setting_mailaddress .modal_content_body_name form button:hover {
+  transform: translateY(3px);
 }
 
 #modal_setting_password .modal_content {
@@ -539,6 +636,11 @@
   height: auto;
   width: auto;
   padding: 10px 30px;
+  border: none;
+  transition: all 0.3s;
+}
+#modal_setting_password .modal_content_body_name form button:hover {
+  transform: translateY(3px);
 }
 
 #modal_setting_profile .modal_content {
