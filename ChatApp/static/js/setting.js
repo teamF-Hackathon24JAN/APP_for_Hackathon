@@ -78,12 +78,12 @@ setting_password.addEventListener('click', () => {
 //     modal_setting_profile.style.display = 'block'
 // })
 
-const setting_delete = document.getElementById('setting_delete');
+// const setting_delete = document.getElementById('setting_delete');
 
-setting_delete.addEventListener('click', () => {
-    const modal_setting_delete = document.getElementById('modal_setting_delete');
-    modal_setting_delete.style.display = 'block'
-})
+// setting_delete.addEventListener('click', () => {
+//     const modal_setting_delete = document.getElementById('modal_setting_delete');
+//     modal_setting_delete.style.display = 'block';
+// })
 
 
 //定型分の編集モーダルの表示
