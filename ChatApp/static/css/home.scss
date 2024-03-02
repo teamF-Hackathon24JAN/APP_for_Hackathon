@@ -316,13 +316,11 @@
       & #channel-boxes {
         display: flex;
         flex-direction: row;
-        margin-top: 30px;
+        margin-top: 5%;
         margin-left: 40px;
-        // margin-right: 30px;
         height: 350px;
         font-size: 20px;
-        width: 1100px;
-        // border: 1px solid black;
+        width: auto;
         padding: 20px;
         overflow-x: scroll;
         border-bottom: 2px solid black;
@@ -357,7 +355,7 @@
           & .channel-description {
             margin-top: 20px;
             margin-bottom: 10px;
-            margin:20px 10px 20px 10px;
+            margin: 20px 10px 20px 10px;
             // margin-left: auto;
             // margin-right: auto;
             // display: flex;
@@ -534,7 +532,7 @@
           border: none;
           transition: all 0.3s;
 
-          &:hover{
+          &:hover {
             transform: translateY(3px);
           }
         }

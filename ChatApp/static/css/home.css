@@ -246,11 +246,11 @@
 .main ._rightside ._channels #channel-boxes {
   display: flex;
   flex-direction: row;
-  margin-top: 30px;
+  margin-top: 5%;
   margin-left: 40px;
   height: 350px;
   font-size: 20px;
-  width: 1100px;
+  width: auto;
   padding: 20px;
   overflow-x: scroll;
   border-bottom: 2px solid black;
