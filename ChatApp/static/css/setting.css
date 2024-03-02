@@ -194,7 +194,8 @@
 }
 .setting_main_rightside_fixedphrases {
   margin-top: 40px;
-  margin-left: 15%;
+  margin-left: auto;
+  margin-right: auto;
   height: 350px;
   width: 500px;
   border: 1px solid black;
@@ -229,7 +230,8 @@
   border: 1px solid black;
   background-color: lightgray;
   border-top: none;
-  margin-left: 15%;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   font-size: 25px;
