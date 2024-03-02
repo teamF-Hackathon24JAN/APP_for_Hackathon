@@ -55,10 +55,7 @@ services:
       - "5000:5000"
     # uwsgiを実行
     command: uwsgi --ini /code/app.ini 
-    #コンテナ内でboto3 （AWS CLI)を使うためのアクセスキーを記したファイル
-    env_file:
-      - .env
-        
+       
     # 先にdbを起動してからappを起動する
     depends_on:
       db:
