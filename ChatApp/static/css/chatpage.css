@@ -154,31 +154,6 @@
   animation-duration: 1.2s;
   animation-fill-mode: forwards;
 }
-#modal_chatpage_fixedphrases .modal_content_header {
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  align-items: center;
-  height: auto;
-}
-#modal_chatpage_fixedphrases .modal_content_header_title {
-  margin-left: 40%;
-  color: rgb(255, 212, 98);
-  font-size: 35px;
-}
-#modal_chatpage_fixedphrases .modal_content_header_close {
-  font-size: 25px;
-  margin-right: 10px;
-  font-weight: bold;
-  color: rgb(255, 212, 98);
-  align-self: flex-start;
-}
-#modal_chatpage_fixedphrases .modal_content_header_close:hover, #modal_chatpage_fixedphrases .modal_content_header_close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
 #modal_chatpage_fixedphrases .modal_content_body {
   display: flex;
   flex-direction: column;
@@ -231,34 +206,6 @@
   animation-duration: 1.2s;
   animation-fill-mode: forwards;
 }
-.modal_content_header {
-  margin: 0 auto;
-  padding: 5px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: auto;
-}
-.modal_content_header_title {
-  margin-left: 40%;
-  color: rgb(255, 212, 98);
-  justify-self: flex-start;
-  font-size: 35px;
-}
-.modal_content_header_close {
-  align-self: flex-start;
-  font-size: 25px;
-  margin-right: 10px;
-  font-weight: bold;
-  color: rgb(255, 212, 98);
-  transition: all 0.2s;
-}
-.modal_content_header_close:hover, .modal_content_header_close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
 .modal_content_body {
   height: auto;
   width: auto;
@@ -306,36 +253,11 @@
   animation-duration: 1.2s;
   animation-fill-mode: forwards;
 }
-#modal_channel_edit .modal_content_header {
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  align-items: center;
-  height: auto;
-}
-#modal_channel_edit .modal_content_header_title {
-  margin-left: 33%;
-  color: rgb(255, 212, 98);
-  font-size: 35px;
-}
-#modal_channel_edit .modal_content_header_close {
-  font-size: 25px;
-  margin-right: 10px;
-  font-weight: bold;
-  color: rgb(255, 212, 98);
-  align-self: flex-start;
-  transition: all 0.2s;
-}
-#modal_channel_edit .modal_content_header_close:hover, #modal_channel_edit .modal_content_header_close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
 #modal_channel_edit .modal_content_body {
   height: 400px;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
   font-size: 30px;
   margin-bottom: 10px;
