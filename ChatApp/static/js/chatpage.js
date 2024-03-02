@@ -42,7 +42,13 @@ friendlists.forEach((friendlist, i) => {
   };
   friendlist.animate(keyframes, options);
 
-  friendlist.addEventListener("click", () => {
+  friendlist.addEventListener("click", (e) => {
+    const value1 = e.target.getAttribute('data-value1');
+    const value2 = e.target.getAttribute('data-value2');
+    const value3 = e.target.getAttribute('data-value3');
+    document.getElementById('value1').textContent = value1;
+    document.getElementById('value2').textContent = value2;
+    document.getElementById('value3').src = value3;
     document.getElementById("modal_friend").style.display = "block";
   });
 });

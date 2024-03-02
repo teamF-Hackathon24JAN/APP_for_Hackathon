@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, render_template, session, flash, abort, url_for
+from flask import Flask, request, redirect, render_template, session, flash, abort, url_for, jsonify
 # Flask ルーティング
 # request データを受け取る、取得、参照
 # redirect 自動的に指定した他のページに転送
@@ -11,6 +11,7 @@ import hashlib #外部に漏れてほしくないデータを固定の長さの�
 import uuid #universal unique identifer 一意な識別子を生成する
 import re #正規表現モジュール　文字列内で文字の組み合わせを照合するために用いるパターンを扱う
 import time
+import json
 
 #models.pyで定義したクラスdbConnectを呼び出す
 from models import dbConnect
@@ -96,7 +97,7 @@ def passwordlost():
     #フォームから送信されたパスワードを変数emailに格納
     email = request.form.get('email')
     password = request.form.get('password')
-    user = dbConnect.getUser(email)
+    #user = dbConnect.getUser(email)
 
     #if user is not None:
     #    flash('')
@@ -104,7 +105,7 @@ def passwordlost():
 
 
 
-    return redirect('/login')#ログイン画面へ遷移する
+    return render_template('/registration/passwordlost.html')
 
 # ログアウト、セッションクリア
 @app.route('/logout')
@@ -125,11 +126,13 @@ def home():
         #フレンド情報の取得
         #辞書型friends{id, friend_id, friend_name, friend_one_phrase, friend_picture}
         friends = dbConnect.getFriendAll(user_id)
+        # friendsをjson形式へ
+        friends_json = json.dumps(friends, default=str)
         #チャンネル情報の取得
         #辞書型friends{user_id, user_name, channel_id, channel_name, description}
         channels = dbConnect.getJoinedChannelById(user_id)
 
-        return render_template('home.html', user=user, friends=friends, channels=channels)
+        return render_template('home.html', user=user, friends=friends, channels=channels, friends_json=friends_json)
 
 # # チャンネル作成機能
 @app.route('/home', methods=['POST'])
@@ -274,22 +277,27 @@ def add_message(channel_id):
 
     message = request.form.get('message')
     member_id = request.form.get('member_id')
+
+    channel_name = request.form.get('channel_name')
+    channel_description = request.form.get('channel_description')
+    
     
     if message is not None:
-   # メッセージが存在する場合のみ、データベースにメッセージを追加
+    # メッセージが存在する場合のみ、データベースにメッセージを追加
         if message == "":
             pass
         else:
             dbConnect.createMessage(user_id, channel_id, message)
     else:
         pass
-
-    if member_id is not None:
-   # メッセージが存在する場合のみ、データベースにメッセージを追加
-        if member_id == "":
-            pass
-        else:
-            dbConnect.addChannelMenber(member_id, channel_id)
+    # チャンネル情報が変更された際にデータベースを変更
+    if channel_name or channel_description is not None:
+        dbConnect.updateChannel(channel_name, channel_description, channel_id)
+    else:
+        pass
+    # チャンネルメンバーを追加
+    if member_id is not None:   
+        dbConnect.addChannelMenber(member_id, channel_id)
     else:
         pass    
     
@@ -363,6 +371,16 @@ def upload_form():
 
 @app.route('/test', methods=['POST'])
 def upload_image():
+
+
+    session_id = session.get("session_id")
+    # もしユーザーIDが存在しない場合、ユーザーがログインしていない場合は、ログインページにリダイレクト
+    if session is None:
+        return redirect('/login')
+    # user_idを取得
+    user = dbConnect.getUserBySessionID(session_id)
+    user_id = user["id"]
+
     # ファイルがリクエストに含まれているか確認
     if 'image' not in request.files:
         return "ファイルがリクエストに含まれていません", 400
@@ -372,13 +390,11 @@ def upload_image():
     
     # ファイル名を取得
     file_name = file.filename
-    
-    user_id = 8
 
     # boto3でイメージファイルをs3へアップロード
     object_url = awsConnect.uploadImage(file, file_name, user_id)
     # オブジェクトURLをusers(picture)に格納
     dbConnect.updateUserPicuture(object_url, user_id)
     
-    return render_template('/test.html', file=file, file_name=object_url)
+    return redirect('/setting')
 
