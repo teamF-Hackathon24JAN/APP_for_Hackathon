@@ -368,7 +368,7 @@ class dbConnect:
             conn = DB.getConnection()
             cur = conn.cursor()
             sql = "INSERT INTO channels_users (user_id, channel_id) VALUES (%s, %s);"
-            cur.execute(sql, (channel_id, friend_id))
+            cur.execute(sql, (member_id, channel_id))
             conn.commit()
         except Exception as e:
             print(e + 'が発生しています')
