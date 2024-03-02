@@ -1,0 +1,41 @@
+{% extends 'registration/base.html' %} {% block title %}
+<title>ログイン</title>
+{% endblock %} {% block body %}
+<main>
+  <div class="login_header">
+    <h1>ぐーたらちゃっと</h1>
+  </div>
+  <div class="login_container">
+    <div class="login_container_loginBox">
+      <h2>ログイン</h2>
+      <form action="" method="POST">
+        <div class="login_container_loginBox_mailaddressBox">
+          <h3>めーるあどれす</h3>
+          <div>
+            <span class="material-symbols-outlined"> mail </span>
+            <input type="mail" name="email" placeholder="めーるあどれすを入力してね"  required/>
+          </div>
+        </div>
+        <div class="login_container_loginBox_passwordBox">
+          <h3>ぱすわーど</h3>
+          <div>
+            <span class="material-symbols-outlined"> key </span>
+            <input type="password" name="password" placeholder="ぱすわーどを入力してね" required />
+          </div>
+        </div>
+        <div class="login_container_loginBox_button-etc">
+          <a href="/signup">しんきとうろく</a>
+          <button id="login_button" type="submit" class="material-symbols-outlined">lock</button>
+          <div class="applelogin-etc">
+            外部ログイン
+          </div>
+        </div>
+        <!-- <a href="/passwordlost" class="login_container_loginBox_password-lost">ぱすわーどをわすれてしまった</a> -->
+      </form>
+    </div>
+  </div> 
+</main>
+
+<script src="{{ url_for('static', filename='/js/login.js') }}"></script>
+
+{% endblock %}

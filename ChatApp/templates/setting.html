@@ -1,0 +1,74 @@
+{% extends 'base.html' %} {% block title %}
+<title>設定</title>
+{% endblock %} {% block body %}
+<header>
+  <div class="home_header">
+    <a class="chat__name" href="/">ぐーたらちゃっと</a>
+    <div class="home_header_nav-box">
+      <div id="header_home" class="home_header_nav-box_icons">
+        <span class="material-symbols-outlined"> cottage</span>
+        <a href="/home">ほーむ</a>
+      </div>
+      <div id="header_signout" class="home_header_nav-box_icons">
+        <span class="material-symbols-outlined"> logout</span>
+        <a href="/login">さいんあうと</a>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="setting_main">
+  <div class="setting_main_leftside">
+    <div class="setting_main_leftside_name">
+      <img src="{{ user.picture }}" class="setting_main_leftside_name_myphoto"/>
+      <span id="setting_picture" class="material-symbols-outlined edit_picture">Add_A_Photo</span>
+      <span class="setting_main_leftside_name_myname">{{ user.name }}#{{ user.id }}</span>
+      <span id="setting_name" class="material-symbols-outlined edit_name">border_color</span>
+    </div>
+    <div class="setting_main_leftside_profile">
+      <div class="setting_main_leftside_profile_onephrase">
+        <span>ひとこと</span>
+        <span id="setting_onephrase">{{ user.one_phrase }}</span>
+      </div>
+      <div class="setting_main_leftside_profile_mailaddress">
+        <span>めーるあどれす</span>
+        <span id="setting_mailaddress">{{ user.email }}</span>
+      </div>
+      <div class="setting_main_leftside_profile_password">
+        <span>ぱすわーど</span>
+        <span id="setting_password">**********</span>
+      </div>
+    </div>
+    <!-- <span id="setting_profile" class="setting_main_leftside_change">へんこう</span> -->
+    <!-- <span id="setting_delete" class="setting_main_leftside_accountdelete">あかうんと削除</span> -->
+  </div>
+  <div class="setting_main_rightside">
+    <div class="setting_main_rightside_header">
+      <h2>ていけいぶん</h2>
+      <span class="material-symbols-outlined"> description </span>
+    </div>
+    <div class="setting_main_rightside_fixedphrases">
+      {% for fixed_phrase in fixed_phrases %}
+      <div class="setting_main_rightside_fixedphrases_phrase">
+        <form action="" method="POST">
+        <span class="phrase">{{ fixed_phrase.phrase }}</span>
+        <button type="submit" name="phrase_id" value="{{ fixed_phrase.id }}"class="material-symbols-outlined delete">delete</button>
+        </form>
+      </div>
+      {% endfor %}
+    </div>
+    <form action="" method="POST">
+      <div class="setting_main_rightside_addphrase">
+        <input name="fixed_phrase" type="text" placeholder="ついかしたいていけいぶんを入力してね">
+        <button type="submit" class="channnel_add_button">ついか</button>
+      </div>
+    </form>
+  </div>
+</main>
+
+
+
+
+<!-- modal.htmlの読み込み -->
+{% include 'modal/setting_modal.html' %}
+<script src="{{ url_for('static', filename='/js/setting.js') }}"></script>
+{% endblock %}

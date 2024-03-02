@@ -1,0 +1,39 @@
+{% extends 'registration/base.html' %} {% block title %}
+<title>新規登録画面</title>
+{% endblock %} {% block body %}
+<main>
+  <div class="signup-header">
+    <h1>ぐーたらちゃっと</h1>
+  </div>
+  <div class="signup-container">
+    <div class="signup">
+      <h2>しんきとうろく</h2>
+      <form action="" method="POST">
+        <div class="signup-username-Box">
+          <h3>ゆーざーねいむ</h3>
+          <div>
+            <span class="material-symbols-outlined person"> person </span>
+            <input type="text"  name="name" placeholder="なまえを設定してね" required />
+          </div>
+        </div>
+        <div class="signup-mailaddres-Box">
+          <h3>めーるあどれす</h3>
+          <div>
+            <span class="material-symbols-outlined mail"> mail </span>
+            <input type="mail" name="email" placeholder="めーるあどれすを入力してね"  required/>
+          </div>
+        </div>
+        <div class="signup-password-Box">
+          <h3>ぱすわーど</h3>
+          <div>
+            <span class="material-symbols-outlined key"> key </span>
+            <input type="password" name="password" placeholder="ぱすわーどを入力してね" required />
+          </div>
+        </div>
+        <button class="material-symbols-outlined badge">badge</button>
+      </form>
+    </div>
+  </div> 
+</main>
+
+{% endblock %}

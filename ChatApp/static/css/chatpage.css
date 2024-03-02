@@ -1,0 +1,384 @@
+@charset "UTF-8";
+.chat_rightside {
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  font-family: kiwi maru;
+  overflow: hidden;
+  color: black;
+}
+.chat_name {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 7%;
+  border-bottom: 1px solid black;
+  background-color: rgba(128, 128, 128, 0.21);
+  font-size: 30px;
+}
+.chat_name > * {
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
+.chat_name span:nth-child(2) {
+  margin-left: 10px;
+  margin-bottom: 3px;
+  display: inline-block;
+  font-size: 1rem;
+  align-self: flex-end;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.chat_name span:nth-child(2):hover {
+  transform: scale(1.6);
+}
+.chat_container {
+  height: 93%;
+  background-color: rgba(128, 128, 128, 0.21);
+  display: flex;
+  flex-direction: column;
+}
+.chat_container_scroll {
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  overflow-y: scroll;
+  padding-bottom: 10px;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.chat_container_scroll > * {
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
+.chat_container_friends_text {
+  flex: none;
+  align-self: flex-start;
+  width: auto;
+  height: auto;
+  margin-left: 30px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+.chat_container_friends_text span:nth-child(1) {
+  display: block;
+  margin-bottom: 5px;
+}
+.chat_container_friends_text span:nth-child(2) {
+  margin-left: 30px;
+  padding: 0 20px;
+  border: 1px solid black;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0.5px 0.5px 2px black;
+}
+.chat_container_my_text {
+  flex: none;
+  align-self: flex-end;
+  width: auto;
+  background-color: lightgray;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 0.5px 0.5px 2px black;
+  margin-right: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.chat_container_my_text span {
+  padding: 0 20px;
+}
+.chat_container_textform {
+  margin: 10px 30px;
+  height: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.chat_container_textform > * {
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
+.chat_container_textform form {
+  display: flex;
+}
+.chat_container_textform form div {
+  position: relative;
+}
+.chat_container_textform form div input {
+  flex: none;
+  height: 100%;
+  width: 1000px;
+  background-color: lightgray;
+  border: 0.5px solid gray;
+  border-radius: 10px;
+  font-size: 25px;
+}
+.chat_container_textform form div span.material-symbols-outlined {
+  position: absolute;
+  display: inline-block;
+  right: 10px;
+  bottom: 5px;
+  font-size: 2.5rem;
+  z-index: 20;
+  cursor: pointer;
+}
+.chat_container_textform form a {
+  align-self: flex-end;
+  transform: translateY(5px);
+}
+.chat_container_textform form a button {
+  font-size: 50px;
+  border: none;
+  background-color: transparent;
+  height: 40px;
+  width: 40px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.chat_container_textform form a button:hover {
+  transform: translateY(3px);
+}
+
+#modal_chatpage_fixedphrases .modal_content {
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: 10% auto;
+  border-radius: 20px;
+  width: 80%;
+  height: auto;
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
+#modal_chatpage_fixedphrases .modal_content_header {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  height: auto;
+}
+#modal_chatpage_fixedphrases .modal_content_header_title {
+  margin-left: 40%;
+  color: rgb(255, 212, 98);
+  font-size: 35px;
+}
+#modal_chatpage_fixedphrases .modal_content_header_close {
+  font-size: 25px;
+  margin-right: 10px;
+  font-weight: bold;
+  color: rgb(255, 212, 98);
+  align-self: flex-start;
+}
+#modal_chatpage_fixedphrases .modal_content_header_close:hover, #modal_chatpage_fixedphrases .modal_content_header_close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+#modal_chatpage_fixedphrases .modal_content_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30px;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+#modal_chatpage_fixedphrases .modal_content_body_box {
+  margin-top: 20px;
+  height: 300px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#modal_chatpage_fixedphrases .modal_content_body_box_fixedphrase {
+  margin: 10px 40px;
+  cursor: pointer;
+  padding: 15px 30px;
+  transition: background-color 0.1s, color 0.1s, border-radius 0.08s;
+  color: rgb(255, 212, 98);
+}
+#modal_chatpage_fixedphrases .modal_content_body_box_fixedphrase.clicked {
+  background-color: rgb(255, 212, 98);
+  border-radius: 20px;
+  color: black;
+}
+
+.modal {
+  display: none; /* 最初は非表示 */
+  position: fixed; /* 画面に固定 */
+  z-index: 1; /* 内容より前面に */
+  left: 0;
+  top: 0;
+  width: 100%; /* 全幅 */
+  height: 100%; /* 全高 */
+  overflow: hidden; /* スクロール可能 */
+  background-color: rgba(0, 0, 0, 0.4); /* 背景の暗転 */
+  color: rgb(255, 212, 98);
+  font-family: kiwi maru;
+}
+.modal_content {
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: 15% auto;
+  padding: 10px;
+  border-radius: 20px;
+  width: 80%;
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
+.modal_content_header {
+  margin: 0 auto;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: auto;
+}
+.modal_content_header_title {
+  margin-left: 40%;
+  color: rgb(255, 212, 98);
+  justify-self: flex-start;
+  font-size: 35px;
+}
+.modal_content_header_close {
+  align-self: flex-start;
+  font-size: 25px;
+  margin-right: 10px;
+  font-weight: bold;
+  color: rgb(255, 212, 98);
+  transition: all 0.2s;
+}
+.modal_content_header_close:hover, .modal_content_header_close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal_content_body {
+  height: auto;
+  width: auto;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modal_content_body span {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.modal_content_body form {
+  margin-bottom: 30px;
+}
+.modal_content_body form input, .modal_content_body form button {
+  display: block;
+}
+.modal_content_body form input {
+  font-size: 30px;
+  border: 1px solid rgb(255, 212, 98);
+  width: 600px;
+}
+.modal_content_body form button {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+  height: 60px;
+  font-size: 25px;
+  border-radius: 20px;
+  color: black;
+  cursor: pointer;
+  background-color: rgb(255, 212, 98);
+  font-family: kiwi maru;
+}
+
+#modal_channel_edit .modal_content {
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: 8% auto;
+  border-radius: 20px;
+  width: 80%;
+  height: auto;
+  animation-name: fuwatto;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
+#modal_channel_edit .modal_content_header {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  height: auto;
+}
+#modal_channel_edit .modal_content_header_title {
+  margin-left: 33%;
+  color: rgb(255, 212, 98);
+  font-size: 35px;
+}
+#modal_channel_edit .modal_content_header_close {
+  font-size: 25px;
+  margin-right: 10px;
+  font-weight: bold;
+  color: rgb(255, 212, 98);
+  align-self: flex-start;
+  transition: all 0.2s;
+}
+#modal_channel_edit .modal_content_header_close:hover, #modal_channel_edit .modal_content_header_close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+#modal_channel_edit .modal_content_body {
+  height: 400px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 30px;
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+#modal_channel_edit .modal_content_body form {
+  margin: 0 24%;
+}
+#modal_channel_edit .modal_content_body form > * {
+  display: block;
+}
+#modal_channel_edit .modal_content_body form .channel_name {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#modal_channel_edit .modal_content_body form .channel_name_input {
+  display: block;
+  margin-top: 10px;
+  width: 100%;
+  margin-bottom: 40px;
+}
+#modal_channel_edit .modal_content_body form .channel_discription {
+  display: block;
+  margin-bottom: 10px;
+}
+#modal_channel_edit .modal_content_body form .channel_discription_input {
+  display: block;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#modal_channel_edit .modal_content_body form .channnel_edit_button {
+  display: block;
+  margin-top: 30px;
+  border: none;
+  width: auto;
+  padding: 10px 20px;
+  transition: all 0.2s;
+}
+#modal_channel_edit .modal_content_body form .channnel_edit_button:hover {
+  transform: translateY(3px);
+}
+#modal_channel_edit .modal_content_body form .channnel_edit_button:active {
+  transform: translateY(4px);
+}/*# sourceMappingURL=chatpage.css.map */

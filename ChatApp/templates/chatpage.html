@@ -1,0 +1,88 @@
+{% extends 'base.html' %} {% block title %}
+<title>チャット画面</title>
+{% endblock %} {% block body %}
+<header>
+  <div class="home_header">
+    <a class="chat__name" href="/">ぐーたらちゃっと</a>
+    <div class="home_header_nav-box">
+      <div id="header_home" class="home_header_nav-box_icons">
+        <span class="material-symbols-outlined"> cottage</span>
+        <a href="/home">ほーむ</a>
+      </div>
+      <div id="header_setting" class="home_header_nav-box_icons">
+        <span class="material-symbols-outlined"> settings</span>
+        <a href="/setting">せってぃんぐ</a>
+      </div>
+      <div id="header_signout" class="home_header_nav-box_icons">
+        <span class="material-symbols-outlined"> logout</span>
+        <a href="/login">さいんあうと</a>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="main">
+  <div class="_leftside">
+    <h2>ちゃんねるめんばー</h2>
+    <span id="friendAdd" class="material-symbols-outlined"> add_circle </span>
+    <div class="friends-container">
+      <div id="friends-scrollcontainer">
+        <ul>
+          {% for member in members %}
+          <li class="list" data-value1="{{ member.member_one_phrase }}" data-value2="{{ member.member_name }}#{{ member.member_id }}" data-value3="{{ member.member_picture }}">
+            <img src="{{ member.member_picture }}" style="height:30px;border-radius: 50%;" />
+            {{ member.member_name }}#{{ member.member_id }}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <!--
+      <div class="scroll-icon">
+        <span id="upicon">↑</span>
+        <span id="downicon">↓</span>
+      -->
+      </div>
+    </div>
+  </div>
+  <div class="chat_rightside">
+    <div class="chat_name">
+      <div>
+        <span>{{ channel.name }}</span>
+        <span id="channel_edit" class="material-symbols-outlined">border_color</span>
+      </div>
+    </div>
+    <div class="chat_container">
+      <div id="messagearea" class="chat_container_scroll">
+        {% for message in messages %}
+          {% if message.user_id == user_id %}
+            <div class="chat_container_my_text">
+              <!-- <span>{{ message.user_name }}</span> -->
+              <span>{{ message.message }}</span>
+            </div>
+          {% else %}
+            <div class="chat_container_friends_text">
+              <span>{{ message.user_name }}</span>
+              <span>{{ message.message }}</span>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="chat_container_textform">
+        <form action="" method="POST">
+          <div>
+            <input id="messageInput" name="message" type="text" pattern=".*\S+.*" required>
+          <span id="chatpage_fixedphrases" class="material-symbols-outlined">description</span>
+          </div>
+          <a href="/chatpage/{{ channel.id }}">
+          <button type="submit" class="material-symbols-outlined send">send</button>
+          </a>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- modal.htmlの読み込み -->
+{% include 'modal/chatpage_modal.html' %}
+<script src="{{ url_for('static', filename='/js/chatpage.js') }}"></script>
+
+{% endblock %}
