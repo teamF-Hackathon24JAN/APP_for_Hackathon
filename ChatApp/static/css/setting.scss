@@ -248,7 +248,7 @@
       margin-left: auto;
       margin-right: auto;
       height: 350px;
-      width: 500px;
+      width: 65%;
       border: 1px solid black;
       overflow-y: scroll;
       background-color: lightgray;
@@ -281,7 +281,7 @@
     }
 
     &_addphrase {
-      width: 500px;
+      width: 65%;
       height: 110px;
       border: 1px solid black;
       background-color: lightgray;
@@ -331,39 +331,39 @@
       animation-duration: 1.2s;
       animation-fill-mode: forwards;
 
-      &_header {
-        // background-color: #fefefe;
-        margin: 0 auto;
-        // border: 1px solid #888;
-        // width: auto;
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-        align-items: center;
-        height: auto;
-        // display: inline-block;
+      // &_header {
+      //   // background-color: #fefefe;
+      //   margin: 0 auto;
+      //   // border: 1px solid #888;
+      //   // width: auto;
+      //   display: flex;
+      //   justify-content: space-between;
+      //   flex-direction: row;
+      //   align-items: center;
+      //   height: auto;
+      //   // display: inline-block;
 
-        &_title {
-          margin-left: 23%;
-          color: rgb(255, 212, 98);
-          font-size: 35px;
-        }
+      //   &_title {
+      //     margin-left: 23%;
+      //     color: rgb(255, 212, 98);
+      //     font-size: 35px;
+      //   }
 
-        &_close {
-          font-size: 25px;
-          margin-right: 10px;
-          font-weight: bold;
-          color: rgb(255, 212, 98);
-          align-self: flex-start;
+      //   &_close {
+      //     font-size: 25px;
+      //     margin-right: 10px;
+      //     font-weight: bold;
+      //     color: rgb(255, 212, 98);
+      //     align-self: flex-start;
 
-          &:hover,
-          &:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-          }
-        }
-      }
+      //     &:hover,
+      //     &:focus {
+      //       color: black;
+      //       text-decoration: none;
+      //       cursor: pointer;
+      //     }
+      //   }
+      // }
 
       & .modal_container {
         // height: 300px;
@@ -440,39 +440,6 @@
       animation-duration: 1.2s;
       animation-fill-mode: forwards;
 
-      &_header {
-        // background-color: #fefefe;
-        margin: 0 auto;
-        // border: 1px solid #888;
-        // width: auto;
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-        align-items: center;
-        height: auto;
-        // display: inline-block;
-
-        &_title {
-          margin-left: 30%;
-          color: rgb(255, 212, 98);
-          font-size: 35px;
-        }
-
-        &_close {
-          font-size: 25px;
-          margin-right: 10px;
-          font-weight: bold;
-          color: rgb(255, 212, 98);
-          align-self: flex-start;
-
-          &:hover,
-          &:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-          }
-        }
-      }
 
       &_body {
         // height: 300px;
@@ -531,7 +498,6 @@
     &_content {
       background-color: rgba(0, 0, 0, 0.8);
       margin: 10% auto;
-      // border: 1px solid #888;
       border-radius: 20px;
       width: 60%;
       height: auto;
@@ -539,44 +505,7 @@
       animation-duration: 1.2s;
       animation-fill-mode: forwards;
 
-      &_header {
-        // background-color: #fefefe;
-        margin: 0 auto;
-        // border: 1px solid #888;
-        // width: auto;
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-        align-items: center;
-        height: auto;
-        // display: inline-block;
-
-        &_title {
-          margin-left: 25%;
-          color: rgb(255, 212, 98);
-          font-size: 35px;
-        }
-
-        &_close {
-          font-size: 25px;
-          margin-right: 10px;
-          font-weight: bold;
-          color: rgb(255, 212, 98);
-          align-self: flex-start;
-
-          &:hover,
-          &:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-          }
-        }
-      }
-
       &_body {
-        // height: 300px;
-        // width: 400px;
-        // background-color: yellow;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -637,40 +566,6 @@
       animation-name: fuwatto;
       animation-duration: 1.2s;
       animation-fill-mode: forwards;
-
-      &_header {
-        // background-color: #fefefe;
-        margin: 0 auto;
-        // border: 1px solid #888;
-        // width: auto;
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-        align-items: center;
-        height: auto;
-        // display: inline-block;
-
-        &_title {
-          margin-left: 20%;
-          color: rgb(255, 212, 98);
-          font-size: 35px;
-        }
-
-        &_close {
-          font-size: 25px;
-          margin-right: 10px;
-          font-weight: bold;
-          color: rgb(255, 212, 98);
-          align-self: flex-start;
-
-          &:hover,
-          &:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-          }
-        }
-      }
 
       &_body {
         // height: 300px;
@@ -737,40 +632,6 @@
       animation-duration: 1.2s;
       animation-fill-mode: forwards;
 
-      &_header {
-        // background-color: #fefefe;
-        margin: 0 auto;
-        // border: 1px solid #888;
-        // width: auto;
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-        align-items: center;
-        height: auto;
-        // display: inline-block;
-
-        &_title {
-          margin-left: 25%;
-          color: rgb(255, 212, 98);
-          font-size: 35px;
-        }
-
-        &_close {
-          font-size: 25px;
-          margin-right: 10px;
-          font-weight: bold;
-          color: rgb(255, 212, 98);
-          align-self: flex-start;
-
-          &:hover,
-          &:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-          }
-        }
-      }
-
       &_body {
         // height: 300px;
         // width: 400px;
@@ -834,41 +695,6 @@
       animation-name: fuwatto;
       animation-duration: 1.2s;
       animation-fill-mode: forwards;
-
-      &_header {
-        // background-color: #fefefe;
-        margin: 0 auto;
-        // border: 1px solid #888;
-        // width: auto;
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-        align-items: center;
-        height: auto;
-        // display: inline-block;
-
-        &_title {
-          margin-left: 30%;
-          color: rgb(255, 212, 98);
-          font-size: 35px;
-        }
-
-        &_close {
-          font-size: 25px;
-          margin-right: 10px;
-          font-weight: bold;
-          color: rgb(255, 212, 98);
-          align-self: flex-start;
-          transition: all 0.2s;
-
-          &:hover,
-          &:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-          }
-        }
-      }
 
       &_body {
         margin-top: 0;
@@ -938,41 +764,6 @@
       animation-duration: 1.2s;
       animation-fill-mode: forwards;
 
-      &_header {
-        // background-color: #fefefe;
-        margin: 0 auto;
-        // border: 1px solid #888;
-        // width: auto;
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-        align-items: center;
-        height: auto;
-        // display: inline-block;
-
-        &_title {
-          margin-left: 25%;
-          color: rgb(255, 212, 98);
-          font-size: 35px;
-        }
-
-        &_close {
-          font-size: 25px;
-          margin-right: 10px;
-          font-weight: bold;
-          color: rgb(255, 212, 98);
-          align-self: flex-start;
-          transition: all 0.2s;
-
-          &:hover,
-          &:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-          }
-        }
-      }
-
       &_body {
         margin: 30px auto;
 
@@ -1010,41 +801,6 @@
       animation-name: fuwatto;
       animation-duration: 1.2s;
       animation-fill-mode: forwards;
-
-      &_header {
-        // background-color: #fefefe;
-        margin: 0 auto;
-        // border: 1px solid #888;
-        // width: auto;
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-        align-items: center;
-        height: auto;
-        // display: inline-block;
-
-        &_title {
-          margin-left: 25%;
-          color: rgb(255, 212, 98);
-          font-size: 35px;
-        }
-
-        &_close {
-          font-size: 25px;
-          margin-right: 10px;
-          font-weight: bold;
-          color: rgb(255, 212, 98);
-          align-self: flex-start;
-          transition: all 0.2s;
-
-          &:hover,
-          &:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-          }
-        }
-      }
 
       &_body {
         margin: 30px auto 10px auto;
@@ -1094,41 +850,6 @@
       animation-name: fuwatto;
       animation-duration: 1.2s;
       animation-fill-mode: forwards;
-
-      &_header {
-        // background-color: #fefefe;
-        margin: 0 auto;
-        // border: 1px solid #888;
-        // width: auto;
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-        align-items: center;
-        height: auto;
-        // display: inline-block;
-
-        &_title {
-          margin-left: 25%;
-          color: red;
-          font-size: 35px;
-        }
-
-        &_close {
-          font-size: 25px;
-          margin-right: 10px;
-          font-weight: bold;
-          color: rgb(255, 212, 98);
-          align-self: flex-start;
-          transition: all 0.2s;
-
-          &:hover,
-          &:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-          }
-        }
-      }
 
       &_body {
         margin: 30px auto;
