@@ -253,6 +253,7 @@
   width: 1100px;
   padding: 20px;
   overflow-x: scroll;
+  border-bottom: 2px solid black;
 }
 .main ._rightside ._channels #channel-boxes ._channels-var {
   flex: none;
@@ -264,6 +265,7 @@
   border: 1px solid black;
   transition: all 0.2s;
   box-shadow: 0 1px 5px black;
+  position: relative;
 }
 .main ._rightside ._channels #channel-boxes ._channels-var .channel-name {
   font-size: 30px;
@@ -276,9 +278,12 @@
 .main ._rightside ._channels #channel-boxes ._channels-var .channel-description {
   margin-top: 20px;
   margin-bottom: 10px;
+  margin: 20px 10px 20px 10px;
 }
 .main ._rightside ._channels #channel-boxes ._channels-var .chatpage_link {
+  position: absolute;
   transition: all 0.3s;
+  top: 75%;
 }
 .main ._rightside ._channels #channel-boxes ._channels-var .chatpage_link:hover {
   transform: translateY(5px);
@@ -394,6 +399,11 @@
   cursor: pointer;
   background-color: rgb(255, 212, 98);
   font-family: kiwi maru;
+  border: none;
+  transition: all 0.3s;
+}
+.modal_content_body form button:hover {
+  transform: translateY(3px);
 }
 
 #modal_friend .modal_content {

@@ -10,6 +10,13 @@ header_signout.addEventListener('click',() => {
   window.location.href = '/login'
 })
 
+const setting_picture = document.getElementById('setting_picture');
+
+setting_picture.addEventListener('click', ( ) => {
+  const modal_setting_picture = document.getElementById('modal_setting_picture');
+  modal_setting_picture.style.display = 'block';
+});
+
 
 const setting_name = document.getElementById('setting_name');
 

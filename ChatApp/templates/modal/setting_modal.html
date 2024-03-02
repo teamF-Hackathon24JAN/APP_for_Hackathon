@@ -1,4 +1,31 @@
 <!-- 設定画面のモーダル -->
+<div id="modal_setting_picture" class="modal" style="display: none">
+  <div class="modal_content">
+    <div class="modal_content_header">
+      <span class="modal_content_header_title">がぞうあっぷろーどふぉーむ</span>
+      <span
+        class="modal_content_header_close"
+        data-modal="modal_setting_picture"
+        >&times;</span
+      >
+    </div>
+    <div class="modal_container">
+      <div class="setting_photo">
+        <form
+          class="imageform"
+          action=""
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <input class="image" type="file" name="image" accept="image/*" />
+          <input class="imageAppload" type="submit" value="アップロード" />
+        </form>
+        <span class="photo_kinds">※JPG/PNG/GIF</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="modal_setting_name" class="modal" style="display: none">
   <div class="modal_content">
     <div class="modal_content_header">
