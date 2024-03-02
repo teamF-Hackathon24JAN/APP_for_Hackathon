@@ -36,7 +36,7 @@ class awsConnect:
                 add_file_name = str(user_id) + str(now)
                 # DB格納用のオブジェクトURL https://test-fteam.s3.ap-northeast-1.amazonaws.com/icon/id8_20240301110405.jpg
                 add_key = "icon/" + add_file_name + "." + str(file_extension)
-                object_url = "https://test-fteam.s3.ap-northeast-1.amazonaws.com/" + add_key
+                object_url = "https://teamf202401.s3.ap-northeast-1.amazonaws.com/" + add_key
 
                 # boto3クライアントの初期化
                 s3 = boto3.client('s3')
