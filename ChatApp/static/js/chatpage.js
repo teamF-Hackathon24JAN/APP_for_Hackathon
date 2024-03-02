@@ -60,22 +60,6 @@ friendaddmodal.addEventListener("click", () => {
   modalfriadd.style.display = "block";
 });
 
-// const friendscontainer = document.querySelector('#friends-scrollcontainer');
-
-// const upbutton = document.querySelector('#upicon');
-// const downbutton = document.querySelector('#downicon');
-
-// upbutton.addEventListener('click', () => {
-//     // containerを上方向に50pxスクロールさせる
-//     friendscontainer.scrollBy({top: -50, behavior: 'smooth' });
-// });
-
-// downbutton.addEventListener('click', () => {
-//       // containerを下方向に50pxスクロールさせる
-//       friendscontainer.scrollBy({top: 50, behavior: 'smooth' });
-// });
-
-
 const channel_edit = document.getElementById('channel_edit');
 
 channel_edit.addEventListener('click', ( ) => {

@@ -24,9 +24,6 @@ friendlists.forEach((friendlist,i) =>{
       document.getElementById('value1').textContent = value1;
       document.getElementById('value2').textContent = value2;
       document.getElementById('value3').src = value3;
-      //friend_name = document.getElementById('fname')
-      //friend_phrase = document.getElementById('fphrase')
-      //friend_name.textContent = friendlist.dataset.id
 
       document.getElementById('modal_friend').style.display = 'block';
     });
