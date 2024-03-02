@@ -4,11 +4,11 @@ class awsConnect:
     def uploadImage(file, file_name, user_id):
         try:
             # AWS認証情報（環境変数から取得）
-            AWS_ACCESS_KEY_ID='AKIA3FLDZEDGFNMYG6UV' 
-            AWS_SECRET_ACCESS_KEY='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'
+            AWS_ACCESS_KEY_ID=''
+            AWS_SECRET_ACCESS_KEY=''
 
             # S3 Bucket 名
-            S3_BUCKET_NAME = 'test-fteam'
+            S3_BUCKET_NAME = 'teamf202401'
             path = file_name
             # 保存するイメージファイルの拡張子を取得
             file_extension = os.path.splitext(os.path.basename(path))[1][1:]
@@ -39,7 +39,7 @@ class awsConnect:
                 object_url = "https://test-fteam.s3.ap-northeast-1.amazonaws.com/" + add_key
 
                 # boto3クライアントの初期化
-                s3 = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+                s3 = boto3.client('s3')
 
                 # S3へファイルをアップロードする
                 s3.upload_fileobj(Fileobj=file, Bucket=S3_BUCKET_NAME, Key=add_key, ExtraArgs={"ContentType": ContentType, "ACL": "public-read"})
